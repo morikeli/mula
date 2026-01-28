@@ -13,6 +13,6 @@ final class PinSet extends PinState {}
 final class PinNotSet extends PinState {}
 
 final class PinError extends PinState {
-  final String message;
-  PinError(this.message);
+  final String errorMessage;
+  PinError(this.errorMessage);
 }
