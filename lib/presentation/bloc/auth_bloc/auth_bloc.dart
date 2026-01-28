@@ -1,10 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../data/models/login_model.dart';
 import '../../../data/models/signup_model.dart';
+import '../../../data/models/user_model.dart';
 import '../../../data/repositories/auth_repo.dart';
-
 
 part 'auth_event.dart';
 part 'auth_state.dart';
