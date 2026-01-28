@@ -1,5 +1,4 @@
 import '../../core/services/auth_service.dart';
-import '../models/login_model.dart';
 import '../models/signup_model.dart';
 import '../models/user_model.dart';
 
@@ -10,11 +9,11 @@ class AuthRepository {
 
 	// Attempts to sign in a user with [email] and [password].
 	// Returns a [LoginModel] on success or throws on failure.
-	Future<LoginModel> getUserCredentials(String email, String password) async {
+	Future<UserModel> getUserCredentials(String email, String password) async {
 		try {
 			final UserModel? user = await _service.login(email, password);
 			if (user == null) throw Exception('Unable to login user');
-			return LoginModel(email: email, password: password);
+			return UserModel(uid: user.uid, email: user.email);
 		} catch (e) {
 			rethrow;
 		}
