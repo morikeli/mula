@@ -46,7 +46,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
       if (valid) {
         emit(PinSet());
       } else {
-        emit(PinError("Invalid PIN"));
+        emit(PinError("Invalid PIN! Please try again."));
       }
     } catch (e) {
       emit(PinError(e.toString()));
