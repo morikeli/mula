@@ -46,12 +46,12 @@ class MaverickApp extends StatelessWidget {
       
         ],
         child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Maverick',
-        darkTheme: MaverickAppTheme.darkTheme,
-        theme: MaverickAppTheme.lightTheme,
-        initialRoute: '/onboarding-screen',
-        routes: routes,
+          debugShowCheckedModeBanner: false,
+          title: 'Maverick',
+          darkTheme: MaverickAppTheme.darkTheme,
+          theme: MaverickAppTheme.lightTheme,
+          initialRoute: '/onboarding-screen',
+          routes: routes,
         ),
       ),
     );
