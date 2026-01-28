@@ -28,7 +28,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         event.username,
         event.password,
       );
-      emit(IsAuthenticated(loginModel: auth));
+      emit(IsAuthenticated(user: auth));
     } catch (e) {
       emit(AuthFailed(e.toString()));
     }
