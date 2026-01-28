@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import '../widgets/homescreen.dart';
+import 'presentation/widgets/homescreen.dart';
 
-import 'features/auth/forgot-password/forgot_password_screen.dart';
-import 'features/auth/login/login_screen.dart';
-import 'features/auth/pin/pin_screen.dart';
-import 'features/auth/pin/pin_setup_screen.dart';
-import 'features/auth/pin/reset_pin.dart';
-import 'features/onboarding/onboarding_screen.dart';
-import 'features/auth/otp/otp_screen.dart';
-import 'features/auth/reset-password/reset_password_screen.dart';
-import 'features/auth/signup/signup_screen.dart';
-import 'features/profile/edit_profile.dart';
-import 'features/profile/profile_screen.dart';
-import 'features/transaction/transaction_screen.dart';
+import 'presentation/views/auth/forgot-password/forgot_password_screen.dart';
+import 'presentation/views/auth/login_screen.dart';
+import 'presentation/views/auth/pin/pin_screen.dart';
+import 'presentation/views/auth/pin/pin_setup_screen.dart';
+import 'presentation/views/auth/pin/reset_pin.dart';
+import 'presentation/views/onboarding_screen.dart';
+import 'presentation/views/auth/otp/otp_screen.dart';
+import 'presentation/views/auth/reset-password/reset_password_screen.dart';
+import 'presentation/views/auth/signup_screen.dart';
+import 'presentation/views/profile/edit_profile.dart';
+import 'presentation/views/profile/profile_screen.dart';
+import 'presentation/views/transaction/transaction_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
   OnboardingScreen.routeName: (context) => const OnboardingScreen(),
