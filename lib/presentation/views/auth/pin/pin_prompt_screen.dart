@@ -1,0 +1,56 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/utils/app_toasts.dart';
+import '../../../../core/utils/loading_indicators.dart';
+import '../../../bloc/pin_bloc/pin_bloc.dart';
+import '../../../widgets/common/footer.dart';
+import '../../../widgets/forms/pin_prompt_form.dart';
+
+class PINScreen extends StatelessWidget {
+  static String routeName = '/pin-prompt-screen';
+  const PINScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: pinScreenAppBar(context),
+      body: BlocConsumer<PinBloc, PinState>(
+        listener: (context, state) {
+          if (state is VerifyPinRequested) {
+            Navigator.pushNamed(context, '/homescreen');
+          } else if (state is PinError) {
+            AppToast.showError(context, title: state.errorMessage.toString());
+          }
+        },
+        builder: (context, state) {
+          if (state is PinLoading) {
+            return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
+          }
+          return PINPromptForm();
+        },
+      ),
+      persistentFooterAlignment: AlignmentDirectional.center,
+      persistentFooterButtons: [
+        Footer(
+          primaryText: "Don't have a PIN? ",
+          redirectText: "Create your PIN",
+          redirectTo: TapGestureRecognizer()
+            ..onTap = () => Navigator.pushNamed(context, '/create_pin'),
+        ),
+      ],
+    );
+  }
+
+  AppBar pinScreenAppBar(BuildContext context) {
+    return AppBar(
+      title: Text(
+        'Enter your PIN',
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
+      centerTitle: true,
+      automaticallyImplyLeading: false,
+    );
+  }
+}
