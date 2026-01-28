@@ -47,9 +47,9 @@ class MaverickApp extends StatelessWidget {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Maverick',
-          darkTheme: MaverickAppTheme.darkTheme,
-          theme: MaverickAppTheme.lightTheme,
+          title: 'Mula',
+          darkTheme: MulaAppTheme.darkTheme,
+          theme: MulaAppTheme.lightTheme,
           initialRoute: '/onboarding-screen',
           routes: routes,
         ),

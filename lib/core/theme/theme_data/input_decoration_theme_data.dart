@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-class MaverickAppInputDecorationTheme {
-  MaverickAppInputDecorationTheme._();
+class MulaAppInputDecorationTheme {
+  MulaAppInputDecorationTheme._();
 
   static InputDecorationTheme inputDecorationLightTheme = InputDecorationTheme(
     enabledBorder: OutlineInputBorder(

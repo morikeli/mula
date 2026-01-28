@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'colors.dart';
 
-class MaverickAppColorScheme {
-  MaverickAppColorScheme._();
+class MulaAppColorScheme {
+  MulaAppColorScheme._();
 
   static ColorScheme colorSchemeLight = ColorScheme.light(
     brightness: Brightness.light,
