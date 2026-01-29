@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../core/services/auth_service.dart';
 import '../models/signup_model.dart';
 import '../models/user_model.dart';
@@ -14,9 +16,11 @@ class AuthRepository {
 			final UserModel? user = await _service.login(email, password);
 			if (user == null) throw Exception('Unable to login user');
 			return UserModel(uid: user.uid, email: user.email);
+		} on FirebaseAuthException catch (e) {
+      throw e.message.toString();
 		} catch (e) {
-			rethrow;
-		}
+      rethrow;
+    }
 	}
 
 	// Creates a new user account. [username] may be a single name; it will
