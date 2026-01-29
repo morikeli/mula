@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../core/helpers/prefs.dart';
 import '../../data/models/onboarding_model.dart';
 import '../widgets/auth_gate.dart';
 
