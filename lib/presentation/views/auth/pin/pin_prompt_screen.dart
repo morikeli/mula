@@ -41,7 +41,7 @@ class PINScreen extends StatelessWidget {
           primaryText: "Don't have a PIN? ",
           redirectText: "Create your PIN",
           redirectTo: TapGestureRecognizer()
-            ..onTap = () => Navigator.pushNamed(context, '/create_pin'),
+            ..onTap = () => Navigator.pushNamed(context, '/create-pin'),
         ),
       ],
     );
