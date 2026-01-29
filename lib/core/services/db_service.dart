@@ -15,7 +15,7 @@ class DBService {
     final path = join(dbPath, fileName);
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: _createDB,
       onUpgrade: _onUpgrade,
     );
