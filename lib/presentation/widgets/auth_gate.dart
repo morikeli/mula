@@ -23,8 +23,8 @@ class AuthGate extends StatelessWidget {
         }
       },
       builder: (context, authState) {
-        if (authState is AuthInitial || authState is AuthLoading) {
-          AppLoadingIndicators.loadingIndicatorLarge();
+        if (authState is AuthLoading) {
+          return AppLoadingIndicators.loadingIndicatorLarge();
         }
 
         // Check if user is logged out
