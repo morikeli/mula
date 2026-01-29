@@ -44,7 +44,7 @@ class DBService {
 
     await db.execute('''
       CREATE TABLE pin (
-        uid INTEGER PRIMARY KEY AUTOINCREMENT,
+        uid TEXT PRIMARY KEY,
         hash TEXT NOT NULL,
         salt TEXT NOT NULL
       )
@@ -59,7 +59,7 @@ class DBService {
     if (oldVersion < 2) {
       await db.execute('''
         CREATE TABLE pin (
-          uid INTEGER PRIMARY KEY AUTOINCREMENT,
+          uid TEXT PRIMARY KEY,
           hash TEXT NOT NULL,
           salt TEXT NOT NULL
         )
