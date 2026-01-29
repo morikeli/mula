@@ -17,6 +17,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   bool isLastPage = false;
 
   @override
+  void initState() {
+    super.initState();
+    _checkOnboardingSeen();
+  }
+
+  void _checkOnboardingSeen() async {
+    // If user already saw onboarding, skip to auth gate
+    final seen = await Prefs.hasSeenOnboarding();
+    if (seen) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => AuthGate()),
+        );
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -132,12 +151,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: ElevatedButton(
           onPressed: () {
             if (isLastPage) {
-              // Navigate to login screen if the user is unauthenticated
-              // otherwise navigate to homescreen
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => AuthGate()),
-              );
+              // mark onboarding as seen then navigate into auth flow
+              Prefs.setOnboardingSeen().then((_) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthGate()),
+                );
+              });
             } else {
               _controller.nextPage(
                 duration: Duration(milliseconds: 500),
