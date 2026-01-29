@@ -55,6 +55,8 @@ dependencies:
   rename: ^3.1.0
   flutter_bloc: ^9.1.1
   pdf: ^3.11.3
+  shared_preferences: ^2.1.1
+  shared_preferences: ^2.1.1
 
 dev_dependencies:
   flutter_test:
