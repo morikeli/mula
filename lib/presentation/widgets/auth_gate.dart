@@ -14,7 +14,14 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, authState) {
+        if (authState is AuthFailed) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            AppToast.showError(context, title: authState.errorMessage.toString());
+          });
+        }
+      },
       builder: (context, authState) {
         if (authState is AuthInitial || authState is AuthLoading) {
           AppLoadingIndicators.loadingIndicatorLarge();
