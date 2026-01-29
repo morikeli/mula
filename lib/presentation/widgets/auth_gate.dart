@@ -28,7 +28,7 @@ class AuthGate extends StatelessWidget {
         }
 
         // Check if user is logged out
-        if (authState != IsAuthenticated) {
+        if (authState is! IsAuthenticated) {
           return LoginScreen();
         }
 
