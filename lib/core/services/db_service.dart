@@ -57,6 +57,7 @@ class DBService {
     int newVersion,
   ) async {
     if (oldVersion < 2) {
+      await db.execute('DROP TABLE IF EXISTS pin');
       await db.execute('''
         CREATE TABLE pin (
           uid TEXT PRIMARY KEY,
