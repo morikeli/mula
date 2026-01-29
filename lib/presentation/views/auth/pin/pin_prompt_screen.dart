@@ -18,10 +18,14 @@ class PINScreen extends StatelessWidget {
       appBar: pinScreenAppBar(context),
       body: BlocConsumer<PinBloc, PinState>(
         listener: (context, state) {
-          if (state is VerifyPinRequested) {
-            Navigator.pushNamed(context, '/homescreen');
+          if (state is PinSet) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.pushReplacementNamed(context, '/home');
+            });
           } else if (state is PinError) {
-            AppToast.showError(context, title: state.errorMessage.toString());
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              AppToast.showError(context, title: state.errorMessage.toString());
+            });
           }
         },
         builder: (context, state) {
