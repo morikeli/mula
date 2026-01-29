@@ -32,33 +32,7 @@ class AuthGate extends StatelessWidget {
           return LoginScreen();
         }
 
-        if (authState is IsAuthenticated) {
-          return BlocProvider(
-            create: (_) =>
-                PinBloc(context.read<PinRepository>())
-                  ..add(CheckPinStatusRequested()),
-            child: BlocBuilder(
-              builder: (context, pinState) {
-                if (pinState is PinLoading) {
-                  return AppLoadingIndicators.loadingIndicatorLarge();
-                }
-
-                // Prompt the user for their PIN
-                if (pinState is PinSet) {
-                  return PINScreen();
-                }
-
-                // check if the user had created and saved their PIN
-                if (pinState is PinNotSet) {
-                  return PinSetupScreen();
-                }
-
-                return AppLoadingIndicators.loadingIndicatorLarge();
-              },
-            ),
-          );
-        }
-        return SizedBox();
+        return PinGate();
       },
     );
   }
