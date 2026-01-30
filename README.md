@@ -38,12 +38,12 @@ Maverick is designed for individuals and groups in Africa and beyond who need fa
 
 
 ### Tech Stack
-- 🎨 **Frontend**: Flutter v3.32.7
+- 🎨 **Frontend**: Flutter v3.38.5, Dart v3.10.4
 - ☁️ **Backend & Auth**: Firebase
 - 💾 **Storage**: Firebase Firestore
 - 🗄️ **Local Storage**: SQLite (for offline data and PIN storage)
-- ⚡ **State Management**: GetX
-- 🏗️ **Architecture**: MVC (separation of logic, UI, and services)
+- ⚡ **State Management**: BLoC
+- 🏗️ **Architecture**: MVVM (separation of logic, UI, and services)
 - 🗃️ **Libraries/packages**:
     - *crypto* - PIN hashing
     - *toastification* - display toast notifications in the app
