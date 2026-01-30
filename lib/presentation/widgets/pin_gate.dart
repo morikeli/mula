@@ -35,12 +35,12 @@ class _PinGateState extends State<PinGate> {
         }
 
         // Show the PIN prompt when a PIN exists.
-        if (pinState is PinSet || pinState is PinError) {
+        if (pinState is PinSet) {
           return PINScreen();
         }
 
         // If no PIN is set, show the setup screen so the user can create their PIN.
-        if (pinState is PinNotSet) {
+        if (pinState is PinNotSet || pinState is PinError) {
           return PinSetupScreen();
         }
 
