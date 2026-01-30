@@ -8,7 +8,7 @@ class PinRepository {
 
   Future<PinModel> createPin(String pin, String uid) async {
     if (pin.length < 4) {
-      throw Exception('PIN must be at least 4 digits');
+      throw Exception('PIN is too short!');
     }
     final userId = await _pinService.savePin(pin, uid);
     return PinModel(pin: userId.pin, userId: userId.userId);
