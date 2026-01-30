@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/utils/loading_indicators.dart';
 import '../bloc/auth_bloc/auth_bloc.dart';
 import '../views/auth/login_screen.dart';
-import 'pin_gate.dart';
+import '../views/auth/pin/pin_prompt_screen.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -27,7 +27,7 @@ class AuthGate extends StatelessWidget {
           return LoginScreen();
         }
 
-        return PinGate();
+        return PINScreen();
       },
     );
   }
