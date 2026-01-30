@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:maverick_app/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:maverick_app/presentation/widgets/auth_gate.dart';
+import 'package:maverick_app/presentation/views/onboarding_screen.dart';
 import 'package:maverick_app/routes.dart';
 
 import 'core/helpers/firebase_options.dart';
@@ -19,14 +21,17 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MaverickApp());
+  final seen = await Prefs.hasSeenOnboarding();
+  runApp(MaverickApp(skipOnboarding: seen));
 
   // whenever your initialization is completed, remove the splash screen:
   FlutterNativeSplash.remove();
 }
 
 class MaverickApp extends StatelessWidget {
-  const MaverickApp({super.key});
+  final bool skipOnboarding;
+
+  const MaverickApp({super.key, required this.skipOnboarding});
 
   // This widget is the root of your application.
   @override
@@ -50,7 +55,10 @@ class MaverickApp extends StatelessWidget {
           title: 'Mula',
           darkTheme: MulaAppTheme.darkTheme,
           theme: MulaAppTheme.lightTheme,
-          initialRoute: '/onboarding-screen',
+          // If the user already saw onboarding, place AuthGate as the home
+          // so no onboarding flash occurs. Otherwise start at onboarding.
+          home: skipOnboarding ? const AuthGate() : null,
+          initialRoute: OnboardingScreen.routeName,
           routes: routes,
         ),
       ),
