@@ -16,6 +16,12 @@ const Color kTextGreenColor = Color(0xFF004D40);
 const Color kTextDarkColor = Color(0xFF000000);
 const Color kTextSecondaryColor = Color(0xFF8B8B8B);
 const Color kTextFormFieldLabelColor = Color(0xFF009688);
+const Color kHyperLinkTextColor = Color(0xFF0E4D92);
+const List<Color> kWalletCardGradientColor = [
+  Color(0xFF0E4D92),
+  Color(0xFF2BB673),
+];
+final Color kCircleAvatarBgColor = Colors.black.withOpacity(0.25);
 const Color kDangerColor = Color(0xFFC21407);
 const Color kSuccessColor = Color(0xFF05332B);
 const Color kWarningColor = Color(0xFFD8D507);
