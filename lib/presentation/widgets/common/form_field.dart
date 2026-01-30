@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -53,7 +54,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(
-                  _obscure ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                  _obscure ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
                 ),
                 onPressed: () {
                   setState(() {

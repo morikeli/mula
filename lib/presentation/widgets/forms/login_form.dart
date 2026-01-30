@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -95,7 +96,7 @@ class _LoginFormState extends State<LoginForm> {
     return CustomTextFormField(
       controller: passwordController,
       label: "Password",
-      icon: Icons.lock_outline,
+      icon: CupertinoIcons.lock,
       obscureText: true,
       validator: (value) {
         return FormValidation.validatePassword(value, passwordController.text);
@@ -107,7 +108,7 @@ class _LoginFormState extends State<LoginForm> {
     return CustomTextFormField(
       controller: emailController,
       label: "Email",
-      icon: Icons.email_outlined,
+      icon: CupertinoIcons.mail,
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         return FormValidation.validateEmail(value);
