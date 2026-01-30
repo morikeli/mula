@@ -88,12 +88,12 @@ This wasn’t just a coding challenge — it was an exercise in product thinking
 Clone this repository by opening your terminal/CMD and change the current working directory to Desktop - use `cd Desktop` command.
 ```bash
     $ cd Desktop
-    $ git clone https://github.com/morikeli/maverick-fintech.git
+    $ git clone https://github.com/morikeli/mula.git
 ```
 
 2. Open the cloned repository on your text editor and run this command:
 ```bash
-    $ cd maverick-fintech  # or change dir in the terminal and run the `flutter run` command
+    $ cd mula  # or change dir in the terminal and run the `flutter run` command
     $ flutter run
 ```
 3. Make sure you have a very strong internet connection so that the necessary gradle files can be downloaded. These files are necessary to build the project `apk` file.
