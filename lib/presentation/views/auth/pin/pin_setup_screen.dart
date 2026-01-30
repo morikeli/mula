@@ -51,7 +51,7 @@ class PinSetupScreen extends StatelessWidget {
           primaryText: "Already have a PIN? ",
           redirectText: "Enter your PIN",
           redirectTo: TapGestureRecognizer()
-            ..onTap = () => Navigator.pushNamed(context, '/pin-screen'),
+            ..onTap = () => Navigator.pushNamed(context, '/pin-prompt-screen'),
         ),
       ],
     );
