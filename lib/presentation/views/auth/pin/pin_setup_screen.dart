@@ -27,12 +27,14 @@ class PinSetupScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is PinSet) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              AppToast.showSuccess(context, title: 'PIN created successfully');
-              Navigator.pushNamed(context, '/pin-prompt-screen');
+              if (context.mounted) {
+                AppToast.showSuccess(context, title: 'PIN created successfully');
+                Navigator.pushNamed(context, '/pin-prompt-screen');
+              }
             });
           } else if (state is PinError) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              AppToast.showError(context, title: state.errorMessage.toString());
+              if (context.mounted) AppToast.showError(context, title: state.errorMessage.toString());
             });
           }
         },

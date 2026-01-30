@@ -20,7 +20,7 @@ class PINScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is PinSet) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              Navigator.pushReplacementNamed(context, '/home');
+              if (context.mounted) Navigator.pushReplacementNamed(context, '/home');
             });
           } else if (state is PinError) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
