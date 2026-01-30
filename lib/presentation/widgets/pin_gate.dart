@@ -15,7 +15,6 @@ class PinGate extends StatefulWidget {
 }
 
 class _PinGateState extends State<PinGate> {
-  late final PinBloc pinBloc;
   @override
   void initState() {
     super.initState();
@@ -37,16 +36,26 @@ class _PinGateState extends State<PinGate> {
         if (pinState is PinLoading) {
           return AppLoadingIndicators.loadingIndicatorLarge();
         }
+
         if (pinState is PinSet) {
           return PINScreen();
         }
-    
+
         if (pinState is PinNotSet) {
           return PinSetupScreen();
         }
 
-        // if an error occurs, return PinSetupScreen
-        return PinSetupScreen();
+        // If an error occurs while checking/creating the PIN, show the setup
+        // screen so the user can retry creating a PIN (listener already shows
+        // a toast with the error message).
+        if (pinState is PinError) {
+          return PinSetupScreen();
+        }
+
+        // For any other intermediate state (e.g. initial), show a loading
+        // indicator while the check completes to avoid briefly showing the
+        // PinSetupScreen when a PIN actually exists.
+        return AppLoadingIndicators.loadingIndicatorLarge();
       },
     );
   }
