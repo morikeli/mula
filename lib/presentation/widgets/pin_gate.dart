@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/utils/app_toasts.dart';
 import '../../core/utils/loading_indicators.dart';
 import '../bloc/pin_bloc/pin_bloc.dart';
 import '../views/auth/pin/pin_prompt_screen.dart';
@@ -25,25 +24,22 @@ class _PinGateState extends State<PinGate> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PinBloc, PinState>(
-      listener: (context, pinState) {
-        if (pinState is PinError) {
-          // WidgetsBinding.instance.addPostFrameCallback((_) {
-            AppToast.showError(context, title: pinState.errorMessage.toString());
-          // });
-        }
-      },
+      // No global listener here: child screens (`PinSetupScreen` and
+      // `PINScreen`) show toasts for errors. Keeping the gate free of toasts
+      // prevents duplicate notifications when both ancestor and descendant
+      // listen to the same `PinBloc`.
+      listener: (context, pinState) {},
       builder: (context, pinState) {
         if (pinState is PinLoading) {
           return AppLoadingIndicators.loadingIndicatorLarge();
         }
 
-        // If an error occurs while checking/creating the PIN, prompt the user
-        // to enter their PIN on retry (listener already shows
-        // a toast with the error message).
+        // Show the PIN prompt when a PIN exists.
         if (pinState is PinSet || pinState is PinError) {
           return PINScreen();
         }
 
+        // If no PIN is set, show the setup screen so the user can create their PIN.
         if (pinState is PinNotSet) {
           return PinSetupScreen();
         }
