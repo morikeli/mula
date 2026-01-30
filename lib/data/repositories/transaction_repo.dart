@@ -72,11 +72,25 @@ class TransactionRepository {
   // It merges the snapshots, sorts documents by date (newest first) and maps
   // each document into a `TransactionModel` using `TransactionModel.fromFirestore`.
   Stream<List<TransactionModel>> recentTransactions() {
-    final user = transactionService.currentUser;
+    // If there's no authenticated user, avoid throwing and return an
+    // empty list stream so UI can show a friendly empty state instead of
+    // crashing or remaining stuck in loading.
+    final user = (() {
+      try {
+        return transactionService.currentUser;
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    if (user == null) {
+      return Stream.value(<TransactionModel>[]);
+    }
 
     // Streams of Firestore query snapshots for sent and received txns.
     final sent$ = transactionService.sentTransactionsStream(user.uid);
-    final received$ = transactionService.receivedTransactionsStream(user.email ?? '');
+    // Use the user's uid to match how transactions are stored (receiverID is a uid).
+    final received$ = transactionService.receivedTransactionsStream(user.uid);
 
     // Combine the two query snapshot streams and produce a single list of
     // `TransactionModel` sorted by date (descending).
