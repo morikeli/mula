@@ -12,6 +12,7 @@ class LocalDB {
     return _db!;
   }
 
+  // initialize the database
   static Future<Database> initDb() async {
     final path = join(await getDatabasesPath(), 'app.db');
     return await openDatabase(
@@ -64,7 +65,7 @@ class LocalDB {
     return result.first['value'] == '1';
   }
 
-  /// Hash PIN before storing
+  // Hash PIN before storing
   static String _hashPin(String pin) {
     final bytes = utf8.encode(pin);
     final hash = sha512.convert(bytes); // hash password using SHA512

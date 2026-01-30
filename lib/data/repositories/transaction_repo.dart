@@ -29,7 +29,7 @@ class TransactionRepository {
     final senderUid = user.uid;
 
     // Resolve the recipient uid from the counterparty identifier (email,
-    // phone or username depending on your app's conventions).
+    // phone or username).
     final receiverUid = await transactionService.getRecipientUid(txn.counterparty);
 
     // Prevent accidental self-transfer.
