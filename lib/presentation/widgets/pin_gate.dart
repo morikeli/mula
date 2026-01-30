@@ -27,9 +27,9 @@ class _PinGateState extends State<PinGate> {
     return BlocConsumer<PinBloc, PinState>(
       listener: (context, pinState) {
         if (pinState is PinError) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
+          // WidgetsBinding.instance.addPostFrameCallback((_) {
             AppToast.showError(context, title: pinState.errorMessage.toString());
-          });
+          // });
         }
       },
       builder: (context, pinState) {
