@@ -24,6 +24,10 @@ class LocalDB {
         await db.execute(
           'CREATE TABLE user_info(uid TEXT PRIMARY KEY, firstName TEXT, lastName TEXT, email TEXT, mobileNumber TEXT)',
         );
+        // simple key/value table to persist small app flags (e.g. onboarding seen)
+        await db.execute(
+          'CREATE TABLE app_meta(key TEXT PRIMARY KEY, value TEXT)',
+        );
       },
       onUpgrade: (db, oldVersion, newVersion) async {
         if (oldVersion < 2) {
@@ -35,6 +39,29 @@ class LocalDB {
         }
       },
     );
+  }
+
+  // Mark onboarding as seen
+  static Future<void> setOnboardingSeen() async {
+    final dbClient = await db;
+    await dbClient.insert(
+      'app_meta',
+      {'key': 'onboarding_seen', 'value': '1'},
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  // Returns true if the onboarding has been seen
+  static Future<bool> hasSeenOnboarding() async {
+    final dbClient = await db;
+    final result = await dbClient.query(
+      'app_meta',
+      where: 'key = ?',
+      whereArgs: ['onboarding_seen'],
+      limit: 1,
+    );
+    if (result.isEmpty) return false;
+    return result.first['value'] == '1';
   }
 
   /// Hash PIN before storing
