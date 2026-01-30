@@ -37,18 +37,14 @@ class _PinGateState extends State<PinGate> {
           return AppLoadingIndicators.loadingIndicatorLarge();
         }
 
-        if (pinState is PinSet) {
+        // If an error occurs while checking/creating the PIN, prompt the user
+        // to enter their PIN on retry (listener already shows
+        // a toast with the error message).
+        if (pinState is PinSet || pinState is PinError) {
           return PINScreen();
         }
 
         if (pinState is PinNotSet) {
-          return PinSetupScreen();
-        }
-
-        // If an error occurs while checking/creating the PIN, show the setup
-        // screen so the user can retry creating a PIN (listener already shows
-        // a toast with the error message).
-        if (pinState is PinError) {
           return PinSetupScreen();
         }
 
