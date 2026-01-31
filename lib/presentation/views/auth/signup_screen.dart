@@ -72,7 +72,7 @@ class SignupScreen extends StatelessWidget {
 
   Text signupScreenSubTitle(BuildContext context) {
     return Text(
-      'Simplify your crypto payments with us',
+      'Simplify your payments with us',
       style: Theme.of(context).textTheme.titleSmall,
       textAlign: TextAlign.center,
     );
