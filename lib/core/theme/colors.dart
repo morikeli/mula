@@ -21,7 +21,7 @@ const List<Color> kWalletCardGradientColor = [
   Color(0xFF0E4D92),
   Color(0xFF2BB673),
 ];
-final Color kCircleAvatarBgColor = Colors.black.withOpacity(0.25);
+final Color kCircleAvatarBgColor = const Color(0xFF000000).withOpacity(0.25);
 const Color kDangerColor = Color(0xFFC21407);
 const Color kSuccessColor = Color(0xFF05332B);
 const Color kWarningColor = Color(0xFFD8D507);
