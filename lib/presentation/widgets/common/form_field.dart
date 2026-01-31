@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../core/theme/colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
@@ -42,9 +43,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.grey.shade50,
-            style: BorderStyle.none
-            // width: .5
+            color: kTextFormFieldBorderColor,
+            style: BorderStyle.none,
           ),
           borderRadius: BorderRadius.circular(8.0)
         ),
