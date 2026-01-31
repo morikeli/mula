@@ -16,15 +16,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading: Icon(CupertinoIcons.chevron_back),
-        title: Text(
-          'Create Account',
-          style: Theme.of(context).textTheme.titleMedium,
-          textAlign: TextAlign.center,
-        ),
-      ),
+      appBar: CustomAppBar(appBarTitle: 'Create Account'),
 
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
