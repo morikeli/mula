@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/theme/colors.dart';
 import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../common/form_field.dart';
 import '../../../core/helpers/form_validation.dart';
@@ -83,7 +84,7 @@ class _LoginFormState extends State<LoginForm> {
           child: Text(
             'Forgot password?',
             style: TextStyle(
-              color: Colors.teal.shade900,
+              color: kTextGreenColor,
               fontWeight: FontWeight.bold,
             ),
           ),
