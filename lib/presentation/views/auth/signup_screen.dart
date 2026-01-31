@@ -29,22 +29,18 @@ class SignupScreen extends StatelessWidget {
           if (state is AuthLoading) {
             return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
           }
-          
-          return SafeArea(
-            child: SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: ListView(
-                  children: [
-                    signupScreenTitle(context),
-                    const SizedBox(height: 8.0),
-                    signupScreenSubTitle(context),
-                    SizedBox(height: 16.0),
-                    SignupForm(),
-                    SizedBox(height: 24.0),
-                  ],
-                ),
+
+          return SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: ListView(
+                children: [
+                  signupScreenSubTitle(context),
+                  SizedBox(height: 16.0),
+                  SignupForm(),
+                  SizedBox(height: 24.0),
+                ],
               ),
             ),
           );
