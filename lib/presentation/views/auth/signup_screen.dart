@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/app_toasts.dart';
 import '../../../core/utils/loading_indicators.dart';
 import '../../bloc/auth_bloc/auth_bloc.dart';
-import '../../widgets/appbar.dart';
+import '../../widgets/common/appbar.dart';
 import '../../widgets/common/footer.dart';
 import '../../widgets/forms/signup_form.dart';
 
