@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
-import 'package:maverick_app/data/models/transaction_model.dart';
 
-import '../../../core/constants/app_strings.dart';
-import '../../../core/theme/colors.dart';
-import '../../../core/utils/app_toasts.dart';
-import '../../../core/utils/loading_indicators.dart';
 import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../../bloc/transaction_bloc/transactions_bloc.dart';
-import '../../../data/repositories/transaction_repo.dart';
+import '../transactions/recent_transactions.dart';
+import 'widgets/avatar.dart';
+import 'widgets/recent_transactions_title.dart';
+import 'widgets/wallet_card.dart';
 
 class Home extends StatefulWidget {
 
