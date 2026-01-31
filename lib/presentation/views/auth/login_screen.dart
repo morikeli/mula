@@ -63,7 +63,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-
   Text formSubTitle(BuildContext context) {
     return Text(
       'Sign in to continue',
