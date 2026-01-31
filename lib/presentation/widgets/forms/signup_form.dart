@@ -39,27 +39,220 @@ class _SignupFormState extends State<SignupForm> {
       key: formKey,
       child: Column(
         children: [
-          firstNameTextField(),
+          FirstNameInputField(firstNameController: firstNameController),
           const SizedBox(height: 20.0),
-          lastNameTextField(),
+          LastNameInputField(lastNameController: lastNameController),
           const SizedBox(height: 20.0),
-          emailTextField(),
+          EmailInputField(emailController: emailController),
           const SizedBox(height: 20),
-          mobileNumberTextField(),
+          MobileNumberInputField(mobileNumberController: mobileNumberController),
           const SizedBox(height: 20),
-          passwordTextField(),
+          PasswordInputField(passwordController: passwordController),
           const SizedBox(height: 20),
-          confirmPasswordTextField(),
+          ConfirmPasswordInputField(
+            confirmPasswordController: confirmPasswordController,
+            passwordController: passwordController,
+          ),
           SizedBox(height: 12.0),
-          // termsAndConditionsCheckBox(),
+          // TermsAndConditions(widget: widget),
           const SizedBox(height: 20.0),
-          signupButton(context),
+          SignupBtn(
+            formKey: formKey,
+            firstNameController: firstNameController,
+            lastNameController: lastNameController,
+            emailController: emailController,
+            mobileNumberController: mobileNumberController,
+            passwordController: passwordController,
+          ),
         ],
       ),
     );
   }
+}
 
-  SizedBox signupButton(BuildContext context) {
+class FirstNameInputField extends StatelessWidget {
+  const FirstNameInputField({
+    super.key,
+    required this.firstNameController,
+  });
+
+  final TextEditingController firstNameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: firstNameController,
+      label: "First Name",
+      icon: CupertinoIcons.person,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        return FormValidation.validateFirstName(value);
+      },
+    );
+  }
+}
+
+class LastNameInputField extends StatelessWidget {
+  const LastNameInputField({
+    super.key,
+    required this.lastNameController,
+  });
+
+  final TextEditingController lastNameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: lastNameController,
+      label: "Last Name",
+      icon: CupertinoIcons.person,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        return FormValidation.validateLastName(value);
+      },
+    );
+  }
+}
+
+class EmailInputField extends StatelessWidget {
+  const EmailInputField({
+    super.key,
+    required this.emailController,
+  });
+
+  final TextEditingController emailController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: emailController,
+      label: "Email",
+      icon: CupertinoIcons.envelope,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        return FormValidation.validateEmail(value);
+      },
+    );
+  }
+}
+
+class MobileNumberInputField extends StatelessWidget {
+  const MobileNumberInputField({
+    super.key,
+    required this.mobileNumberController,
+  });
+
+  final TextEditingController mobileNumberController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: mobileNumberController,
+      label: "Mobile Number",
+      icon: CupertinoIcons.phone_circle,
+      keyboardType: TextInputType.number,
+      validator: (value) {
+        return FormValidation.validatePhoneNumber(value);
+      },
+    );
+  }
+}
+
+class PasswordInputField extends StatelessWidget {
+  const PasswordInputField({
+    super.key,
+    required this.passwordController,
+  });
+
+  final TextEditingController passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: passwordController,
+      label: "Password",
+      icon: CupertinoIcons.lock_shield,
+      obscureText: true,
+      validator: (value) {
+        return FormValidation.validatePassword(passwordController.text, value);
+      },
+    );
+  }
+}
+
+class ConfirmPasswordInputField extends StatelessWidget {
+  const ConfirmPasswordInputField({
+    super.key,
+    required this.confirmPasswordController,
+    required this.passwordController,
+  });
+
+  final TextEditingController confirmPasswordController;
+  final TextEditingController passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: confirmPasswordController,
+      label: "Confirm Password",
+      icon: CupertinoIcons.lock_shield,
+      obscureText: true,
+      validator: (value) {
+        return FormValidation.validatePassword(value, passwordController.text);
+      },
+    );
+  }
+}
+
+// class TermsAndConditions extends StatelessWidget {
+//   const TermsAndConditions({
+//     super.key,
+//     required this.widget,
+//   });
+
+//   final SignupForm widget;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       children: [
+//         Checkbox.adaptive(
+//           value: widget.authController.hasReadTermsAndConditions.value,
+//           activeColor: Colors.teal.shade900,
+//           onChanged: (value) {
+//             widget.authController.hasReadTermsAndConditions.value =
+//                 value ?? false;
+//           },
+//         ),
+//         Text(
+//           'Accept Terms and Conditions',
+//           style: TextStyle(color: Colors.teal.shade900),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+class SignupBtn extends StatelessWidget {
+  const SignupBtn({
+    super.key,
+    required this.formKey,
+    required this.firstNameController,
+    required this.lastNameController,
+    required this.emailController,
+    required this.mobileNumberController,
+    required this.passwordController,
+  });
+
+  final GlobalKey<FormState> formKey;
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
+  final TextEditingController emailController;
+  final TextEditingController mobileNumberController;
+  final TextEditingController passwordController;
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
@@ -84,97 +277,6 @@ class _SignupFormState extends State<SignupForm> {
           style: TextStyle(fontSize: 18, color: Colors.white),
         ),
       ),
-    );
-  }
-
-  // Row termsAndConditionsCheckBox() {
-  //   return Row(
-  //     children: [
-  //       Checkbox.adaptive(
-  //         value: widget.authController.hasReadTermsAndConditions.value,
-  //         activeColor: Colors.teal.shade900,
-  //         onChanged: (value) {
-  //           widget.authController.hasReadTermsAndConditions.value =
-  //               value ?? false;
-  //         },
-  //       ),
-  //       Text(
-  //         'Accept Terms and Conditions',
-  //         style: TextStyle(color: Colors.teal.shade900),
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  CustomTextFormField confirmPasswordTextField() {
-    return CustomTextFormField(
-      controller: confirmPasswordController,
-      label: "Confirm Password",
-      icon: CupertinoIcons.lock_shield,
-      obscureText: true,
-      validator: (value) {
-        return FormValidation.validatePassword(value, passwordController.text);
-      },
-    );
-  }
-
-  CustomTextFormField passwordTextField() {
-    return CustomTextFormField(
-      controller: passwordController,
-      label: "Password",
-      icon: CupertinoIcons.lock_shield,
-      obscureText: true,
-      validator: (value) {
-        return FormValidation.validatePassword(passwordController.text, value);
-      },
-    );
-  }
-
-  CustomTextFormField emailTextField() {
-    return CustomTextFormField(
-      controller: emailController,
-      label: "Email",
-      icon: CupertinoIcons.envelope,
-      keyboardType: TextInputType.emailAddress,
-      validator: (value) {
-        return FormValidation.validateEmail(value);
-      },
-    );
-  }
-
-  CustomTextFormField mobileNumberTextField() {
-    return CustomTextFormField(
-      controller: mobileNumberController,
-      label: "Mobile Number",
-      icon: CupertinoIcons.phone_circle,
-      keyboardType: TextInputType.number,
-      validator: (value) {
-        return FormValidation.validatePhoneNumber(value);
-      },
-    );
-  }
-
-  CustomTextFormField lastNameTextField() {
-    return CustomTextFormField(
-      controller: lastNameController,
-      label: "Last Name",
-      icon: CupertinoIcons.person,
-      keyboardType: TextInputType.name,
-      validator: (value) {
-        return FormValidation.validateLastName(value);
-      },
-    );
-  }
-
-  CustomTextFormField firstNameTextField() {
-    return CustomTextFormField(
-      controller: firstNameController,
-      label: "First Name",
-      icon: CupertinoIcons.person,
-      keyboardType: TextInputType.name,
-      validator: (value) {
-        return FormValidation.validateFirstName(value);
-      },
     );
   }
 }

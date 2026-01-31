@@ -32,42 +32,70 @@ class _LoginFormState extends State<LoginForm> {
       key: formKey,
       child: Column(
         children: [
-          emailTextField(),
+          EmailInputField(emailController: emailController),
           const SizedBox(height: 20),
-          passwordTextField(),
+          PasswordInputField(passwordController: passwordController),
           const SizedBox(height: 12.0),
           // "Remember Me" checkbox and "Forgot password" text
-          checkBoxandForgotPassword(context),
+          ForgotPasswordLink(),
           const SizedBox(height: 20.0),
-          loginButton(context),
+          LoginBtn(
+            formKey: formKey,
+            emailController: emailController,
+            passwordController: passwordController,
+          ),
         ],
       ),
     );
   }
+}
 
-  SizedBox loginButton(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () async {
-          final form = formKey.currentState;
+class EmailInputField extends StatelessWidget {
+  const EmailInputField({
+    super.key,
+    required this.emailController,
+  });
 
-          if (form != null && form.validate()) {
-            final username = emailController.text.trim();
-            final password = passwordController.text.trim();
+  final TextEditingController emailController;
 
-            context.read<AuthBloc>().add(LoginRequested(username, password));
-          }
-        },
-        child: const Text(
-          'Login',
-          style: TextStyle(fontSize: 18, color: Colors.white),
-        ),
-      ),
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: emailController,
+      label: "Email",
+      icon: CupertinoIcons.mail,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        return FormValidation.validateEmail(value);
+      },
     );
   }
+}
 
-  Row checkBoxandForgotPassword(BuildContext context) {
+class PasswordInputField extends StatelessWidget {
+  const PasswordInputField({super.key, required this.passwordController});
+
+  final TextEditingController passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: passwordController,
+      label: "Password",
+      icon: CupertinoIcons.lock,
+      obscureText: true,
+      validator: (value) {
+        return FormValidation.validatePassword(value, passwordController.text);
+      },
+    );
+  }
+}
+
+class ForgotPasswordLink extends StatelessWidget {
+  const ForgotPasswordLink({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         // Checkbox.adaptive(
@@ -92,28 +120,40 @@ class _LoginFormState extends State<LoginForm> {
       ],
     );
   }
+}
 
-  CustomTextFormField passwordTextField() {
-    return CustomTextFormField(
-      controller: passwordController,
-      label: "Password",
-      icon: CupertinoIcons.lock,
-      obscureText: true,
-      validator: (value) {
-        return FormValidation.validatePassword(value, passwordController.text);
-      },
-    );
-  }
+class LoginBtn extends StatelessWidget {
+  const LoginBtn({
+    super.key,
+    required this.formKey,
+    required this.emailController,
+    required this.passwordController,
+  });
 
-  CustomTextFormField emailTextField() {
-    return CustomTextFormField(
-      controller: emailController,
-      label: "Email",
-      icon: CupertinoIcons.mail,
-      keyboardType: TextInputType.emailAddress,
-      validator: (value) {
-        return FormValidation.validateEmail(value);
-      },
+  final GlobalKey<FormState> formKey;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () async {
+          final form = formKey.currentState;
+
+          if (form != null && form.validate()) {
+            final username = emailController.text.trim();
+            final password = passwordController.text.trim();
+
+            context.read<AuthBloc>().add(LoginRequested(username, password));
+          }
+        },
+        child: const Text(
+          'Login',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+      ),
     );
   }
 }
