@@ -46,7 +46,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             color: kTextFormFieldBorderColor,
             style: BorderStyle.none,
           ),
-          borderRadius: BorderRadius.circular(8.0)
+          borderRadius: BorderRadius.circular(8.0),
         ),
         labelText: widget.label,
         labelStyle: Theme.of(context).inputDecorationTheme.labelStyle,
