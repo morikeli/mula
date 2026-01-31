@@ -49,6 +49,9 @@ class LoginScreen extends StatelessWidget {
         },
       ),
       persistentFooterAlignment: AlignmentDirectional.center,
+      persistentFooterDecoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+      ),
       persistentFooterButtons: [
         Footer(
           primaryText: "Don't have an account? ",

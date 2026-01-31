@@ -51,6 +51,9 @@ class SignupScreen extends StatelessWidget {
         },
       ),
       persistentFooterAlignment: AlignmentDirectional.center,
+      persistentFooterDecoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+      ),
       persistentFooterButtons: [
         Footer(
           primaryText: "Already have an account? ",
