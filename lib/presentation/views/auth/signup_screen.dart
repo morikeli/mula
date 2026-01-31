@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +8,6 @@ import '../../../core/utils/loading_indicators.dart';
 import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../../widgets/common/footer.dart';
 import '../../widgets/forms/signup_form.dart';
-
 
 class SignupScreen extends StatelessWidget {
   static String routeName = '/signup';
@@ -34,6 +34,7 @@ class SignupScreen extends StatelessWidget {
             AppToast.showError(context, title: state.errorMessage.toString());
           }
         },
+
         builder: (context, state) {
           if (state is AuthLoading) {
             return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
@@ -55,6 +56,7 @@ class SignupScreen extends StatelessWidget {
           );
         },
       ),
+
       persistentFooterAlignment: AlignmentDirectional.center,
       persistentFooterDecoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
