@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:maverick_app/data/models/transaction_model.dart';
 
 import '../../../core/constants/app_strings.dart';
 import '../../../core/theme/colors.dart';
@@ -94,84 +95,79 @@ class RecentTransactions extends StatelessWidget {
               );
             }
 
-            return ListView.builder(
-              itemCount: txns.length,
-              itemBuilder: (context, index) {
-                final txn = txns[index];
-                final isSend = txn.type.toLowerCase() == 'send';
-                final amountText =
-                    '${isSend ? '-' : ''}\$${txn.amount.toStringAsFixed(2)}';
-                final amountColor = isSend
-                    ? kSentTransactionColor
-                    : kReceivedTransactionColor;
-                final formattedDate = DateFormat(
-                  'dd-MM-yyyy h:mma',
-                ).format(txn.date);
-
-                return ListTile(
-                  leading: CircleAvatar(
-                    child: Text(
-                      txn.counterparty.isNotEmpty
-                          ? txn.counterparty[0].toUpperCase()
-                          : '?',
-                    ),
-                  ),
-                  title: Text(txn.counterparty),
-                  subtitle: Text(
-                    isSend ? 'Sent money' : 'Received money',
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: kTextSecondaryColor,
-                      fontSize: 12.0,
-                    ),
-                  ),
-                  trailing: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        amountText,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: amountColor,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                      Text(
-                        formattedDate,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: kTextSecondaryColor,
-                          fontSize: 12.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
+            return RecentTransactionsListTiles(txns: txns);
           }
 
-          // if (state is TransactionFailed ||
-          //     state is GetTransactionHistoryFailed) {
-          //   final msg = state is TransactionFailed
-          //       ? state.errorMessage
-          //       : (state as GetTransactionHistoryFailed).errorMessage;
-          //   return Padding(
-          //     padding: const EdgeInsets.symmetric(vertical: 24.0),
-          //     child: Center(
-          //       child: Text(
-          //         'Error: $msg',
-          //         style: Theme.of(
-          //           context,
-          //         ).textTheme.bodySmall?.copyWith(color: Colors.red),
-          //       ),
-          //     ),
-          //   );
-          // }
-
           // default fallback
-          print('Default fallback reached!');
           return const SizedBox.shrink();
         },
       ),
+    );
+  }
+}
+
+class RecentTransactionsListTiles extends StatelessWidget {
+  const RecentTransactionsListTiles({
+    super.key,
+    required this.txns,
+  });
+
+  final List<TransactionModel> txns;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: txns.length,
+      itemBuilder: (context, index) {
+        final txn = txns[index];
+        final isSend = txn.type.toLowerCase() == 'send';
+        final amountText =
+            '${isSend ? '-' : ''}\$${txn.amount.toStringAsFixed(2)}';
+        final amountColor = isSend
+            ? kSentTransactionColor
+            : kReceivedTransactionColor;
+        final formattedDate = DateFormat(
+          'dd-MM-yyyy h:mma',
+        ).format(txn.date);
+    
+        return ListTile(
+          leading: CircleAvatar(
+            child: Text(
+              txn.counterparty.isNotEmpty
+                  ? txn.counterparty[0].toUpperCase()
+                  : '?',
+            ),
+          ),
+          title: Text(txn.counterparty),
+          subtitle: Text(
+            isSend ? 'Sent money' : 'Received money',
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: kTextSecondaryColor,
+              fontSize: 12.0,
+            ),
+          ),
+          trailing: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                amountText,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: amountColor,
+                  fontSize: 16.0,
+                ),
+              ),
+              Text(
+                formattedDate,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: kTextSecondaryColor,
+                  fontSize: 12.0,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
