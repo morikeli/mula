@@ -28,7 +28,7 @@ void main() async {
   final seen = await Prefs.hasSeenOnboarding();
   runApp(MaverickApp(skipOnboarding: seen));
 
-  // whenever your initialization is completed, remove the splash screen:
+  // whenever app initialization is completed, remove the splash screen:
   FlutterNativeSplash.remove();
 }
 
