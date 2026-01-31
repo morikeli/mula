@@ -16,7 +16,16 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        leading: Icon(CupertinoIcons.chevron_back),
+        title: Text(
+          'Create Account',
+          style: Theme.of(context).textTheme.titleMedium,
+          textAlign: TextAlign.center,
+        ),
+      ),
+
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is IsAuthenticated) {
@@ -65,15 +74,7 @@ class SignupScreen extends StatelessWidget {
     return Text(
       'Simplify your crypto payments with us',
       style: Theme.of(context).textTheme.titleSmall,
-      textAlign: TextAlign.start,
-    );
-  }
-
-  Text signupScreenTitle(BuildContext context) {
-    return Text(
-      'Create Account',
-      style: Theme.of(context).textTheme.titleLarge,
-      textAlign: TextAlign.start,
+      textAlign: TextAlign.center,
     );
   }
 }
