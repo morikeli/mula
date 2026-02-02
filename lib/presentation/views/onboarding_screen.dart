@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maverick_app/core/theme/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/helpers/prefs.dart';
@@ -110,7 +111,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           CircleAvatar(
             radius: 56.0,
-            backgroundColor: Colors.grey.shade200,
+            backgroundColor: kContainerLightColor,
             child: item.icon,
           ),
           SizedBox(height: 32),
@@ -135,7 +136,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       controller: _controller,
       count: onboardingItems.length,
       effect: ExpandingDotsEffect(
-        activeDotColor: Color(0xFF115B55),
+        activeDotColor: kPrimaryColor,
         dotColor: Colors.grey.shade300,
         dotHeight: 8,
         dotWidth: 8,
