@@ -15,7 +15,7 @@ class OnboardingItem {
 
 final onboardingItems = [
   OnboardingItem(
-    icon: Icon(CupertinoIcons.creditcard, color: kIconDarkColor, size: 52.0),
+    icon: Icon(CupertinoIcons.creditcard_fill, color: kIconDarkColor, size: 52.0),
     title: 'Direct Pay',
     description: 'Send money across the world effortlessly.',
   ),
