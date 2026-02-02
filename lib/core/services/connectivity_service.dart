@@ -14,13 +14,23 @@ class ConnectivityService {
   // stream (no explicit static type) and normalize downstream where needed.
   get onConnectivityChanged => _connectivity.onConnectivityChanged;
 
-  /// Emits `true` when the device has any network connectivity (wifi/mobile).
-  Stream<bool> get connectionStatusStream => onConnectivityChanged.map((event) {
-    if (event is Iterable) {
-      return event.any((e) => e != ConnectivityResult.none);
+  // Emits `true` when the device has any network connectivity (wifi/mobile).
+  Stream<bool> get connectionStatusStream async* {
+    await for (final event in _connectivity.onConnectivityChanged) {
+      if (event is ConnectivityResult) {
+        yield event != ConnectivityResult.none;
+        continue;
+      }
+
+      try {
+        final iterable = event as Iterable;
+        yield iterable.cast<ConnectivityResult>().any((e) => e != ConnectivityResult.none);
+        continue;
+      } catch (_) {}
+
+      yield false;
     }
-    return event != ConnectivityResult.none;
-  });
+  }
 
   // Quick synchronous check if the device currently has network connectivity.
   Future<bool> isConnected() async {
