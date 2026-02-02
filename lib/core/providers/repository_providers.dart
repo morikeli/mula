@@ -9,6 +9,7 @@ import '../../data/repositories/transaction_repo.dart';
 import '../services/auth_service.dart';
 import '../services/pin_service.dart';
 import '../services/transaction_service.dart';
+import '../services/connectivity_service.dart';
 
 // Provides repositories used across the app.
 class RepositoryProviders extends StatelessWidget {
@@ -19,6 +20,7 @@ class RepositoryProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider(create: (_) => ConnectivityService()),
         RepositoryProvider(create: (_) => AuthRepository(AuthService())),
         RepositoryProvider(create: (_) => PinRepository(PinService())),
         RepositoryProvider(
