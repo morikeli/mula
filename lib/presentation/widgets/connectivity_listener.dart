@@ -15,29 +15,36 @@ class ConnectivityListener extends StatefulWidget {
 }
 
 class _ConnectivityListenerState extends State<ConnectivityListener> {
-  bool _offlineToastVisible = false;
+  dynamic _offlineToastController;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<ConnectivityCubit, bool>(
       listener: (context, connected) {
-        if (!connected) {
-          // Show an undismissable persistent offline toast. AppToast.showWarning
-          // does not return a controller, so just show it and record visibility.
-          AppToast.showWarning(
-            context,
-            title: 'No internet connection!',
-            message: 'Some features may be unavailable.',
-            autoCloseDuration: null,
-            pauseOnHover: false,
-            showProgressBar: false,
-          );
-          _offlineToastVisible = true;
-        } else {
-          // If we showed an offline toast previously, mark it dismissed.
-          _offlineToastVisible = false;
-          AppToast.showSuccess(context, title: 'Back online!');
-        }
+        // Delay showing/dismissing toasts until after the first frame so
+        // `Directionality` (from MaterialApp) is available.
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted) return;
+
+          if (!connected) {
+            _offlineToastController ??= AppToast.showWarning(
+                context,
+                title: 'No internet connection!',
+                message: 'Some features may be unavailable.',
+                autoCloseDuration: null,
+                pauseOnHover: false,
+                showProgressBar: false,
+              );
+          } else {
+            // Close offline toast if present.
+            try {
+              _offlineToastController?.close();
+            } catch (_) {}
+            _offlineToastController = null;
+
+            AppToast.showSuccess(context, title: 'Back online!');
+          }
+        });
       },
       child: widget.child,
     );
