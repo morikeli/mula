@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarTitle;
+  final bool? centerTitle;
   final Color? appBgColor;
+  final TextStyle? appBarTitleStyle;
   final bool
   showGoBackToPreviousScreenBtn; // show icon button to navigate back to previous screen
   final List<Widget>? actions;
@@ -14,6 +16,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showGoBackToPreviousScreenBtn = true,
     this.actions,
     this.appBgColor,
+    this.appBarTitleStyle,
+    this.centerTitle = true,
   });
 
   @override
@@ -30,9 +34,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       automaticallyImplyLeading: showGoBackToPreviousScreenBtn,
       backgroundColor: appBgColor,
-      centerTitle: true,
+      centerTitle: centerTitle,
 
-      title: Text(appBarTitle, style: Theme.of(context).textTheme.titleMedium),
+      title: Text(
+        appBarTitle,
+        style: appBarTitleStyle ?? Theme.of(context).textTheme.titleMedium,
+      ),
 
       actions: actions,
     );
