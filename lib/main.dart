@@ -8,6 +8,7 @@ import 'core/helpers/prefs.dart';
 import 'core/theme/theme.dart';
 import 'core/providers/repository_providers.dart';
 import 'core/providers/bloc_providers.dart';
+import 'package:toastification/toastification.dart';
 import 'presentation/views/onboarding_screen.dart';
 import 'presentation/widgets/auth_gate.dart';
 import 'presentation/widgets/connectivity_listener.dart';
@@ -34,18 +35,22 @@ class MaverickApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProviders(
       child: AppBlocProviders(
-        child: ConnectivityListener(
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Mula',
-            darkTheme: MulaAppTheme.darkTheme,
-            theme: MulaAppTheme.lightTheme,
-            // If the user already saw onboarding, place AuthGate as the home
-            // so no onboarding flash occurs. Otherwise start at onboarding.
-            home: skipOnboarding ? const AuthGate() : null,
-            initialRoute: OnboardingScreen.routeName,
-            routes: routes,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Mula',
+          darkTheme: MulaAppTheme.darkTheme,
+          theme: MulaAppTheme.lightTheme,
+          // Insert ConnectivityListener inside MaterialApp's builder so it
+          // can access Directionality and other inherited widgets provided
+          // by MaterialApp.
+          builder: (context, child) => ToastificationWrapper(
+            child: ConnectivityListener(child: child ?? const SizedBox.shrink()),
           ),
+          // If the user already saw onboarding, place AuthGate as the home
+          // so no onboarding flash occurs. Otherwise start at onboarding.
+          home: skipOnboarding ? const AuthGate() : null,
+          initialRoute: OnboardingScreen.routeName,
+          routes: routes,
         ),
       ),
     );
