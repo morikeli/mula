@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import '../../core/theme/colors.dart';
 
 class OnboardingItem {
-  final Icon icon;
+  final Widget icon;
   final String title;
   final String description;
 
@@ -19,11 +19,39 @@ final onboardingItems = [
     title: 'Direct Pay',
     description: 'Send money across the world effortlessly.',
   ),
+
   OnboardingItem(
-    icon: Icon(Icons.account_balance_wallet, color: kIconDarkColor, size: 52.0),
-    title: 'Receive Payments',
-    description: 'Receive payments hassle-free without any transaction fees.',
+    icon: SizedBox(
+      width: 88,
+      height: 80,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Icon(
+              CupertinoIcons.money_yen_circle_fill,
+              color: kIconDarkColor,
+              size: 52.0,
+            ),
+            Icon(
+              CupertinoIcons.money_euro_circle_fill,
+              color: kIconDarkColor,
+              size: 52.0,
+            ),
+            Icon(
+              CupertinoIcons.money_dollar_circle_fill,
+              color: kIconDarkColor,
+              size: 52.0,
+            ),
+          ],
+        ),
+      ),
+    ),
+    title: 'Instant Transfers',
+    description: 'Send and receive money instantly anytime, anywhere.',
   ),
+
   OnboardingItem(
     icon: Icon(CupertinoIcons.tickets_fill, color: kIconDarkColor, size: 52.0),
     title: 'Pay Bills and Services',
