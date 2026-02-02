@@ -33,16 +33,18 @@ class MaverickApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProviders(
       child: AppBlocProviders(
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Mula',
-          darkTheme: MulaAppTheme.darkTheme,
-          theme: MulaAppTheme.lightTheme,
-          // If the user already saw onboarding, place AuthGate as the home
-          // so no onboarding flash occurs. Otherwise start at onboarding.
-          home: skipOnboarding ? const AuthGate() : null,
-          initialRoute: OnboardingScreen.routeName,
-          routes: routes,
+        child: ConnectivityListener(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Mula',
+            darkTheme: MulaAppTheme.darkTheme,
+            theme: MulaAppTheme.lightTheme,
+            // If the user already saw onboarding, place AuthGate as the home
+            // so no onboarding flash occurs. Otherwise start at onboarding.
+            home: skipOnboarding ? const AuthGate() : null,
+            initialRoute: OnboardingScreen.routeName,
+            routes: routes,
+          ),
         ),
       ),
     );
