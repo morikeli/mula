@@ -1,4 +1,4 @@
-# Maverick App
+# Mula App
 
 ## Mobile app screenshots
 | Splash screen | Onboarding screen |
@@ -18,12 +18,12 @@
 | | |
 
 ## Overview
-Maverick is a modern, cross-platform fintech application designed to make money management fast, secure, and effortless. Built with Flutter 💙 and Firebase 🔥, Maverick delivers a smooth, feature-rich experience on both Android and iOS.
+Mula is a slang word for money. This is a modern, cross-platform fintech application designed to make money management fast, secure, and effortless. Built with Flutter 💙 and Firebase 🔥, Mula delivers a smooth, feature-rich experience on both Android and iOS.
 
-Whether you’re sending money to friends, tracking your spending, or managing your digital wallet, Maverick keeps everything at your fingertips with an intuitive design and rock-solid security.
+Whether you’re sending money to friends, tracking your spending, or managing your digital wallet, Mula keeps everything at your fingertips with an intuitive design and rock-solid security.
 
 ### Target users
-Maverick is designed for individuals and groups in Africa and beyond who need fast, secure, and flexible ways to move money. Key user segments include:
+Mula is designed for individuals and groups in Africa and beyond who need fast, secure, and flexible ways to move money. Key user segments include:
 - 💼 Freelancers – Professionals on platforms like Upwork or Fiverr receiving international payments.
 - 🛍 Small Business Owners & Market Vendors – Accepting digital payments instead of cash, enabling safer and faster transactions.
 
@@ -56,7 +56,7 @@ Maverick is designed for individuals and groups in Africa and beyond who need fa
 
 
 ### Product thinking
-Maverick was born out of a challenge to design and build a user-centered fintech app using Flutter. The task was to create a functional mobile banking prototype for a chosen target audience, focusing on:
+Mula was born out of a challenge to design and build a user-centered fintech app using Flutter. The task was to create a functional mobile banking prototype for a chosen target audience, focusing on:
   - 📱 Mobile-first product design with strong UX.
   - 🛠 Modular, maintainable Flutter architecture with clear separation of concerns.
   - ⚡ Smooth state management, local storage, and routing.
