@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 
 class AppToast {
-  static void showSuccess(
+  static dynamic showSuccess(
     BuildContext context, {
     required String title,
     String? message,
     Duration? autoCloseDuration = const Duration(seconds: 5),
   }) {
-    toastification.show(
+    return toastification.show(
       context: context,
       type: ToastificationType.success,
       style: ToastificationStyle.fillColored,
@@ -22,13 +22,13 @@ class AppToast {
     );
   }
 
-  static void showError(
+  static dynamic showError(
     BuildContext context, {
     required String title,
     String? message,
     Duration? autoCloseDuration = const Duration(seconds: 5),
   }) {
-    toastification.show(
+    return toastification.show(
       context: context,
       type: ToastificationType.error,
       style: ToastificationStyle.fillColored,
@@ -42,13 +42,13 @@ class AppToast {
     );
   }
 
-  static void showInfo(
+  static dynamic showInfo(
     BuildContext context, {
     required String title,
     String? message,
     Duration? autoCloseDuration = const Duration(seconds: 5),
   }) {
-    toastification.show(
+    return toastification.show(
       context: context,
       type: ToastificationType.info,
       style: ToastificationStyle.minimal,
@@ -62,7 +62,7 @@ class AppToast {
     );
   }
 
-  static void showWarning(
+  static dynamic showWarning(
     BuildContext context, {
     required String title,
     String? message,
@@ -70,7 +70,7 @@ class AppToast {
     bool? pauseOnHover = true,
     bool? showProgressBar = true,
   }) {
-    toastification.show(
+    return toastification.show(
       context: context,
       type: ToastificationType.warning,
       style: ToastificationStyle.flatColored,
