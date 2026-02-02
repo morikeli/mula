@@ -44,7 +44,9 @@ class MaverickApp extends StatelessWidget {
           // can access Directionality and other inherited widgets provided
           // by MaterialApp.
           builder: (context, child) => ToastificationWrapper(
-            child: ConnectivityListener(child: child ?? const SizedBox.shrink()),
+            child: ConnectivityListener(
+              child: child ?? const SizedBox.shrink(),
+            ),
           ),
           // If the user already saw onboarding, place AuthGate as the home
           // so no onboarding flash occurs. Otherwise start at onboarding.
