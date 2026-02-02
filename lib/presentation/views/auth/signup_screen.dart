@@ -32,23 +32,11 @@ class SignupScreen extends StatelessWidget {
             return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
           }
 
-          return SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: ListView(
-                children: [
-                  signupScreenSubTitle(context),
-                  SizedBox(height: 16.0),
-                  SignupForm(),
-                  SizedBox(height: 24.0),
-                ],
-              ),
-            ),
-          );
+          return SignupScreenBody();
         },
       ),
 
+      // Footer
       persistentFooterAlignment: AlignmentDirectional.center,
       persistentFooterDecoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -63,8 +51,39 @@ class SignupScreen extends StatelessWidget {
       ],
     );
   }
+}
 
-  Text signupScreenSubTitle(BuildContext context) {
+class SignupScreenBody extends StatelessWidget {
+  const SignupScreenBody({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: ListView(
+          children: [
+            SignupScreenSubTitle(),
+            SizedBox(height: 16.0),
+            SignupForm(),
+            SizedBox(height: 24.0),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SignupScreenSubTitle extends StatelessWidget {
+  const SignupScreenSubTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Text(
       'Simplify your payments with us',
       style: Theme.of(context).textTheme.titleSmall,

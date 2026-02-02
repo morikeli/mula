@@ -29,25 +29,11 @@ class LoginScreen extends StatelessWidget {
             return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
           }
 
-          return SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(24.0),
-              children: [
-                const SizedBox(height: 40),
-                formIcon(),
-                SizedBox(height: 24.0),
-                formTitle(),
-                const SizedBox(height: 12.0),
-                formSubTitle(context),
-                const SizedBox(height: 40),
-                // LoginForm widget
-                LoginForm(),
-                const SizedBox(height: 32.0),
-              ],
-            ),
-          );
+          return LoginScreenBody();
         },
       ),
+
+      // Footer
       persistentFooterAlignment: AlignmentDirectional.center,
       persistentFooterDecoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -62,24 +48,42 @@ class LoginScreen extends StatelessWidget {
       ],
     );
   }
+}
 
-  Text formSubTitle(BuildContext context) {
-    return Text(
-      'Sign in to continue',
-      style: Theme.of(context).textTheme.titleSmall,
-      textAlign: TextAlign.center,
+class LoginScreenBody extends StatelessWidget {
+  const LoginScreenBody({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: ListView(
+        padding: const EdgeInsets.all(24.0),
+        children: [
+          const SizedBox(height: 40),
+          LoginScreenIcon(),
+          SizedBox(height: 24.0),
+          LoginScreenTitle(),
+          const SizedBox(height: 12.0),
+          LoginScreenSubTitle(),
+          const SizedBox(height: 40),
+          // LoginForm widget
+          LoginForm(),
+          const SizedBox(height: 32.0),
+        ],
+      ),
     );
   }
+}
 
-  Text formTitle() {
-    return Text(
-      'Welcome Back!',
-      style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-      textAlign: TextAlign.center,
-    );
-  }
+class LoginScreenIcon extends StatelessWidget {
+  const LoginScreenIcon({
+    super.key,
+  });
 
-  Center formIcon() {
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Container(
         decoration: BoxDecoration(
@@ -94,6 +98,36 @@ class LoginScreen extends StatelessWidget {
           size: 28.0,
         ),
       ),
+    );
+  }
+}
+
+class LoginScreenTitle extends StatelessWidget {
+  const LoginScreenTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Welcome Back!',
+      style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+      textAlign: TextAlign.center,
+    );
+  }
+}
+
+class LoginScreenSubTitle extends StatelessWidget {
+  const LoginScreenSubTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Sign in to continue',
+      style: Theme.of(context).textTheme.titleSmall,
+      textAlign: TextAlign.center,
     );
   }
 }
