@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maverick_app/core/theme/colors.dart';
+import 'package:mula/core/theme/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/helpers/prefs.dart';

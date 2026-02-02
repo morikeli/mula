@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:maverick_app/core/theme/color_scheme.dart';
-import 'package:maverick_app/core/theme/colors.dart';
-import 'package:maverick_app/core/theme/theme_data/elevated_btn_theme.dart';
+import 'package:mula/core/theme/color_scheme.dart';
+import 'package:mula/core/theme/colors.dart';
+import 'package:mula/core/theme/theme_data/elevated_btn_theme.dart';
 
 import 'theme_data/input_decoration_theme_data.dart';
 import 'theme_data/text_theme_data.dart';
