@@ -42,7 +42,11 @@ class _ConnectivityListenerState extends State<ConnectivityListener> {
             } catch (_) {}
             _offlineToastController = null;
 
-            AppToast.showSuccess(context, title: 'Back online!');
+            // TODO: ```Success toastification is shown everytime the app is opened
+            //  Update code to close toastification automatically if user is
+            // connected to the internet
+            // ```
+            // AppToast.showSuccess(context, title: 'Back online!');
           }
         });
       },
