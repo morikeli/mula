@@ -6,6 +6,7 @@ class AppToast {
     BuildContext context, {
     required String title,
     String? message,
+    Duration? autoCloseDuration = const Duration(seconds: 5),
   }) {
     toastification.show(
       context: context,
@@ -13,7 +14,7 @@ class AppToast {
       style: ToastificationStyle.fillColored,
       title: Text(title),
       description: message != null ? Text(message) : null,
-      autoCloseDuration: const Duration(seconds: 5),
+      autoCloseDuration: autoCloseDuration,
       alignment: Alignment.bottomCenter,
       borderRadius: BorderRadius.circular(12),
       pauseOnHover: true,
@@ -25,6 +26,7 @@ class AppToast {
     BuildContext context, {
     required String title,
     String? message,
+    Duration? autoCloseDuration = const Duration(seconds: 5),
   }) {
     toastification.show(
       context: context,
@@ -32,7 +34,7 @@ class AppToast {
       style: ToastificationStyle.fillColored,
       title: Text(title),
       description: message != null ? Text(message) : null,
-      autoCloseDuration: const Duration(seconds: 7),
+      autoCloseDuration: autoCloseDuration,
       alignment: Alignment.bottomCenter,
       borderRadius: BorderRadius.circular(12),
       pauseOnHover: true,
@@ -44,6 +46,7 @@ class AppToast {
     BuildContext context, {
     required String title,
     String? message,
+    Duration? autoCloseDuration = const Duration(seconds: 5),
   }) {
     toastification.show(
       context: context,
@@ -51,7 +54,7 @@ class AppToast {
       style: ToastificationStyle.minimal,
       title: Text(title),
       description: message != null ? Text(message) : null,
-      autoCloseDuration: const Duration(seconds: 5),
+      autoCloseDuration: autoCloseDuration,
       alignment: Alignment.bottomCenter,
       borderRadius: BorderRadius.circular(12),
       pauseOnHover: true,
@@ -63,6 +66,9 @@ class AppToast {
     BuildContext context, {
     required String title,
     String? message,
+    Duration? autoCloseDuration = const Duration(seconds: 5),
+    bool? pauseOnHover = true,
+    bool? showProgressBar = true,
   }) {
     toastification.show(
       context: context,
@@ -70,11 +76,11 @@ class AppToast {
       style: ToastificationStyle.flatColored,
       title: Text(title),
       description: message != null ? Text(message) : null,
-      autoCloseDuration: const Duration(seconds: 5),
+      autoCloseDuration: autoCloseDuration,
       alignment: Alignment.bottomCenter,
       borderRadius: BorderRadius.circular(12),
-      pauseOnHover: true,
-      showProgressBar: true,
+      pauseOnHover: pauseOnHover,
+      showProgressBar: showProgressBar,
     );
   }
 }
