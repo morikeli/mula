@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/common/appbar.dart';
+import '../../widgets/common/notification_bell_icon.dart';
 import '../../widgets/common/recent_transactions.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
@@ -12,6 +14,18 @@ class TransactionHistoryScreen extends StatefulWidget {
 class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return RecentTransactions();
+    return Scaffold(
+      appBar: CustomAppBar(
+        showGoBackToPreviousScreenBtn: false,
+        appBarTitle: 'Recent Transactions',
+        appBarTitleStyle: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 20.0),
+        actions: [
+          NotificationBellIcon(),
+        ],
+      ),
+      body: Column(
+        children: [RecentTransactions()],
+      ),
+    );
   }
 }
