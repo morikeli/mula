@@ -34,6 +34,30 @@ class TransactionRepository {
       txn.counterparty,
     );
 
+    // Attempt to read the recipient's profile to derive a human-friendly
+    // display name. If unavailable, fall back to the original counterparty
+    // identifier provided by the caller (email/phone).
+    final recipientProfile = await transactionService.getUserProfile(
+      receiverUid,
+    );
+    final displayName = (() {
+      if (recipientProfile == null) return txn.counterparty;
+      String capitalize(String s) {
+        if (s.isEmpty) return '';
+        final lower = s.toLowerCase();
+        return '${lower[0].toUpperCase()}${lower.substring(1)}';
+      }
+
+      final first = capitalize(
+        (recipientProfile['firstName'] ?? '').toString().trim(),
+      );
+      final last = capitalize(
+        (recipientProfile['lastName'] ?? '').toString().trim(),
+      );
+      final name = [first, last].where((s) => s.isNotEmpty).join(' ');
+      return name.isNotEmpty ? name : txn.counterparty;
+    })();
+
     // Prevent accidental self-transfer.
     if (receiverUid == senderUid) {
       throw Exception("You cannot send money to yourself");
