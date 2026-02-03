@@ -11,7 +11,6 @@ import 'widgets/recent_transactions_title.dart';
 import 'widgets/wallet_card.dart';
 
 class Home extends StatefulWidget {
-
   const Home({super.key});
 
   @override
