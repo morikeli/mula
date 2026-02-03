@@ -77,7 +77,9 @@ class TransactionRepository {
         'type': txn.type,
         'amount': txn.amount,
         'currency': txn.currency,
-        'counterparty': txn.counterparty,
+        // Persist a human-friendly counterparty display name so UI can show
+        // the recipient's first+last name in lists and receipts.
+        'counterparty': displayName,
         // Use server timestamp so times are consistent across devices.
         'date': FieldValue.serverTimestamp(),
       },
