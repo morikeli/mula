@@ -38,25 +38,35 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // Listen for auth state and request transactions only when authenticated.
-    return SafeArea(
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is IsAuthenticated) {
-            context.read<TransactionsBloc>().add(TransactionHistoryRequested());
-          }
-        },
-        child: Column(
-          children: [
-            // User Avatar and sreetings
-            UserAvatarAndGreetings(),
-            // Wallet balance
-            WalletCard(),
-            SizedBox(height: 12.0),
-            // Recent transactions
-            RecentTransactionsTitle(),
-            RecentTransactions(),
-          ],
+    return Scaffold(
+      body: SafeArea(
+        child: BlocListener<AuthBloc, AuthState>(
+          listener: (context, state) {
+            if (state is IsAuthenticated) {
+              context.read<TransactionsBloc>().add(
+                TransactionHistoryRequested(),
+              );
+            }
+          },
+          child: Column(
+            children: [
+              // User Avatar and sreetings
+              UserAvatarAndGreetings(),
+              // Wallet balance
+              WalletCard(),
+              SizedBox(height: 12.0),
+              // Recent transactions
+              RecentTransactionsTitle(),
+              RecentTransactions(),
+            ],
+          ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/send-money');
+        },
+        child: Icon(CupertinoIcons.arrowshape_turn_up_right_fill),
       ),
     );
   }
