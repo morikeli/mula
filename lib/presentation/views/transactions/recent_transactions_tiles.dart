@@ -31,6 +31,7 @@ class RecentTransactionsListTiles extends StatelessWidget {
         return ListTile(
           // 1. User avatar
           leading: CircleAvatar(
+            backgroundColor: kPrimaryColor,
             child: Text(
               txn.counterparty.isNotEmpty
                   ? txn.counterparty[0].toUpperCase()
