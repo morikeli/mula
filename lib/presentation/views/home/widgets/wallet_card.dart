@@ -101,7 +101,7 @@ class WalletBalanceText extends StatelessWidget {
               builder: (context, balance) {
                 final walletBal = NumberFormat().format(balance);
                 return Text(
-                  isVisible ? "KES $walletBal" : "****",
+                  isVisible ? "KES $walletBal" : "*******",
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 28.0,
