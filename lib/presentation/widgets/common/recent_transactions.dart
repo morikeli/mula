@@ -31,13 +31,22 @@ class RecentTransactions extends StatelessWidget {
             if (txns.isEmpty) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24.0),
-                child: Center(
-                  child: Text(
-                    'No recent transactions',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodySmall?.copyWith(color: kTextSecondaryColor),
-                  ),
+                child: Column(
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.12),
+                    Text(
+                      'No recent transactions',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Your transaction history will appear here',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: kTextSecondaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               );
             }
