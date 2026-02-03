@@ -30,3 +30,11 @@ final class AccountCreationFailed extends AuthState {
 
   AccountCreationFailed(this.errorMessage);
 }
+
+final class UserLoggedOut extends AuthState {}
+
+final class UserLogoutFailed extends AuthState {
+  final String errorMessage;
+
+  UserLogoutFailed(this.errorMessage);
+}

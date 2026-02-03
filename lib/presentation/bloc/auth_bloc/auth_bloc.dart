@@ -15,6 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepository) : super(AuthInitial()) {
     on<LoginRequested>(_authenticateUser);
     on<SignupRequested>(_createUserAccount);
+    on<LogoutRequested>(_logoutUser);
   }
 
   Future<void> _authenticateUser(
@@ -51,6 +52,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AccountCreated(signupModel: user));
     } catch (e) {
       emit(AccountCreationFailed(e.toString()));
+    }
+  }
+
+  Future<void> _logoutUser(LogoutRequested event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+
+    try {
+      await authRepository.signOut();
+      emit(UserLoggedOut());
+    } catch (e) {
+      emit(UserLogoutFailed(e.toString()));
     }
   }
 }
