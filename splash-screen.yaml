@@ -1,9 +1,9 @@
 flutter_native_splash:
-  color: "#0F5E53"
+  color: "#FFFFFF"
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
-  image: assets/imgs/icons/money-transfer.png
+  image: assets/imgs/icons/app-logo.png
 
 
   # The color_dark, branding_dark are parameters that set the background
@@ -11,8 +11,8 @@ flutter_native_splash:
   # parameters from above. If the image_dark parameter is specified, color_dark or
   # background_image_dark must be specified.  color_dark and background_image_dark cannot both be
   # set.
-  color_dark: "#0F5E53"
-  image_dark: assets/imgs/icons/money-transfer.png
+  color_dark: "#000000"
+  image_dark: assets/imgs/icons/app-logo.png
 
   # From Android 12 onwards, the splash screen is handled differently than in previous versions.
   # Please visit https://developer.android.com/guide/topics/ui/splash-screen
@@ -30,7 +30,7 @@ flutter_native_splash:
     #image: assets/android12splash.png
 
     # Splash screen background color.
-    color: "#0F5E53"
+    color: "#FFFFFF"
     #branding: assets/dart.png
 
     # App icon background color.
@@ -42,9 +42,9 @@ flutter_native_splash:
     # The image_dark, color_dark, icon_background_color_dark, and branding_dark set values that
     # apply when the device is in dark mode. If they are not specified, the app will use the
     # parameters from above.
-    image_dark: assets/imgs/icons/money-transfer.png
+    image_dark: assets/imgs/icons/app-logo.png
     # background_image_dark: "assets/images/splash/manila-city-map.png"
-    color_dark: "#0F5E53"
+    color_dark: "#000000"
     #branding_dark: assets/dart.png
     # icon_background_color_dark: "#eeeeee"
 

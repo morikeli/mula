@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-class MaverickAppTextTheme {
-  MaverickAppTextTheme._();
+class MulaAppTextTheme {
+  MulaAppTextTheme._();
 
   static TextTheme lightTextTheme = TextTheme(
     titleLarge: const TextStyle(

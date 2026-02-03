@@ -120,4 +120,12 @@ class FormValidation {
     }
     return null;
   }
+
+  static String? validateAmount(double? value) {
+    if (value == null || value.isNegative || value == 0) {
+      return 'Enter valid amount!';
+    }
+    
+    return null;
+  }
 }

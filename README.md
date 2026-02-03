@@ -1,29 +1,29 @@
-# Maverick App
+# Mula App
 
 ## Mobile app screenshots
 | Splash screen | Onboarding screen |
 | ------------------------- | ------------------------- |
-| <img width="480" height="854" alt="splash-screen" src="https://github.com/user-attachments/assets/06b35d97-499e-4147-aaca-bfc7c1d2aed4" /> | <img width="480" height="854" alt="Onboarding-screen" src="https://github.com/user-attachments/assets/604e9a50-4b4f-4af6-ba95-63e0471cfcd4" />|
+| <img width="480" height="854" alt="splash-screen" src="https://github.com/user-attachments/assets/cabb55a8-15de-4827-85cb-1f06fb66f637" /> | <img width="480" height="854" alt="onboarding-screen" src="https://github.com/user-attachments/assets/c01adc8b-7ac9-4c00-b8f7-58f0e8637c9d" /> |
 | | |
 | Login | Signup |
-| <img width="480" height="854" alt="Login" src="https://github.com/user-attachments/assets/bbcd3b18-66dc-452b-9c17-41bfefed5ad9" /> | <img width="480" height="854" alt="signup" src="https://github.com/user-attachments/assets/7913c50d-c5a2-489d-9679-377c701c96d8" /> |
+| <img width="480" height="854" alt="login-screen" src="https://github.com/user-attachments/assets/89dd4267-d26c-4960-91d6-53456d76e445" /> | <img width="480" height="854" alt="signup-screen" src="https://github.com/user-attachments/assets/0c89ac01-f127-4f59-8db2-798323c6205b" /> |
 | | |
 | | |
 | Dashboard (home tab) | Send Money |
-| <img width="480" height="854" alt="Dashboard" src="https://github.com/user-attachments/assets/fe34f625-1f23-4145-9027-f03c035acd39" /> | <img width="480" height="854" alt="Send-money" src="https://github.com/user-attachments/assets/d7b88131-fe2c-4014-b73d-389b068b826b" />|
+| <img width="480" height="854" alt="home-screen" src="https://github.com/user-attachments/assets/dc61a530-d78d-4df7-8770-14bb5c808e37" /> | <img width="480" height="854" alt="send-money" src="https://github.com/user-attachments/assets/bae86edb-ffef-4b29-9d16-f331f51a4768" /> |
 | | |
 | Transaction history | Profile |
-| <img width="480" height="854" alt="Transaction-history" src="https://github.com/user-attachments/assets/0fb03220-3749-451f-9122-5433b9258198" /> | <img width="480" height="854" alt="Profile-screen" src="https://github.com/user-attachments/assets/3e133232-10ae-4d4a-85aa-d82c292d8591" /> |
+| <img width="480" height="854" alt="recent-transactions" src="https://github.com/user-attachments/assets/cf9d790c-e970-4079-846c-8394944463dc" /> | <img width="480" height="854" alt="Profile-screen" src="https://github.com/user-attachments/assets/3e133232-10ae-4d4a-85aa-d82c292d8591" /> |
 | | |
 | | |
 
 ## Overview
-Maverick is a modern, cross-platform fintech application designed to make money management fast, secure, and effortless. Built with Flutter 💙 and Firebase 🔥, Maverick delivers a smooth, feature-rich experience on both Android and iOS.
+Mula is a slang word for money. This is a modern, cross-platform fintech application designed to make money management fast, secure, and effortless. Built with Flutter 💙 and Firebase 🔥, Mula delivers a smooth, feature-rich experience on both Android and iOS.
 
-Whether you’re sending money to friends, tracking your spending, or managing your digital wallet, Maverick keeps everything at your fingertips with an intuitive design and rock-solid security.
+Whether you’re sending money to friends, tracking your spending, or managing your digital wallet, Mula keeps everything at your fingertips with an intuitive design and rock-solid security.
 
 ### Target users
-Maverick is designed for individuals and groups in Africa and beyond who need fast, secure, and flexible ways to move money. Key user segments include:
+Mula is designed for individuals and groups in Africa and beyond who need fast, secure, and flexible ways to move money. Key user segments include:
 - 💼 Freelancers – Professionals on platforms like Upwork or Fiverr receiving international payments.
 - 🛍 Small Business Owners & Market Vendors – Accepting digital payments instead of cash, enabling safer and faster transactions.
 
@@ -38,12 +38,12 @@ Maverick is designed for individuals and groups in Africa and beyond who need fa
 
 
 ### Tech Stack
-- 🎨 **Frontend**: Flutter v3.32.7
+- 🎨 **Frontend**: Flutter v3.38.5, Dart v3.10.4
 - ☁️ **Backend & Auth**: Firebase
 - 💾 **Storage**: Firebase Firestore
 - 🗄️ **Local Storage**: SQLite (for offline data and PIN storage)
-- ⚡ **State Management**: GetX
-- 🏗️ **Architecture**: MVC (separation of logic, UI, and services)
+- ⚡ **State Management**: BLoC
+- 🏗️ **Architecture**: MVVM (separation of logic, UI, and services)
 - 🗃️ **Libraries/packages**:
     - *crypto* - PIN hashing
     - *toastification* - display toast notifications in the app
@@ -56,7 +56,7 @@ Maverick is designed for individuals and groups in Africa and beyond who need fa
 
 
 ### Product thinking
-Maverick was born out of a challenge to design and build a user-centered fintech app using Flutter. The task was to create a functional mobile banking prototype for a chosen target audience, focusing on:
+Mula was born out of a challenge to design and build a user-centered fintech app using Flutter. The task was to create a functional mobile banking prototype for a chosen target audience, focusing on:
   - 📱 Mobile-first product design with strong UX.
   - 🛠 Modular, maintainable Flutter architecture with clear separation of concerns.
   - ⚡ Smooth state management, local storage, and routing.
@@ -88,12 +88,12 @@ This wasn’t just a coding challenge — it was an exercise in product thinking
 Clone this repository by opening your terminal/CMD and change the current working directory to Desktop - use `cd Desktop` command.
 ```bash
     $ cd Desktop
-    $ git clone https://github.com/morikeli/maverick-fintech.git
+    $ git clone https://github.com/morikeli/mula.git
 ```
 
 2. Open the cloned repository on your text editor and run this command:
 ```bash
-    $ cd maverick-fintech  # or change dir in the terminal and run the `flutter run` command
+    $ cd mula  # or change dir in the terminal and run the `flutter run` command
     $ flutter run
 ```
 3. Make sure you have a very strong internet connection so that the necessary gradle files can be downloaded. These files are necessary to build the project `apk` file.

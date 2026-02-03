@@ -1,37 +1,59 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:get/get.dart';
-import 'package:maverick_app/routes.dart';
-import 'package:toastification/toastification.dart';
 
 import 'core/helpers/firebase_options.dart';
+import 'core/helpers/prefs.dart';
 import 'core/theme/theme.dart';
+import 'core/providers/repository_providers.dart';
+import 'core/providers/bloc_providers.dart';
+import 'package:toastification/toastification.dart';
+import 'presentation/views/onboarding_screen.dart';
+import 'presentation/widgets/auth_gate.dart';
+import 'presentation/widgets/connectivity_listener.dart';
+import 'routes.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await dotenv.load();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MaverickApp());
+  final seen = await Prefs.hasSeenOnboarding();
+  runApp(MaverickApp(skipOnboarding: seen));
 
-  // whenever your initialization is completed, remove the splash screen:
+  // whenever app initialization is completed, remove the splash screen:
   FlutterNativeSplash.remove();
 }
 
 class MaverickApp extends StatelessWidget {
-  const MaverickApp({super.key});
+  final bool skipOnboarding;
 
-  // This widget is the root of your application.
+  const MaverickApp({super.key, required this.skipOnboarding});
+
   @override
   Widget build(BuildContext context) {
-    return ToastificationWrapper(
-      child: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Maverick',
-        darkTheme: MaverickAppTheme.darkTheme,
-        theme: MaverickAppTheme.lightTheme,
-        initialRoute: '/onboarding-screen',
-        routes: routes,
+    return RepositoryProviders(
+      child: AppBlocProviders(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Mula',
+          darkTheme: MulaAppTheme.darkTheme,
+          theme: MulaAppTheme.lightTheme,
+          // Insert ConnectivityListener inside MaterialApp's builder so it
+          // can access Directionality and other inherited widgets provided
+          // by MaterialApp.
+          builder: (context, child) => ToastificationWrapper(
+            child: ConnectivityListener(
+              child: child ?? const SizedBox.shrink(),
+            ),
+          ),
+          // If the user already saw onboarding, place AuthGate as the home
+          // so no onboarding flash occurs. Otherwise start at onboarding.
+          home: skipOnboarding ? const AuthGate() : null,
+          initialRoute: OnboardingScreen.routeName,
+          routes: routes,
+        ),
       ),
     );
   }

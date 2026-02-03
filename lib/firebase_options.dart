@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,18 +50,18 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCuxNpniuYO1ZvH3NHmc1IoB__5gHzgL1k',
-    appId: '1:893496912353:android:12cd428dc0146f21d9caa0',
-    messagingSenderId: '893496912353',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['ANDROID_API_KEY'] ?? '',
+    appId: dotenv.env['ANDROID_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '',
     projectId: 'maverick-backend',
     storageBucket: 'maverick-backend.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB1Q067TlmbjH5M4WYkp13QOqW4llsRhXU',
-    appId: '1:893496912353:ios:fe0af576fd42b382d9caa0',
-    messagingSenderId: '893496912353',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['IOS_API_KEY'] ?? '',
+    appId: dotenv.env['IOS_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '',
     projectId: 'maverick-backend',
     storageBucket: 'maverick-backend.firebasestorage.app',
     iosBundleId: 'com.example.maverickApp',

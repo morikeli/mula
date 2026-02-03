@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:maverick_app/core/theme/color_scheme.dart';
-import 'package:maverick_app/core/theme/colors.dart';
-import 'package:maverick_app/core/theme/theme_data/elevated_btn_theme.dart';
+import 'package:mula/core/theme/color_scheme.dart';
+import 'package:mula/core/theme/colors.dart';
+import 'package:mula/core/theme/theme_data/elevated_btn_theme.dart';
 
 import 'theme_data/input_decoration_theme_data.dart';
 import 'theme_data/text_theme_data.dart';
 
-class MaverickAppTheme {
-  MaverickAppTheme._();
+class MulaAppTheme {
+  MulaAppTheme._();
 
   static ThemeData lightTheme = ThemeData.light(useMaterial3: true).copyWith(
-    colorScheme: MaverickAppColorScheme.colorSchemeLight,
+    colorScheme: MulaAppColorScheme.colorSchemeLight,
     dividerColor: kSecondaryColor,
-    elevatedButtonTheme: MaverickAppElevatedButtonTheme.elevatedButtonLightTheme,
-    inputDecorationTheme: MaverickAppInputDecorationTheme.inputDecorationLightTheme,
+    elevatedButtonTheme: MulaAppElevatedButtonTheme.elevatedButtonLightTheme,
+    inputDecorationTheme: MulaAppInputDecorationTheme.inputDecorationLightTheme,
     // progressIndicatorTheme: PretiumAppProgressIndicatorTheme.progressIndicatorLightTheme,
     scaffoldBackgroundColor: kScaffoldBgLightColor,
-    textTheme: MaverickAppTextTheme.lightTextTheme,
+    textTheme: MulaAppTextTheme.lightTextTheme,
   );
 
   static ThemeData darkTheme = ThemeData.dark(useMaterial3: true).copyWith(
-    colorScheme: MaverickAppColorScheme.colorSchemeDark,
+    colorScheme: MulaAppColorScheme.colorSchemeDark,
     dividerColor: Colors.black,
-    elevatedButtonTheme: MaverickAppElevatedButtonTheme.elevatedButtonDarkTheme,
-    inputDecorationTheme: MaverickAppInputDecorationTheme.inputDecorationDarkTheme,
+    elevatedButtonTheme: MulaAppElevatedButtonTheme.elevatedButtonDarkTheme,
+    inputDecorationTheme: MulaAppInputDecorationTheme.inputDecorationDarkTheme,
     // progressIndicatorTheme: PretiumAppProgressIndicatorTheme.progressIndicatorDarkTheme,
     scaffoldBackgroundColor: kScaffoldBgDarkcolor,
-    textTheme: MaverickAppTextTheme.darkTextTheme,
+    textTheme: MulaAppTextTheme.darkTextTheme,
   );
 }

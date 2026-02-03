@@ -1,0 +1,70 @@
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+
+class DBService {
+  static Database? _db;
+
+  static Future<Database> get database async {
+    if (_db != null) return _db!;
+    _db = await _initDB('wallet.db');
+    return _db!;
+  }
+
+  static Future<Database> _initDB(String fileName) async {
+    final dbPath = await getDatabasesPath();
+    final path = join(dbPath, fileName);
+    return await openDatabase(
+      path,
+      version: 2,
+      onCreate: _createDB,
+      onUpgrade: _onUpgrade,
+    );
+  }
+
+  static Future<void> _createDB(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE transactions (
+        uid INTEGER PRIMARY KEY AUTOINCREMENT,
+        type TEXT,
+        amount REAL,
+        contact TEXT,
+        timestamp TEXT
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE user (
+        uid INTEGER PRIMARY KEY,
+        firstName TEXT,
+        lastName TEXT,
+        email TEXT,
+        mobileNumber TEXT
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE pin (
+        uid TEXT PRIMARY KEY,
+        hash TEXT NOT NULL,
+        salt TEXT NOT NULL
+      )
+    ''');
+  }
+
+  static Future<void> _onUpgrade(
+    Database db,
+    int oldVersion,
+    int newVersion,
+  ) async {
+    if (oldVersion < 2) {
+      await db.execute('DROP TABLE IF EXISTS pin');
+      await db.execute('''
+        CREATE TABLE pin (
+          uid TEXT PRIMARY KEY,
+          hash TEXT NOT NULL,
+          salt TEXT NOT NULL
+        )
+      ''');
+    }
+  }
+}

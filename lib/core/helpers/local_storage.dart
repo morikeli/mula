@@ -12,6 +12,7 @@ class LocalDB {
     return _db!;
   }
 
+  // initialize the database
   static Future<Database> initDb() async {
     final path = join(await getDatabasesPath(), 'app.db');
     return await openDatabase(
@@ -23,6 +24,10 @@ class LocalDB {
         );
         await db.execute(
           'CREATE TABLE user_info(uid TEXT PRIMARY KEY, firstName TEXT, lastName TEXT, email TEXT, mobileNumber TEXT)',
+        );
+        // simple key/value table to persist small app flags (e.g. onboarding seen)
+        await db.execute(
+          'CREATE TABLE app_meta(key TEXT PRIMARY KEY, value TEXT)',
         );
       },
       onUpgrade: (db, oldVersion, newVersion) async {
@@ -37,7 +42,30 @@ class LocalDB {
     );
   }
 
-  /// Hash PIN before storing
+  // Mark onboarding as seen
+  static Future<void> setOnboardingSeen() async {
+    final dbClient = await db;
+    await dbClient.insert(
+      'app_meta',
+      {'key': 'onboarding_seen', 'value': '1'},
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  // Returns true if the onboarding has been seen
+  static Future<bool> hasSeenOnboarding() async {
+    final dbClient = await db;
+    final result = await dbClient.query(
+      'app_meta',
+      where: 'key = ?',
+      whereArgs: ['onboarding_seen'],
+      limit: 1,
+    );
+    if (result.isEmpty) return false;
+    return result.first['value'] == '1';
+  }
+
+  // Hash PIN before storing
   static String _hashPin(String pin) {
     final bytes = utf8.encode(pin);
     final hash = sha512.convert(bytes); // hash password using SHA512

@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 
-const Color kAppBarColor = Color(0xFF004D40);
-const Color kPrimaryColor = Color(0xFF004D40);
+const Color kAppBarColor = Color(0xFF11BD6A);
+const Color kPrimaryColor = Color(0xFF11BD6A);
 const Color kSecondaryColor = Color(0xFF9E9E9E);
 const Color kScaffoldBgLightColor = Color(0xFFFFFFFF);
 const Color kScaffoldBgDarkcolor = Color(0xFF000000);
-const Color kContainerLightColor = Color(0xCCE0E0E0);
-const Color kContainerDarkColor = Color(0xFF004D40);
-const Color kButtonDarkColor = Color(0xFF004D40);
-const Color kIconDarkColor = Color(0xFF004D40);
+final Color kContainerLightColor = const Color(0xFFD3D2D2).withOpacity(0.25);
+const Color kContainerDarkColor = Color(0xFF11BD6A);
+const Color kButtonDarkColor = Color(0xFF11BD6A);
+const Color kIconDarkColor = Color(0xFF11BD6A);
 const Color kIconLightColor = Color(0xFFFFFFFF);
 const Color kIconDangerColor = Color(0xFFCC180B);
 const Color kTextLightColor = Color(0xFFFFFFFF);
-const Color kTextGreenColor = Color(0xFF004D40);
+const Color kTextGreenColor = Color(0xFF11BD6A);
 const Color kTextDarkColor = Color(0xFF000000);
 const Color kTextSecondaryColor = Color(0xFF8B8B8B);
 const Color kTextFormFieldLabelColor = Color(0xFF009688);
+const Color kTextFormFieldBorderColor = Color(0xFFFAFAFA);
+const Color kHyperLinkTextColor = Color(0xFF0E4D92);
+const List<Color> kWalletCardGradientColor = [
+  Color(0xFF0E4D92),
+  Color(0xFF2BB673),
+];
+final Color kCircleAvatarBgColor = const Color(0xFF000000).withOpacity(0.25);
 const Color kDangerColor = Color(0xFFC21407);
 const Color kSuccessColor = Color(0xFF05332B);
 const Color kWarningColor = Color(0xFFD8D507);
 const Color kInfoColor = Color(0xFF3593E0);
-const kNotificationBadgeColor = Color(0xFFE41304);
-const kReceivedTransactionColor = Color(0xFF0DE718);
-const kSentTransactionColor = Color(0xFFF03629);
+const Color kNotificationBadgeColor = Color(0xFFE41304);
+const Color kReceivedTransactionColor = Color(0xFF0DE718);
+const Color kSentTransactionColor = Color(0xFFF03629);

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../colors.dart';
 
 
-class MaverickAppElevatedButtonTheme {
-  MaverickAppElevatedButtonTheme._();
+class MulaAppElevatedButtonTheme {
+  MulaAppElevatedButtonTheme._();
 
   static ElevatedButtonThemeData elevatedButtonLightTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

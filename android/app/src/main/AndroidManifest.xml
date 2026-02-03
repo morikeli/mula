@@ -13,7 +13,7 @@
 
 
     <application
-        android:label="Maverick"
+        android:label="Mula"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
