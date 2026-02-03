@@ -31,7 +31,7 @@ class AuthRepository {
 			final firstName = names.isNotEmpty ? names.first : username;
 			final lastName = names.length > 1 ? names.sublist(1).join(' ') : '';
 
-			final UserModel? user = await _service.signup(firstName, lastName, email, '', password);
+			final UserModel? user = await _service.signup(firstName, lastName, email, mobileNumber, password);
 			if (user == null) throw Exception('Unable to create account');
 
 			return SignupModel(
