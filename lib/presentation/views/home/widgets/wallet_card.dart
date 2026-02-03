@@ -4,17 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/theme/colors.dart';
-import '../../../../data/repositories/transaction_repo.dart';
-import '../../../bloc/auth_bloc/auth_bloc.dart';
-import '../../../bloc/transaction_bloc/transactions_bloc.dart';
+import '../../../bloc/wallet/wallet_balance_cubit.dart';
+import '../../../bloc/wallet/wallet_visibility_cubit.dart';
 import 'wallet_action_btns.dart';
-
 
 class WalletCard extends StatelessWidget {
   const WalletCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12.0),
       padding: const EdgeInsets.all(18.0),
@@ -91,35 +89,19 @@ class WalletBalance extends StatelessWidget {
 }
 
 class WalletBalanceText extends StatelessWidget {
-  const WalletBalanceText({
-    super.key,
-  });
+  const WalletBalanceText({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        BlocBuilder<TransactionsBloc, TransactionsState>(
-          builder: (context, state) {
-            final repo = RepositoryProvider.of<TransactionRepository>(
-              context,
-            );
-            String? uid;
-            final authState = context.read<AuthBloc>().state;
-            if (authState is IsAuthenticated) {
-              uid = authState.user.uid;
-            }
-    
-            return FutureBuilder<double>(
-              future: uid != null
-                  ? repo.transactionService.getWalletBalance(uid)
-                  : Future.value(0.0),
-              builder: (context, snap) {
-                final formatted = snap.hasData
-                    ? NumberFormat('#,##0.00').format(snap.data)
-                    : '--';
+        BlocBuilder<WalletVisibilityCubit, bool>(
+          builder: (context, isVisible) {
+            return BlocBuilder<WalletBalanceCubit, double>(
+              builder: (context, balance) {
+                final walletBal = NumberFormat().format(balance);
                 return Text(
-                  "KES $formatted",
+                  isVisible ? "KES $walletBal" : "****",
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 28.0,
@@ -130,7 +112,18 @@ class WalletBalanceText extends StatelessWidget {
             );
           },
         ),
-        IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.eye)),
+        IconButton(
+          onPressed: () {
+            context.read<WalletVisibilityCubit>().toggle();
+          },
+          icon: BlocBuilder<WalletVisibilityCubit, bool>(
+            builder: (context, isVisible) {
+              return Icon(
+                isVisible ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
+              );
+            },
+          ),
+        ),
       ],
     );
   }
