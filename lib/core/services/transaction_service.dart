@@ -49,8 +49,9 @@ class TransactionService {
         .collection('wallet')
         .doc('balance');
 
-    final snap =
-        transaction != null ? await transaction.get(ref) : await ref.get();
+    final snap = transaction != null
+        ? await transaction.get(ref)
+        : await ref.get();
 
     return (snap.data()?['amount'] ?? 0.0) as double;
   }
@@ -73,14 +74,10 @@ class TransactionService {
         .collection('wallet')
         .doc('balance');
 
-    final transactionRef =
-        _firestore.collection('transactions').doc();
+    final transactionRef = _firestore.collection('transactions').doc();
 
     await _firestore.runTransaction((tx) async {
-      final senderBalance = await getWalletBalance(
-        senderUid,
-        transaction: tx,
-      );
+      final senderBalance = await getWalletBalance(senderUid, transaction: tx);
 
       if (senderBalance < amount) {
         throw Exception("Insufficient balance");
@@ -91,20 +88,17 @@ class TransactionService {
         transaction: tx,
       );
 
-      tx.update(senderWalletRef, {
-        'amount': senderBalance - amount,
-      });
+      tx.update(senderWalletRef, {'amount': senderBalance - amount});
 
-      tx.update(receiverWalletRef, {
-        'amount': receiverBalance + amount,
-      });
+      tx.update(receiverWalletRef, {'amount': receiverBalance + amount});
 
       tx.set(transactionRef, transactionData);
     });
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> sentTransactionsStream(
-      String uid) {
+    String uid,
+  ) {
     return _firestore
         .collection('transactions')
         .where('senderID', isEqualTo: uid)
@@ -112,7 +106,8 @@ class TransactionService {
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> receivedTransactionsStream(
-      String receiverIdentifier) {
+    String receiverIdentifier,
+  ) {
     return _firestore
         .collection('transactions')
         .where('receiverID', isEqualTo: receiverIdentifier)
