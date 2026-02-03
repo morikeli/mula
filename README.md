@@ -10,7 +10,7 @@
 | | |
 | | |
 | Dashboard (home tab) | Send Money |
-| <img width="480" height="854" alt="home-screen" src="https://github.com/user-attachments/assets/dc61a530-d78d-4df7-8770-14bb5c808e37" /> | <img width="480" height="854" alt="Send-money" src="https://github.com/user-attachments/assets/d7b88131-fe2c-4014-b73d-389b068b826b" /> |
+| <img width="480" height="854" alt="home-screen" src="https://github.com/user-attachments/assets/dc61a530-d78d-4df7-8770-14bb5c808e37" /> | <img width="480" height="854" alt="send-money" src="https://github.com/user-attachments/assets/bae86edb-ffef-4b29-9d16-f331f51a4768" /> |
 | | |
 | Transaction history | Profile |
 | <img width="480" height="854" alt="recent-transactions" src="https://github.com/user-attachments/assets/cf9d790c-e970-4079-846c-8394944463dc" /> | <img width="480" height="854" alt="Profile-screen" src="https://github.com/user-attachments/assets/3e133232-10ae-4d4a-85aa-d82c292d8591" /> |
