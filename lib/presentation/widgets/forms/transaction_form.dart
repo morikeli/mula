@@ -1,0 +1,159 @@
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uuid/uuid.dart';
+
+import '../../../core/helpers/form_validation.dart';
+import '../../../data/models/transaction_model.dart';
+import '../../bloc/transaction_bloc/transactions_bloc.dart';
+import '../common/form_field.dart';
+
+class TransactionForm extends StatefulWidget {
+  const TransactionForm({super.key});
+
+  @override
+  State<TransactionForm> createState() => _TransactionFormState();
+}
+
+class _TransactionFormState extends State<TransactionForm> {
+  final TextEditingController recipientNameController = TextEditingController();
+  final TextEditingController amountController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    recipientNameController.dispose();
+    amountController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          RecipientInputField(recipientNameController: recipientNameController),
+          const SizedBox(height: 20),
+          AmountInputField(amountController: amountController),
+          const SizedBox(height: 12.0),
+          const SizedBox(height: 20.0),
+          SendMoneyBtn(
+            formKey: formKey,
+            recipientNameController: recipientNameController,
+            amountController: amountController,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RecipientInputField extends StatelessWidget {
+  const RecipientInputField({
+    super.key,
+    required this.recipientNameController,
+  });
+
+  final TextEditingController recipientNameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: recipientNameController,
+      label: "Email or phone",
+      icon: CupertinoIcons.mail_solid,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        return FormValidation.validateEmailAndPhoneNumber(value);
+      },
+    );
+  }
+}
+
+class AmountInputField extends StatelessWidget {
+  const AmountInputField({super.key, required this.amountController});
+
+  final TextEditingController amountController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      controller: amountController,
+      label: "Amount",
+      icon: CupertinoIcons.money_dollar_circle_fill,
+      obscureText: false,
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return 'Enter valid amount!';
+        }
+
+        // Allow numbers with commas (e.g., 1,000.50)
+        final cleaned = value.replaceAll(',', '');
+        final parsed = double.tryParse(cleaned);
+        return FormValidation.validateAmount(parsed);
+      },
+    );
+  }
+}
+
+class SendMoneyBtn extends StatelessWidget {
+  const SendMoneyBtn({
+    super.key,
+    required this.formKey,
+    required this.recipientNameController,
+    required this.amountController,
+  });
+
+  final GlobalKey<FormState> formKey;
+  final TextEditingController recipientNameController;
+  final TextEditingController amountController;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () async {
+          final form = formKey.currentState;
+
+          if (form != null && form.validate()) {
+            final counterparty = recipientNameController.text.trim();
+            final amountText = amountController.text.trim().replaceAll(',', '');
+            final amount = double.tryParse(amountText);
+
+            final validationError = FormValidation.validateAmount(amount);
+            if (validationError != null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(validationError)),
+              );
+              return;
+            }
+
+            final txn = TransactionModel(
+              id: const Uuid().v4(),
+              type: 'send',
+              amount: amount!,
+              currency: 'USD',
+              counterparty: counterparty,
+              date: DateTime.now(),
+            );
+
+            // Dispatch send request to bloc
+            context.read<TransactionsBloc>().add(SendMoneyRequested(txn));
+
+            // Optionally clear form
+            recipientNameController.clear();
+            amountController.clear();
+          }
+        },
+        child: const Text(
+          'Send Money',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
