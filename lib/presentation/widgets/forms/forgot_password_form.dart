@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/helpers/form_validation.dart';
 import '../common/form_field.dart';
-import '../reset_password_dialog.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
   const ForgotPasswordForm({super.key});
@@ -71,10 +70,10 @@ class RequestResetCodeBtn extends StatelessWidget {
         onPressed: () {
           if (_formKey.currentState!.validate()) {
             _formKey.currentState!.save();
-            ResetPasswordDialog.showResetCodeSentDialog(
-              context,
-              _emailController.text,
-            );
+            // ResetPasswordDialog.showResetCodeSentDialog(
+            //   context,
+            //   _emailController.text,
+            // );
           }
         },
         child: const Text(
