@@ -9,6 +9,8 @@ import '../../presentation/bloc/pin_bloc/pin_bloc.dart';
 import '../../presentation/bloc/transaction_bloc/transactions_bloc.dart';
 import '../../presentation/bloc/connectivity/connectivity_cubit.dart';
 import '../../core/services/connectivity_service.dart';
+import '../../presentation/bloc/wallet/wallet_balance_cubit.dart';
+import '../../presentation/bloc/wallet/wallet_visibility_cubit.dart';
 
 // Provides Blocs used across the app.
 class AppBlocProviders extends StatelessWidget {
@@ -33,6 +35,12 @@ class AppBlocProviders extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               ConnectivityCubit(context.read<ConnectivityService>()),
+        ),
+        BlocProvider(create: (context) => WalletVisibilityCubit()),
+        BlocProvider(
+          create: (context) => WalletBalanceCubit(
+            repository: context.read<TransactionRepository>(),
+          ),
         ),
       ],
       child: child,
