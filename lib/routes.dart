@@ -8,8 +8,8 @@ import 'presentation/views/auth/pin/pin_prompt_screen.dart';
 import 'presentation/views/auth/pin/pin_setup_screen.dart';
 // import 'presentation/views/auth/pin/reset_pin.dart';
 import 'presentation/views/onboarding_screen.dart';
-import 'presentation/views/auth/otp/otp_screen.dart';
-import 'presentation/views/auth/reset-password/reset_password_screen.dart';
+// import 'presentation/views/auth/otp/otp_screen.dart';
+// import 'presentation/views/auth/reset-password/reset_password_screen.dart';
 import 'presentation/views/auth/signup_screen.dart';
 // import 'presentation/views/profile/edit_profile.dart';
 import 'presentation/views/profile/profile_screen.dart';
@@ -19,9 +19,9 @@ final Map<String, WidgetBuilder> routes = {
   OnboardingScreen.routeName: (context) => const OnboardingScreen(),
   LoginScreen.routeName: (context) => const LoginScreen(),
   ForgotPasswordScreen.routeName: (context) => const ForgotPasswordScreen(),
-  ResetPasswordScreen.routeName: (context) => const ResetPasswordScreen(),
+  // ResetPasswordScreen.routeName: (context) => const ResetPasswordScreen(),
   SignupScreen.routeName: (context) => const SignupScreen(),
-  OtpScreen.routeName: (context) => const OtpScreen(),
+  // OtpScreen.routeName: (context) => const OtpScreen(),
   HomeScreen.routeName: (context) => const HomeScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   // EditProfileScreen.routeName: (context) => EditProfileScreen(),
