@@ -126,4 +126,13 @@ class TransactionService {
           return (doc.data()?['amount'] ?? 0.0).toDouble();
         });
   }
+
+  /// Fetches a user's document data for the given [uid]. Returns `null` if
+  /// the user document does not exist. This is used by higher-level
+  /// repositories to enrich transaction payloads with user display names.
+  Future<Map<String, dynamic>?> getUserProfile(String uid) async {
+    final doc = await _firestore.collection('users').doc(uid).get();
+    if (!doc.exists) return null;
+    return doc.data();
+  }
 }
