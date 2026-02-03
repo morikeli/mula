@@ -25,7 +25,7 @@ class AuthRepository {
 
 	// Creates a new user account. [username] may be a single name; it will
 	// be used as `firstName` and `lastName` will be empty.
-	Future<SignupModel> createUserAccount(String username, String mobileNumber, String email, String password) async {
+	Future<SignupModel> createUserAccount(String username,  String email, String mobileNumber, String password) async {
 		try {
 			final names = username.split(' ');
 			final firstName = names.isNotEmpty ? names.first : username;
