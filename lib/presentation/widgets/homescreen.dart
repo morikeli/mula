@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../views/home/home.dart';
+import '../views/profile/profile_screen.dart';
 import '../views/transactions/transaction_history_screen.dart';
 import 'custom_bottom_navbar.dart';
 
@@ -14,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int screenIndex = 0;
-  final List<Widget> screens = [Home(), TransactionHistoryScreen()];
+  final List<Widget> screens = [Home(), TransactionHistoryScreen(), ProfileScreen()];
 
   void moveToSelectedScreen(int index) {
     setState(() {
