@@ -154,4 +154,8 @@ class TransactionRepository {
 
     await file.writeAsBytes(await pdf.save());
   }
+
+  Stream<double> watchWalletBalance(String uid) {
+    return transactionService.walletBalanceStream(uid);
+  }
 }

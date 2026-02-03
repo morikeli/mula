@@ -118,4 +118,17 @@ class TransactionService {
         .where('receiverID', isEqualTo: receiverIdentifier)
         .snapshots();
   }
+
+  Stream<double> walletBalanceStream(String uid) {
+    return _firestore
+        .collection("users")
+        .doc(uid)
+        .collection("wallet")
+        .doc("balance")
+        .snapshots()
+        .map((doc) {
+          if (!doc.exists) return 0.0;
+          return (doc.data()?['amount'] ?? 0.0).toDouble();
+        });
+  }
 }
