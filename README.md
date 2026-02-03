@@ -10,10 +10,10 @@
 | | |
 | | |
 | Dashboard (home tab) | Send Money |
-| <img width="480" height="854" alt="home-screen" src="https://github.com/user-attachments/assets/dc61a530-d78d-4df7-8770-14bb5c808e37" /> | <img width="480" height="854" alt="send-money" src="https://github.com/user-attachments/assets/bae86edb-ffef-4b29-9d16-f331f51a4768" /> |
+| <img width="480" height="854" alt="flutter_01" src="https://github.com/user-attachments/assets/6be548ae-d8a8-4378-948c-387790ab2f20" /> | <img width="480" height="854" alt="send-money" src="https://github.com/user-attachments/assets/bae86edb-ffef-4b29-9d16-f331f51a4768" /> |
 | | |
 | Transaction history | Profile |
-| <img width="480" height="854" alt="recent-transactions" src="https://github.com/user-attachments/assets/cf9d790c-e970-4079-846c-8394944463dc" /> | <img width="480" height="854" alt="Profile-screen" src="https://github.com/user-attachments/assets/3e133232-10ae-4d4a-85aa-d82c292d8591" /> |
+| <img width="480" height="854" alt="recent-transactions" src="https://github.com/user-attachments/assets/cf9d790c-e970-4079-846c-8394944463dc" /> | <img width="480" height="854" alt="profile_screen" src="https://github.com/user-attachments/assets/4f83bffb-05f3-44a1-9835-fc1cbf6dde7d" /> |
 | | |
 | | |
 
