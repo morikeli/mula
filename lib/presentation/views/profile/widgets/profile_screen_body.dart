@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/colors.dart';
-import '../../../../data/repositories/auth_repo.dart';
 import '../../../bloc/auth_bloc/auth_bloc.dart';
 import 'custom_list_tile.dart';
 
