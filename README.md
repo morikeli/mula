@@ -47,7 +47,6 @@ Mula is designed for individuals and groups in Africa and beyond who need fast, 
 - 🗃️ **Libraries/packages**:
     - *crypto* - PIN hashing
     - *toastification* - display toast notifications in the app
-    - *bootstrap_icons* - icons used in the app
     - *sqlflite* - for creating and managing SQLite db
     - *flutter_native_splash* - for creating and generating app splash screen
     - *flutter_launcher_icons* - for creating and generating launcher icons
@@ -87,14 +86,14 @@ This wasn’t just a coding challenge — it was an exercise in product thinking
 
 Clone this repository by opening your terminal/CMD and change the current working directory to Desktop - use `cd Desktop` command.
 ```bash
-    $ cd Desktop
-    $ git clone https://github.com/morikeli/mula.git
+    cd Desktop
+    git clone https://github.com/morikeli/mula.git
 ```
 
 2. Open the cloned repository on your text editor and run this command:
 ```bash
-    $ cd mula  # or change dir in the terminal and run the `flutter run` command
-    $ flutter run
+    cd mula  # or change dir in the terminal and run the `flutter run` command
+    flutter run
 ```
 3. Make sure you have a very strong internet connection so that the necessary gradle files can be downloaded. These files are necessary to build the project `apk` file.
 
