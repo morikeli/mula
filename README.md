@@ -8,7 +8,6 @@
 | Login | Signup |
 | <img width="480" height="854" alt="login-screen" src="https://github.com/user-attachments/assets/89dd4267-d26c-4960-91d6-53456d76e445" /> | <img width="480" height="854" alt="signup-screen" src="https://github.com/user-attachments/assets/0c89ac01-f127-4f59-8db2-798323c6205b" /> |
 | | |
-| | |
 | Dashboard (home tab) | Send Money |
 | <img width="480" height="854" alt="flutter_01" src="https://github.com/user-attachments/assets/6be548ae-d8a8-4378-948c-387790ab2f20" /> | <img width="480" height="854" alt="send-money" src="https://github.com/user-attachments/assets/bae86edb-ffef-4b29-9d16-f331f51a4768" /> |
 | | |
