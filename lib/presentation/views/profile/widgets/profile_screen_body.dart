@@ -8,7 +8,7 @@ import '../../../bloc/auth_bloc/auth_bloc.dart';
 import 'custom_list_tile.dart';
 
 class ProfileScreenBody extends StatelessWidget {
-  ProfileScreenBody({super.key});
+  const ProfileScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
