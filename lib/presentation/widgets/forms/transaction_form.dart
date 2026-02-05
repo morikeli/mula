@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../core/helpers/form_validation.dart';
+import '../../../core/utils/app_toasts.dart';
 import '../../../data/models/transaction_model.dart';
 import '../../bloc/transaction_bloc/transactions_bloc.dart';
 import '../common/form_field.dart';
@@ -126,9 +127,10 @@ class SendMoneyBtn extends StatelessWidget {
 
             final validationError = FormValidation.validateAmount(amount);
             if (validationError != null) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(validationError)),
-              );
+              AppToast.showError(context, title: validationError);
+              // ScaffoldMessenger.of(context).showSnackBar(
+              //   SnackBar(content: Text(validationError)),
+              // );
               return;
             }
 
