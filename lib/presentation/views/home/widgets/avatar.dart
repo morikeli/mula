@@ -15,7 +15,7 @@ class UserAvatarAndGreetings extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           radius: MediaQuery.of(context).size.width * .06,
-          backgroundImage: AssetImage(kFemaleProfilePicture),
+          backgroundImage: AssetImage(kMaleProfilePicture),
         ),
         minLeadingWidth: 2.0,
 
