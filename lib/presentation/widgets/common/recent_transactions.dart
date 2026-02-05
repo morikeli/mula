@@ -48,15 +48,14 @@ class RecentTransactions extends StatelessWidget {
                   ],
                 ),
               );
-            }
-
-            return RecentTransactionsListTiles(txns: txns);
           }
-
-          // default fallback
-          return const SizedBox.shrink();
-        },
-      ),
+    
+          return RecentTransactionsListTiles(txns: txns);
+        }
+    
+        // default fallback
+        return const SizedBox.shrink();
+      },
     );
   }
 }
