@@ -5,17 +5,14 @@ import '../../../core/theme/colors.dart';
 import '../../../data/models/transaction_model.dart';
 
 class RecentTransactionsListTiles extends StatelessWidget {
-  const RecentTransactionsListTiles({
-    super.key,
-    required this.txns,
-  });
+  const RecentTransactionsListTiles({super.key, required this.txns});
 
   final List<TransactionModel> txns;
 
   @override
   Widget build(BuildContext context) {
     FirebaseAuth userId = FirebaseAuth.instance;
-    
+
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -28,10 +25,8 @@ class RecentTransactionsListTiles extends StatelessWidget {
         final amountColor = isSend
             ? kReceivedTransactionColor
             : kSentTransactionColor;
-        final formattedDate = DateFormat(
-          'dd-MM-yyyy h:mma',
-        ).format(txn.date);
-    
+        final formattedDate = DateFormat('dd-MM-yyyy h:mma').format(txn.date);
+
         return ListTile(
           // 1. User avatar
           leading: CircleAvatar(
