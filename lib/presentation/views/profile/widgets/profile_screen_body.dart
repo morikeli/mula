@@ -96,12 +96,16 @@ class ProfileScreenBody extends StatelessWidget {
             ),
           ),
         ),
-        
+
         // 9. Logout button
         ElevatedButton(
           onPressed: () {
             context.read<AuthBloc>().add(LogoutRequested());
-            Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              '/login',
+              (route) => false,
+            );
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: kDangerColor,
