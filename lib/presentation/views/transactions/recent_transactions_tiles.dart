@@ -38,10 +38,10 @@ class RecentTransactionsListTiles extends StatelessWidget {
             backgroundColor: kPrimaryColor,
             child: Text(txn.senderName![0].toUpperCase()),
           ),
-          
-          // 2. User's name
-          title: Text(txn.counterparty),
-          
+
+          // 2. Sender's name
+          title: Text(txn.senderName ?? txn.counterparty),
+
           // 3. Transaction type
           subtitle: Text(
             isSend ? 'Received money' : 'Sent money',
