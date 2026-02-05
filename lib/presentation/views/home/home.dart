@@ -37,26 +37,32 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     // Listen for auth state and request transactions only when authenticated.
     return Scaffold(
-      body: SafeArea(
-        child: BlocListener<AuthBloc, AuthState>(
-          listener: (context, state) {
-            if (state is IsAuthenticated) {
-              context.read<TransactionsBloc>().add(
-                TransactionHistoryRequested(),
-              );
-            }
-          },
-          child: Column(
-            children: [
-              // User Avatar and sreetings
-              UserAvatarAndGreetings(),
-              // Wallet balance
-              WalletCard(),
-              SizedBox(height: 12.0),
-              // Recent transactions
-              RecentTransactionsTitle(),
-              RecentTransactions(),
-            ],
+      body: RefreshIndicator.adaptive(
+        onRefresh: () async => context.read<TransactionsBloc>().add(TransactionHistoryRequested()),
+        child: SafeArea(
+          child: BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is IsAuthenticated) {
+                context.read<TransactionsBloc>().add(
+                  TransactionHistoryRequested(),
+                );
+              }
+            },
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              child: Column(
+                children: [
+                  // User Avatar and sreetings
+                  UserAvatarAndGreetings(),
+                  // Wallet balance
+                  WalletCard(),
+                  SizedBox(height: 12.0),
+                  // Recent transactions
+                  RecentTransactionsTitle(),
+                  RecentTransactions(),
+                ],
+              ),
+            ),
           ),
         ),
       ),

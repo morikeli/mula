@@ -24,8 +24,14 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
           NotificationBellIcon(),
         ],
       ),
-      body: Column(
-        children: [RecentTransactions()],
+      body: RefreshIndicator.adaptive(
+        onRefresh: () async => context.read<TransactionsBloc>().add(TransactionHistoryRequested()),
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [RecentTransactions()],
+          ),
+        ),
       ),
     );
   }
