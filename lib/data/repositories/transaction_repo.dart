@@ -34,6 +34,10 @@ class TransactionRepository {
       txn.counterparty,
     );
 
+    // Get sender's name
+    final senderProfile = await transactionService.getUserProfile(senderUid);
+    final senderName = '${senderProfile?["firstName"] ?? ""} ${senderProfile?["lastName"] ?? ""}'.trim();
+
     // Attempt to read the recipient's profile to derive a human-friendly
     // display name. If unavailable, fall back to the original counterparty
     // identifier provided by the caller (email/phone).
@@ -80,6 +84,7 @@ class TransactionRepository {
         // Persist a human-friendly counterparty display name so UI can show
         // the recipient's first+last name in lists and receipts.
         'counterparty': displayName,
+        'senderName': senderName,
         // Use server timestamp so times are consistent across devices.
         'date': FieldValue.serverTimestamp(),
       },

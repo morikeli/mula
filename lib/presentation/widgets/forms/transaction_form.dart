@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -114,6 +115,8 @@ class SendMoneyBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth currentUser = FirebaseAuth.instance;
+
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
@@ -139,6 +142,7 @@ class SendMoneyBtn extends StatelessWidget {
               type: 'send',
               amount: amount!,
               currency: 'KES',
+              senderName: currentUser.currentUser?.displayName,
               counterparty: counterparty,
               date: DateTime.now(),
             );
