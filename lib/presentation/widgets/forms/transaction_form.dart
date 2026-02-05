@@ -138,7 +138,7 @@ class SendMoneyBtn extends StatelessWidget {
               id: const Uuid().v4(),
               type: 'send',
               amount: amount!,
-              currency: 'USD',
+              currency: 'KES',
               counterparty: counterparty,
               date: DateTime.now(),
             );
