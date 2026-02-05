@@ -44,7 +44,7 @@ class RecentTransactionsListTiles extends StatelessWidget {
 
           // 3. Transaction type
           subtitle: Text(
-            isSend ? 'Received money' : 'Sent money',
+            isSend ? 'Received' : 'Sent money',
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: kTextSecondaryColor,
               fontSize: 12.0,
