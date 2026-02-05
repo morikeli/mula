@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../bloc/transaction_bloc/transactions_bloc.dart';
 import '../../widgets/common/appbar.dart';
 import '../../widgets/common/notification_bell_icon.dart';
 import '../../widgets/common/recent_transactions.dart';
