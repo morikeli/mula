@@ -14,13 +14,15 @@ class RecentTransactionsListTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth userId = FirebaseAuth.instance;
+    
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemCount: txns.length,
       itemBuilder: (context, index) {
         final txn = txns[index];
-        final isSend = txn.type.toLowerCase() == 'send';
+        final isSend = txn.receiverID == userId.currentUser?.uid;
         final amountText =
             '${isSend ? '+' : '-'}KES${txn.amount.toStringAsFixed(2)}';
         final amountColor = isSend
