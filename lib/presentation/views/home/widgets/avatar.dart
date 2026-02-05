@@ -24,7 +24,7 @@ class UserAvatarAndGreetings extends StatelessWidget {
             String name = 'User';
             if (state is IsAuthenticated) {
               final user = state.user;
-              name = user.firstName ?? user.email.split('@').first;
+              name = "${user.firstName ?? user.email.split('@').first} ${user.lastName ?? ''}";
             }
             return Text(
               'Hello $name,',
