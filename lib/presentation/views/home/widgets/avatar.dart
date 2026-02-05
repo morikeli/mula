@@ -27,7 +27,7 @@ class UserAvatarAndGreetings extends StatelessWidget {
               name = "${user.firstName ?? user.email.split('@').first} ${user.lastName ?? ''}";
             }
             return Text(
-              'Hello $name,',
+              'Hello ${name.trim()},',
               style: Theme.of(
                 context,
               ).textTheme.bodySmall?.copyWith(fontSize: 16.0),
