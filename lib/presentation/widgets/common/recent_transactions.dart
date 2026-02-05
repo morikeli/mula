@@ -14,22 +14,21 @@ class RecentTransactions extends StatelessWidget {
   Widget build(BuildContext context) {
     // Ensure this widget always takes remaining space so internal
     // children (ListView, Center) receive proper constraints.
-    return Expanded(
-      child: BlocConsumer<TransactionsBloc, TransactionsState>(
-        listener: (context, state) {
-          if (state is GetTransactionHistoryFailed) {
-            AppToast.showError(context, title: state.errorMessage.toString());
-          }
-        },
-        builder: (context, state) {
-          if (state is TransactionLoading) {
-            return Center(child: AppLoadingIndicators.loadingIndicatorMedium());
-          }
-
-          if (state is TransactionHistoryLoaded) {
-            final txns = state.transactions;
-            if (txns.isEmpty) {
-              return Padding(
+    return BlocConsumer<TransactionsBloc, TransactionsState>(
+      listener: (context, state) {
+        if (state is GetTransactionHistoryFailed) {
+          AppToast.showError(context, title: state.errorMessage.toString());
+        }
+      },
+      builder: (context, state) {
+        if (state is TransactionLoading) {
+          return Center(child: AppLoadingIndicators.loadingIndicatorMedium());
+        }
+    
+        if (state is TransactionHistoryLoaded) {
+          final txns = state.transactions;
+          if (txns.isEmpty) {
+            return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24.0),
                 child: Column(
                   children: [
