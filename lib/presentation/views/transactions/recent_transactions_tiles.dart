@@ -22,10 +22,10 @@ class RecentTransactionsListTiles extends StatelessWidget {
         final txn = txns[index];
         final isSend = txn.type.toLowerCase() == 'send';
         final amountText =
-            '${isSend ? '-' : ''}\$${txn.amount.toStringAsFixed(2)}';
+            '${isSend ? '+' : '-'}KES${txn.amount.toStringAsFixed(2)}';
         final amountColor = isSend
-            ? kSentTransactionColor
-            : kReceivedTransactionColor;
+            ? kReceivedTransactionColor
+            : kSentTransactionColor;
         final formattedDate = DateFormat(
           'dd-MM-yyyy h:mma',
         ).format(txn.date);
@@ -46,7 +46,7 @@ class RecentTransactionsListTiles extends StatelessWidget {
           
           // 3. Transaction type
           subtitle: Text(
-            isSend ? 'Sent money' : 'Received money',
+            isSend ? 'Received money' : 'Sent money',
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: kTextSecondaryColor,
               fontSize: 12.0,
