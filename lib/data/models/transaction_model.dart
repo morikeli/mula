@@ -6,6 +6,7 @@ class TransactionModel {
   final double amount;
   final String currency;
   final String counterparty;
+  final String? senderName;
   final DateTime date;
   final String? senderID;
   final String? receiverID;
@@ -19,6 +20,7 @@ class TransactionModel {
     required this.date,
     this.senderID,
     this.receiverID,
+    this.senderName,
   });
 
   // Firestore -> Model
@@ -36,6 +38,7 @@ class TransactionModel {
       currency: data['currency'],
       counterparty: data['counterparty'],
       date: (data['date'] as Timestamp).toDate(),
+      senderName: data['senderName'],
     );
   }
 
@@ -50,6 +53,7 @@ class TransactionModel {
       currency: map['currency'],
       counterparty: map['counterparty'],
       date: DateTime.parse(map['date']),
+      senderName: map['senderName'],
     );
   }
 
