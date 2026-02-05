@@ -5,13 +5,13 @@
 | ------------------------- | ------------------------- |
 | <img width="480" height="854" alt="splash-screen" src="https://github.com/user-attachments/assets/cabb55a8-15de-4827-85cb-1f06fb66f637" /> | <img width="480" height="854" alt="onboarding-screen" src="https://github.com/user-attachments/assets/c01adc8b-7ac9-4c00-b8f7-58f0e8637c9d" /> |
 | | |
-| Login | Signup |
+| Login screen | Signup screen |
 | <img width="480" height="854" alt="login-screen" src="https://github.com/user-attachments/assets/89dd4267-d26c-4960-91d6-53456d76e445" /> | <img width="480" height="854" alt="signup-screen" src="https://github.com/user-attachments/assets/0c89ac01-f127-4f59-8db2-798323c6205b" /> |
 | | |
-| Dashboard (home tab) | Send Money |
-| <img width="480" height="854" alt="homescreen" src="https://github.com/user-attachments/assets/bf6413b4-6e8e-4c33-81de-68041684a142" /> | <img width="480" height="854" alt="send-money" src="https://github.com/user-attachments/assets/bae86edb-ffef-4b29-9d16-f331f51a4768" /> |
+| Home screen (home tab) | Send Money screen |
+| <img width="480" height="854" alt="home-screen" src="https://github.com/user-attachments/assets/aa39a7e7-c688-44c6-8461-7dac602f983a" /> | <img width="480" height="854" alt="send-money" src="https://github.com/user-attachments/assets/bae86edb-ffef-4b29-9d16-f331f51a4768" /> |
 | | |
-| Transaction history | Profile |
+| Transaction history screen | Profile screen |
 | <img width="480" height="854" alt="recent-transactions" src="https://github.com/user-attachments/assets/cf9d790c-e970-4079-846c-8394944463dc" /> | <img width="480" height="854" alt="profile_screen" src="https://github.com/user-attachments/assets/4f83bffb-05f3-44a1-9835-fc1cbf6dde7d" /> |
 | | |
 | | |
