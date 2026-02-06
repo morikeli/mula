@@ -7,10 +7,10 @@ import '../../data/repositories/transaction_repo.dart';
 import '../../presentation/bloc/auth_bloc/auth_bloc.dart';
 import '../../presentation/bloc/pin_bloc/pin_bloc.dart';
 import '../../presentation/bloc/transaction_bloc/transactions_bloc.dart';
-import '../../presentation/bloc/connectivity/connectivity_cubit.dart';
+import '../../presentation/cubits/connectivity/connectivity_cubit.dart';
 import '../../core/services/connectivity_service.dart';
-import '../../presentation/bloc/wallet/wallet_balance_cubit.dart';
-import '../../presentation/bloc/wallet/wallet_visibility_cubit.dart';
+import '../../presentation/cubits/wallet/wallet_balance_cubit.dart';
+import '../../presentation/cubits/wallet/wallet_visibility_cubit.dart';
 
 // Provides Blocs used across the app.
 class AppBlocProviders extends StatelessWidget {

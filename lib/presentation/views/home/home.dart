@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../../bloc/transaction_bloc/transactions_bloc.dart';
-import '../../bloc/wallet/wallet_balance_cubit.dart';
+import '../../cubits/wallet/wallet_balance_cubit.dart';
 import '../../widgets/common/recent_transactions.dart';
 import 'widgets/avatar.dart';
 import 'widgets/recent_transactions_title.dart';

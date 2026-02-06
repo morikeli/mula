@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/app_toasts.dart';
-import '../../presentation/bloc/connectivity/connectivity_cubit.dart';
+import '../cubits/connectivity/connectivity_cubit.dart';
 
 // Listens to connectivity changes and shows/dismisses a toastification
 // notification when offline/online.

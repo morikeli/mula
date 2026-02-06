@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/theme/colors.dart';
-import '../../../bloc/wallet/wallet_balance_cubit.dart';
-import '../../../bloc/wallet/wallet_visibility_cubit.dart';
+import '../../../cubits/wallet/wallet_balance_cubit.dart';
+import '../../../cubits/wallet/wallet_visibility_cubit.dart';
 import 'wallet_action_btns.dart';
 
 class WalletCard extends StatelessWidget {
