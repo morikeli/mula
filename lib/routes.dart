@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'presentation/views/notifications_screen.dart';
 import 'presentation/views/transactions/transaction_screen.dart';
 import 'presentation/widgets/homescreen.dart';
 
@@ -29,4 +30,5 @@ final Map<String, WidgetBuilder> routes = {
   PinSetupScreen.routeName: (context) => PinSetupScreen(),
   // ResetPinScreen.routeName: (context) => ResetPinScreen(),
   PINScreen.routeName: (context) => PINScreen(),
+  NotificationsScreen.routeName: (context) => NotificationsScreen(),
 };
