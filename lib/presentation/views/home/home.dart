@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
               physics: AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
-                  // User Avatar and sreetings
+                  // User Avatar and greetings
                   UserAvatarAndGreetings(),
                   // Wallet balance
                   WalletCard(),
