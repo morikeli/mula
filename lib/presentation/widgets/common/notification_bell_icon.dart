@@ -11,7 +11,7 @@ class NotificationBellIcon extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () => Navigator.pushNamed(context, '/notifications'),
           icon: Icon(
             CupertinoIcons.bell_fill,
             color: kIconLightColor,
