@@ -20,16 +20,16 @@ void main() async {
   await dotenv.load();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   final seen = await Prefs.hasSeenOnboarding();
-  runApp(MaverickApp(skipOnboarding: seen));
+  runApp(MulaApp(skipOnboarding: seen));
 
   // whenever app initialization is completed, remove the splash screen:
   FlutterNativeSplash.remove();
 }
 
-class MaverickApp extends StatelessWidget {
+class MulaApp extends StatelessWidget {
   final bool skipOnboarding;
 
-  const MaverickApp({super.key, required this.skipOnboarding});
+  const MulaApp({super.key, required this.skipOnboarding});
 
   @override
   Widget build(BuildContext context) {
