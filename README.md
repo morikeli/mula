@@ -118,6 +118,5 @@ Don't forget to star the repo 🌟😉
 
 The features outlined below are non-functional:
 - Some list tile and icons (e.g. icon button to add/update profile pic) in the profile screen are placeholder icon.
-- Notifications icon.
 - Forgot password functionality. It uses dummy data.
 - Profile pictures are static.
