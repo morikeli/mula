@@ -24,7 +24,7 @@ class NotificationsScreen extends StatelessWidget {
 
           if (state is NotificationLoaded) {
             if (state.notifications.isEmpty) {
-              return const Center(child: Text('No notifications yet'));
+              return ErrorWidget();
             }
 
             return NotificationsTiles(state: state);
