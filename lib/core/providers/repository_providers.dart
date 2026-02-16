@@ -4,9 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../data/repositories/auth_repo.dart';
+import '../../data/repositories/notification_repo.dart';
 import '../../data/repositories/pin_repo.dart';
 import '../../data/repositories/transaction_repo.dart';
 import '../services/auth_service.dart';
+import '../services/notification_service.dart';
 import '../services/pin_service.dart';
 import '../services/transaction_service.dart';
 import '../services/connectivity_service.dart';
@@ -26,6 +28,18 @@ class RepositoryProviders extends StatelessWidget {
         RepositoryProvider(
           create: (_) => TransactionRepository(
             TransactionService(
+              FirebaseFirestore.instance,
+              FirebaseAuth.instance,
+            ),
+            NotificationService(
+              FirebaseFirestore.instance,
+              FirebaseAuth.instance,
+            ),
+          ),
+        ),
+        RepositoryProvider(
+          create: (_) => NotificationRepository(
+            NotificationService(
               FirebaseFirestore.instance,
               FirebaseAuth.instance,
             ),
