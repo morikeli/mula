@@ -4,13 +4,15 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:rxdart/rxdart.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../core/services/notification_service.dart';
 import '../../core/services/transaction_service.dart';
 import '../models/transaction_model.dart';
 
 class TransactionRepository {
   // Underlying service that performs remote operations (Firebase, etc.).
   final TransactionService transactionService;
-  TransactionRepository(this.transactionService);
+  TransactionRepository(this.transactionService, this.notificationService);
+  final NotificationService notificationService;
 
   // Send money according to [txn].
   //
@@ -88,6 +90,15 @@ class TransactionRepository {
         // Use server timestamp so times are consistent across devices.
         'date': FieldValue.serverTimestamp(),
       },
+    );
+
+    // send notification to the recipient
+    await notificationService.createNotification(
+      targetUid: receiverUid,
+      type: 'money_received',
+      title: 'Money Received',
+      body: 'You received ${txn.currency} ${txn.amount} from $senderName',
+      metadata: {'transactionId': txn.id},
     );
 
     // Generate a local PDF receipt for the transaction for user download or
