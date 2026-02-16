@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'presentation/views/notifications_screen.dart';
+import 'presentation/views/notifications/notifications_screen.dart';
 import 'presentation/views/transactions/transaction_screen.dart';
 import 'presentation/widgets/homescreen.dart';
 
