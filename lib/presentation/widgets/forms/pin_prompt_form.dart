@@ -6,7 +6,9 @@ import '../../../core/theme/colors.dart';
 import '../../bloc/pin_bloc/pin_bloc.dart';
 
 class PINPromptForm extends StatefulWidget {
-  const PINPromptForm({super.key});
+  const PINPromptForm({super.key, required this.hasError});
+  final bool hasError;
+
 
   @override
   State<PINPromptForm> createState() => _PINPromptFormState();
@@ -56,10 +58,16 @@ class _PINPromptFormState extends State<PINPromptForm> {
             focusNode: _focusNode,
             obscureText: true,
             autofocus: true,
+            forceErrorState: widget.hasError,
             defaultPinTheme: defaultTheme,
             focusedPinTheme: defaultTheme.copyWith(
               decoration: defaultTheme.decoration!.copyWith(
                 border: Border.all(color: kPrimaryColor, width: 2),
+              ),
+            ),
+            errorPinTheme: defaultTheme.copyWith(
+              decoration: defaultTheme.decoration!.copyWith(
+                border: Border.all(color: kDangerColor, width: 2),
               ),
             ),
             submittedPinTheme: defaultTheme,
