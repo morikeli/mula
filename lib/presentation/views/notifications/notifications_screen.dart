@@ -51,7 +51,7 @@ class ErrorWidget extends StatelessWidget {
           size: 48.0,
           color: kIconLightColor,
         ),
-        Center(child: Text('No notifications available')),
+        Center(child: Text('No notifications yet')),
       ],
     );
   }
