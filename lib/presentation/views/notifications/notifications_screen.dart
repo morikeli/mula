@@ -51,6 +51,7 @@ class ErrorWidget extends StatelessWidget {
           size: 48.0,
           color: kIconLightColor,
         ),
+        SizedBox(height: 12.0),
         Center(child: Text('No notifications yet')),
       ],
     );
