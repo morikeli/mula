@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/auth_bloc/auth_bloc.dart';
+import '../../bloc/notifications_bloc/notifications_bloc.dart';
 import '../../bloc/transaction_bloc/transactions_bloc.dart';
 import '../../cubits/wallet/wallet_balance_cubit.dart';
 import '../../widgets/common/recent_transactions.dart';
@@ -26,6 +27,8 @@ class _HomeState extends State<Home> {
     final authState = context.read<AuthBloc>().state;
     if (authState is IsAuthenticated) {
       final uid = authState.user.uid;
+      // start notifications listener
+      context.read<NotificationBloc>().add(LoadUnreadCount());
       // start wallet balance listener
       context.read<WalletBalanceCubit>().start(uid);
       // load transactions
@@ -38,7 +41,8 @@ class _HomeState extends State<Home> {
     // Listen for auth state and request transactions only when authenticated.
     return Scaffold(
       body: RefreshIndicator.adaptive(
-        onRefresh: () async => context.read<TransactionsBloc>().add(TransactionHistoryRequested()),
+        onRefresh: () async =>
+            context.read<TransactionsBloc>().add(TransactionHistoryRequested()),
         child: SafeArea(
           child: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) {
