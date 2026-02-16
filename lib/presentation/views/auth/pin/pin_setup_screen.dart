@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/helpers/app_vibrations.dart';
 import '../../../../core/utils/app_toasts.dart';
 import '../../../../core/utils/loading_indicators.dart';
 import '../../../bloc/pin_bloc/pin_bloc.dart';
@@ -33,6 +35,7 @@ class PinSetupScreen extends StatelessWidget {
               }
             });
           } else if (state is PinError) {
+            AppVibrations.vibrateOnError();
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (context.mounted) AppToast.showError(context, title: state.errorMessage.toString());
             });

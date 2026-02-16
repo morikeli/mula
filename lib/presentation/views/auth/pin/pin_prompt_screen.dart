@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vibration/vibration.dart';
 import 'package:vibration/vibration_presets.dart';
 
+import '../../../../core/helpers/app_vibrations.dart';
 import '../../../../core/utils/app_toasts.dart';
 import '../../../../core/utils/loading_indicators.dart';
 import '../../../bloc/pin_bloc/pin_bloc.dart';
@@ -35,7 +36,7 @@ class _PINScreenState extends State<PINScreen> {
             setState(() {
               _hasError = true;
             });
-            Vibration.vibrate(duration: 1500, preset: VibrationPreset.pulseWave);
+            AppVibrations.vibrateOnError();
             WidgetsBinding.instance.addPostFrameCallback((_) {
               AppToast.showError(context, title: state.errorMessage.toString());
             });
