@@ -38,7 +38,9 @@ class TransactionRepository {
 
     // Get sender's name
     final senderProfile = await transactionService.getUserProfile(senderUid);
-    final senderName = '${senderProfile?["firstName"] ?? ""} ${senderProfile?["lastName"] ?? ""}'.trim();
+    final senderName =
+        '${senderProfile?["firstName"] ?? ""} ${senderProfile?["lastName"] ?? ""}'
+            .trim();
 
     // Attempt to read the recipient's profile to derive a human-friendly
     // display name. If unavailable, fall back to the original counterparty
