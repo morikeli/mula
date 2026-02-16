@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -35,24 +36,29 @@ class MulaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProviders(
       child: AppBlocProviders(
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Mula',
-          darkTheme: MulaAppTheme.darkTheme,
-          theme: MulaAppTheme.lightTheme,
-          // Insert ConnectivityListener inside MaterialApp's builder so it
-          // can access Directionality and other inherited widgets provided
-          // by MaterialApp.
-          builder: (context, child) => ToastificationWrapper(
-            child: ConnectivityListener(
-              child: child ?? const SizedBox.shrink(),
+        child: AdaptiveTheme(
+          dark: ThemeData.dark(useMaterial3: true),
+          light: ThemeData.light(useMaterial3: true),
+          initial: AdaptiveThemeMode.system,
+          builder: (theme, darkTheme) => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Mula',
+            darkTheme: MulaAppTheme.darkTheme,
+            theme: MulaAppTheme.lightTheme,
+            // Insert ConnectivityListener inside MaterialApp's builder so it
+            // can access Directionality and other inherited widgets provided
+            // by MaterialApp.
+            builder: (context, child) => ToastificationWrapper(
+              child: ConnectivityListener(
+                child: child ?? const SizedBox.shrink(),
+              ),
             ),
+            // If the user already saw onboarding, place AuthGate as the home
+            // so no onboarding flash occurs. Otherwise start at onboarding.
+            home: skipOnboarding ? const AuthGate() : null,
+            initialRoute: OnboardingScreen.routeName,
+            routes: routes,
           ),
-          // If the user already saw onboarding, place AuthGate as the home
-          // so no onboarding flash occurs. Otherwise start at onboarding.
-          home: skipOnboarding ? const AuthGate() : null,
-          initialRoute: OnboardingScreen.routeName,
-          routes: routes,
         ),
       ),
     );
