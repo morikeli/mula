@@ -59,6 +59,8 @@ dependencies:
   flutter_dotenv: ^6.0.0
   connectivity_plus: ^7.0.0
   pinput: ^6.0.2
+  adaptive_theme: ^3.7.2
+  vibration: ^3.1.6
 
 
 dev_dependencies:
