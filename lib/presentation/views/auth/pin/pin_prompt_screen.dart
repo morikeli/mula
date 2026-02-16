@@ -8,9 +8,16 @@ import '../../../bloc/pin_bloc/pin_bloc.dart';
 import '../../../widgets/common/footer.dart';
 import '../../../widgets/forms/pin_prompt_form.dart';
 
-class PINScreen extends StatelessWidget {
+class PINScreen extends StatefulWidget {
   static String routeName = '/pin-prompt-screen';
   const PINScreen({super.key});
+
+  @override
+  State<PINScreen> createState() => _PINScreenState();
+}
+
+class _PINScreenState extends State<PINScreen> {
+  bool _hasError = false;
 
   @override
   Widget build(BuildContext context) {
