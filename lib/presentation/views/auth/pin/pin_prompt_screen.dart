@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vibration/vibration.dart';
+import 'package:vibration/vibration_presets.dart';
 
 import '../../../../core/utils/app_toasts.dart';
 import '../../../../core/utils/loading_indicators.dart';
@@ -30,6 +32,10 @@ class _PINScreenState extends State<PINScreen> {
               if (context.mounted) Navigator.pushReplacementNamed(context, '/home');
             });
           } else if (state is PinError) {
+            setState(() {
+              _hasError = true;
+            });
+            Vibration.vibrate(duration: 1500, preset: VibrationPreset.pulseWave);
             WidgetsBinding.instance.addPostFrameCallback((_) {
               AppToast.showError(context, title: state.errorMessage.toString());
             });
@@ -39,7 +45,7 @@ class _PINScreenState extends State<PINScreen> {
           if (state is PinLoading) {
             return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
           }
-          return PINPromptForm();
+          return PINPromptForm(hasError: _hasError,);
         },
       ),
       persistentFooterAlignment: AlignmentDirectional.center,
