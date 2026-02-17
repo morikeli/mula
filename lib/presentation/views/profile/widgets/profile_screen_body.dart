@@ -78,7 +78,11 @@ class ProfileScreenBody extends StatelessWidget {
 
         // 8. light/dark mode toggle switch
         ListTile(
-          leading: Icon(CupertinoIcons.moon),
+          leading: Icon(
+            AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark
+                ? CupertinoIcons.moon_stars
+                : CupertinoIcons.sun_max,
+          ),
           title: Text('Change theme'),
           trailing: Transform.scale(
             scale: .8,
