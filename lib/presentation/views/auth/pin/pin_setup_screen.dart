@@ -8,7 +8,7 @@ import '../../../../core/utils/loading_indicators.dart';
 import '../../../bloc/pin_bloc/pin_bloc.dart';
 import '../../../widgets/common/appbar.dart';
 import '../../../widgets/common/footer.dart';
-import '../../../widgets/forms/pin_setup_form.dart';
+import '../../../widgets/forms/pin_setup_pinput.dart';
 
 class PinSetupScreen extends StatefulWidget {
   static String routeName = '/create-pin';
