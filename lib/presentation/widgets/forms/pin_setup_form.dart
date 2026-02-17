@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pinput/pinput.dart';
 
 import '../../../core/helpers/form_validation.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/theme/theme.dart';
 import '../../bloc/pin_bloc/pin_bloc.dart';
-import '../common/form_field.dart';
 
 class PINSetupPinput extends StatefulWidget {
   const PINSetupPinput({super.key, required this.hasError});
