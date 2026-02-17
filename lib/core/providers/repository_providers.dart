@@ -6,12 +6,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../data/repositories/auth_repo.dart';
 import '../../data/repositories/notification_repo.dart';
 import '../../data/repositories/pin_repo.dart';
+import '../../data/repositories/profile_repo.dart';
 import '../../data/repositories/transaction_repo.dart';
 import '../services/auth_service.dart';
 import '../services/notification_service.dart';
 import '../services/pin_service.dart';
 import '../services/transaction_service.dart';
 import '../services/connectivity_service.dart';
+import '../services/user_service.dart';
 
 // Provides repositories used across the app.
 class RepositoryProviders extends StatelessWidget {
@@ -25,6 +27,7 @@ class RepositoryProviders extends StatelessWidget {
         RepositoryProvider(create: (_) => ConnectivityService()),
         RepositoryProvider(create: (_) => AuthRepository(AuthService())),
         RepositoryProvider(create: (_) => PinRepository(PinService())),
+        RepositoryProvider(create: (_) => ProfileRepository(UserService())),
         RepositoryProvider(
           create: (_) => TransactionRepository(
             TransactionService(
