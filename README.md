@@ -23,7 +23,6 @@ Whether you’re sending money to friends, tracking your spending, or managing y
 
 ### Target users
 Mula is designed for individuals and groups in Africa and beyond who need fast, secure, and flexible ways to move money. Key user segments include:
-- 💼 Freelancers – Professionals on platforms like Upwork or Fiverr receiving international payments.
 - 🛍 Small Business Owners & Market Vendors – Accepting digital payments instead of cash, enabling safer and faster transactions.
 
 
