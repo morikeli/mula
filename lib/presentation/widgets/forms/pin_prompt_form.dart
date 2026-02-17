@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../core/theme/colors.dart';
+import '../../../core/theme/theme.dart';
 import '../../bloc/pin_bloc/pin_bloc.dart';
 
 class PINPromptForm extends StatefulWidget {
@@ -27,17 +28,6 @@ class _PINPromptFormState extends State<PINPromptForm> {
 
   @override
   Widget build(BuildContext context) {
-    final defaultTheme = PinTheme(
-      width: 72,
-      height: 64,
-      textStyle: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-    );
-
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.12,
@@ -59,18 +49,18 @@ class _PINPromptFormState extends State<PINPromptForm> {
             obscureText: true,
             autofocus: true,
             forceErrorState: widget.hasError,
-            defaultPinTheme: defaultTheme,
-            focusedPinTheme: defaultTheme.copyWith(
-              decoration: defaultTheme.decoration!.copyWith(
+            defaultPinTheme: MulaAppTheme.defaultPinTheme(context),
+            focusedPinTheme: MulaAppTheme.defaultPinTheme(context).copyWith(
+              decoration: MulaAppTheme.defaultPinTheme(context).decoration!.copyWith(
                 border: Border.all(color: kPrimaryColor, width: 2),
               ),
             ),
-            errorPinTheme: defaultTheme.copyWith(
-              decoration: defaultTheme.decoration!.copyWith(
+            errorPinTheme: MulaAppTheme.defaultPinTheme(context).copyWith(
+              decoration: MulaAppTheme.defaultPinTheme(context).decoration!.copyWith(
                 border: Border.all(color: kDangerColor, width: 2),
               ),
             ),
-            submittedPinTheme: defaultTheme,
+            submittedPinTheme: MulaAppTheme.defaultPinTheme(context),
             showCursor: true,
             onCompleted: (pin) {
               context.read<PinBloc>().add(VerifyPinRequested(pin));
