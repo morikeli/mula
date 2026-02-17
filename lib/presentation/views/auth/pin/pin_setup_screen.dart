@@ -6,6 +6,7 @@ import '../../../../core/helpers/app_vibrations.dart';
 import '../../../../core/utils/app_toasts.dart';
 import '../../../../core/utils/loading_indicators.dart';
 import '../../../bloc/pin_bloc/pin_bloc.dart';
+import '../../../widgets/common/appbar.dart';
 import '../../../widgets/common/footer.dart';
 import '../../../widgets/forms/pin_setup_form.dart';
 
@@ -16,14 +17,7 @@ class PinSetupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Setup your PIN',
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-      ),
+      appBar: CustomAppBar(appBarTitle: "Setup your PIN"),
       body: BlocConsumer<PinBloc, PinState>(
         listener: (context, state) {
           if (state is PinSet) {
