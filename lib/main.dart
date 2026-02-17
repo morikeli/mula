@@ -43,8 +43,8 @@ class MulaApp extends StatelessWidget {
           builder: (theme, darkTheme) => MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Mula',
-            darkTheme: MulaAppTheme.darkTheme,
-            theme: MulaAppTheme.lightTheme,
+            darkTheme: darkTheme,
+            theme: theme,
             // Insert ConnectivityListener inside MaterialApp's builder so it
             // can access Directionality and other inherited widgets provided
             // by MaterialApp.
