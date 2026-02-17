@@ -14,7 +14,6 @@ class MulaAppTheme {
     dividerColor: kSecondaryColor,
     elevatedButtonTheme: MulaAppElevatedButtonTheme.elevatedButtonLightTheme,
     inputDecorationTheme: MulaAppInputDecorationTheme.inputDecorationLightTheme,
-    // progressIndicatorTheme: PretiumAppProgressIndicatorTheme.progressIndicatorLightTheme,
     scaffoldBackgroundColor: kScaffoldBgLightColor,
     textTheme: MulaAppTextTheme.lightTextTheme,
   );
@@ -24,7 +23,6 @@ class MulaAppTheme {
     dividerColor: Colors.black,
     elevatedButtonTheme: MulaAppElevatedButtonTheme.elevatedButtonDarkTheme,
     inputDecorationTheme: MulaAppInputDecorationTheme.inputDecorationDarkTheme,
-    // progressIndicatorTheme: PretiumAppProgressIndicatorTheme.progressIndicatorDarkTheme,
     scaffoldBackgroundColor: kScaffoldBgDarkcolor,
     textTheme: MulaAppTextTheme.darkTextTheme,
   );
