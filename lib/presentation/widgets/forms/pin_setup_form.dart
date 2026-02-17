@@ -7,18 +7,25 @@ import '../../../core/helpers/form_validation.dart';
 import '../../bloc/pin_bloc/pin_bloc.dart';
 import '../common/form_field.dart';
 
-class PINSetupForm extends StatefulWidget {
-  const PINSetupForm({super.key});
+class PINSetupPinput extends StatefulWidget {
+  const PINSetupPinput({super.key, required this.hasError});
+  final bool hasError;
 
   @override
-  State<PINSetupForm> createState() => _PINSetupFormState();
+  State<PINSetupPinput> createState() => _PINSetupPinputState();
 }
 
-class _PINSetupFormState extends State<PINSetupForm> {
-  final TextEditingController pinInputController = TextEditingController();
-  final TextEditingController confirmPinInputController =
-      TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+class _PINSetupPinputState extends State<PINSetupPinput> {
+  final TextEditingController pinController = TextEditingController();
+  final TextEditingController confirmPinController = TextEditingController();
+  static const int pinLength = 4;
+
+  @override
+  void dispose() {
+    pinController.dispose();
+    confirmPinController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
