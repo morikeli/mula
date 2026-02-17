@@ -46,7 +46,7 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
           if (state is PinLoading) {
             return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
           }
-          return PINSetupForm();
+          return PINSetupPinput(hasError: _hasError);
         },
       ),
       persistentFooterAlignment: AlignmentDirectional.center,
