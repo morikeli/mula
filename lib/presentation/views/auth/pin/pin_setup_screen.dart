@@ -35,6 +35,7 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
               }
             });
           } else if (state is PinError) {
+            setState(() => _hasError = true);
             AppVibrations.vibrateOnError();
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (context.mounted) AppToast.showError(context, title: state.errorMessage.toString());
