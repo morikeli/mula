@@ -37,7 +37,6 @@ class _PINSetupPinputState extends State<PINSetupPinput> {
           // Screen header
           Text(
             'PIN yako, siri yako',
-            style: Theme.of(context).textTheme.bodySmall,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: MediaQuery.of(context).size.height * .08),
