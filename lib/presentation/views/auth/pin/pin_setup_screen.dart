@@ -10,9 +10,16 @@ import '../../../widgets/common/appbar.dart';
 import '../../../widgets/common/footer.dart';
 import '../../../widgets/forms/pin_setup_form.dart';
 
-class PinSetupScreen extends StatelessWidget {
+class PinSetupScreen extends StatefulWidget {
   static String routeName = '/create-pin';
   const PinSetupScreen({super.key});
+
+  @override
+  State<PinSetupScreen> createState() => _PinSetupScreenState();
+}
+
+class _PinSetupScreenState extends State<PinSetupScreen> {
+  bool _hasError = false;
 
   @override
   Widget build(BuildContext context) {
