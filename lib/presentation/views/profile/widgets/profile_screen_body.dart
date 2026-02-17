@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +82,14 @@ class ProfileScreenBody extends StatelessWidget {
           title: Text('Change theme'),
           trailing: Transform.scale(
             scale: .8,
-            child: Switch(value: true, onChanged: (value) {}),
+            child: Switch(
+              value: AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark,
+              onChanged: (value) {
+                AdaptiveTheme.of(context).setThemeMode(
+                  value ? AdaptiveThemeMode.dark : AdaptiveThemeMode.light,
+                );
+              },
+            ),
           ),
         ),
 
