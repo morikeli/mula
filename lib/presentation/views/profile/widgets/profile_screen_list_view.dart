@@ -1,13 +1,17 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/utils/app_toasts.dart';
-import '../../../../core/utils/loading_indicators.dart';
-import '../../../bloc/profile_bloc/profile_bloc.dart';
-import 'profile_screen_list_view.dart';
+import '../../../../core/theme/colors.dart';
+import '../../../bloc/auth_bloc/auth_bloc.dart';
+import 'custom_list_tile.dart';
+import 'profile_screen_avatar.dart';
+import 'profile_screen_location_widget.dart';
+import 'profile_screen_reset_btn.dart';
 
-class ProfileScreenBody extends StatelessWidget {
-  const ProfileScreenBody({super.key});
+class ProfileScreenListView extends StatelessWidget {
+  const ProfileScreenListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class ProfileScreenBody extends StatelessWidget {
         SizedBox(height: 8.0),
         UsernameAndLocation(),
         SizedBox(height: 8.0),
-        resetPINBtn(),
+        ResetPINButton(),
         SizedBox(height: 8.0),
         CustomListTileWidget(
           leadingIcon: CupertinoIcons.person_add,
@@ -131,86 +135,6 @@ class ProfileScreenBody extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  Row resetPINBtn() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        // Reset PIN btn
-        Expanded(
-          child: ElevatedButton(onPressed: () {}, child: Text('Reset PIN')),
-        ),
-      ],
-    );
-  }
-}
-
-class UsernameAndLocation extends StatelessWidget {
-  const UsernameAndLocation({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
-        String name = 'User';
-        if (state is IsAuthenticated) {
-          final user = state.user;
-          name = user.firstName ?? user.email.split('@').first;
-        }
-
-        return Center(
-          child: Column(
-            children: [
-              Text(
-                name,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(fontSize: 28.0),
-              ),
-              Text(
-                'Nairobi, Kenya',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: kTextSecondaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
-
-class UserAvatarProfileScreen extends StatelessWidget {
-  const UserAvatarProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          CircleAvatar(
-            radius: MediaQuery.of(context).size.width * .16,
-            backgroundImage: AssetImage(kMaleProfilePicture),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: IconButton.filled(
-              onPressed: () {},
-              icon: Icon(
-                CupertinoIcons.camera,
-                color: kIconLightColor,
-                size: 20.0,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
