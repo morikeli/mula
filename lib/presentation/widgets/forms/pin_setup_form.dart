@@ -31,17 +31,30 @@ class _PINSetupPinputState extends State<PINSetupPinput> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            pinInputTextField(),
-            SizedBox(height: 12.0),
-            confirmPinInputTextField(),
-            SizedBox(height: 12.0),
-            savePinBtn(context),
-          ],
-        ),
+      child: ListView(
+        children: [
+          // Screen header
+          Text(
+            'PIN yako, siri yako',
+            style: Theme.of(context).textTheme.bodySmall,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * .08),
+          EnterPIN(
+            pinController: pinController,
+            pinLength: pinLength,
+            context: context,
+            hasError: widget.hasError,
+          ),
+          const SizedBox(height: 16.0),
+          ConfirmPIN(
+            confirmPinController: confirmPinController,
+            pinLength: pinLength,
+            pinController: pinController,
+            hasError: widget.hasError,
+          ),
+          const SizedBox(height: 24.0),
+        ],
       ),
     );
   }
