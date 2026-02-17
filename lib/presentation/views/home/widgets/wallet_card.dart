@@ -120,6 +120,7 @@ class WalletBalanceText extends StatelessWidget {
             builder: (context, isVisible) {
               return Icon(
                 isVisible ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
+                color: kIconLightColor,
               );
             },
           ),

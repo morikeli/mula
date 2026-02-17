@@ -27,7 +27,6 @@ class NotificationBellIcon extends StatelessWidget {
               },
               icon: Icon(
                 CupertinoIcons.bell_fill,
-                color: kIconLightColor,
                 size: 24.0,
               ),
             ),
