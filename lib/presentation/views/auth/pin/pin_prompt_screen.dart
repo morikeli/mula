@@ -8,6 +8,7 @@ import '../../../../core/helpers/app_vibrations.dart';
 import '../../../../core/utils/app_toasts.dart';
 import '../../../../core/utils/loading_indicators.dart';
 import '../../../bloc/pin_bloc/pin_bloc.dart';
+import '../../../widgets/common/appbar.dart';
 import '../../../widgets/common/footer.dart';
 import '../../../widgets/forms/pin_prompt_form.dart';
 
@@ -25,7 +26,7 @@ class _PINScreenState extends State<PINScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: pinScreenAppBar(context),
+      appBar: CustomAppBar(appBarTitle: 'Enter your PIN'),
       body: BlocConsumer<PinBloc, PinState>(
         listener: (context, state) {
           if (state is PinSet) {
@@ -58,17 +59,6 @@ class _PINScreenState extends State<PINScreen> {
             ..onTap = () => Navigator.pushNamed(context, '/create-pin'),
         ),
       ],
-    );
-  }
-
-  AppBar pinScreenAppBar(BuildContext context) {
-    return AppBar(
-      title: Text(
-        'Enter your PIN',
-        style: Theme.of(context).textTheme.titleMedium,
-      ),
-      centerTitle: true,
-      automaticallyImplyLeading: false,
     );
   }
 }
