@@ -12,7 +12,7 @@ class WalletCard extends StatelessWidget {
   const WalletCard({super.key});
 
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12.0),
       padding: const EdgeInsets.all(18.0),
