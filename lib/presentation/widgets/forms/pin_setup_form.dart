@@ -45,56 +45,105 @@ class _PINSetupPinputState extends State<PINSetupPinput> {
       ),
     );
   }
+}
 
-  Row savePinBtn(BuildContext context) {
-    return Row(
+class ConfirmPIN extends StatelessWidget {
+  const ConfirmPIN({
+    super.key,
+    required this.confirmPinController,
+    required this.pinLength,
+    required this.pinController,
+    required this.hasError,
+  });
+
+  final TextEditingController confirmPinController;
+  final int pinLength;
+  final TextEditingController pinController;
+  final bool hasError;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: ElevatedButton(
-            onPressed: () async {
-              final form = _formKey.currentState;
-
-                if (form != null && form.validate()) {
-                final createUserPin = pinInputController.text.trim();
-                final userUid = FirebaseAuth.instance.currentUser!.uid;
-
-                context.read<PinBloc>().add(CreatePinRequested(createUserPin, userUid));
-              }
-            },
-            child: Text('Save PIN'),
+        const Text('Confirm your PIN'),
+        const SizedBox(height: 8.0),
+        Pinput(
+          controller: confirmPinController,
+          length: pinLength,
+          obscureText: true,
+          keyboardType: TextInputType.number,
+          forceErrorState: hasError,
+          defaultPinTheme: MulaAppTheme.defaultPinTheme(context),
+          focusedPinTheme: MulaAppTheme.defaultPinTheme(context).copyWith(
+            decoration: MulaAppTheme.defaultPinTheme(context).decoration!
+                .copyWith(border: Border.all(color: kPrimaryColor, width: 2.0)),
           ),
+          errorPinTheme: MulaAppTheme.defaultPinTheme(context).copyWith(
+            decoration: MulaAppTheme.defaultPinTheme(context).decoration!
+                .copyWith(border: Border.all(color: kDangerColor, width: 2.0)),
+          ),
+          validator: (value) {
+            return FormValidation.validatePIN(pinController.text.trim(), value);
+          },
+          onCompleted: (pin) {
+            if (pinController.text.trim() == pin) {
+              context.read<PinBloc>().add(
+                CreatePinRequested(
+                  pinController.text.trim(),
+                  FirebaseAuth.instance.currentUser!.uid,
+                ),
+              );
+            }
+          },
         ),
       ],
     );
   }
+}
 
-  CustomTextFormField confirmPinInputTextField() {
-    return CustomTextFormField(
-      controller: confirmPinInputController,
-      label: 'Confirm your PIN',
-      icon: CupertinoIcons.circle_grid_3x3_fill,
-      obscureText: true,
-      validator: (value) {
-        return FormValidation.validatePIN(
-          pinInputController.text.trim(),
-          value,
-        );
-      },
-    );
-  }
+class EnterPIN extends StatelessWidget {
+  const EnterPIN({
+    super.key,
+    required this.pinController,
+    required this.pinLength,
+    required this.context,
+    required this.hasError,
+  });
 
-  CustomTextFormField pinInputTextField() {
-    return CustomTextFormField(
-      controller: pinInputController,
-      label: 'Enter your PIN',
-      icon: CupertinoIcons.circle_grid_3x3,
-      obscureText: true,
-      validator: (value) {
-        return FormValidation.validatePIN(
-          value,
-          pinInputController.text.trim(),
-        );
-      },
+  final TextEditingController pinController;
+  final int pinLength;
+  final BuildContext context;
+  final bool hasError;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('Enter your PIN'),
+        const SizedBox(height: 8.0),
+        Pinput(
+          controller: pinController,
+          length: pinLength,
+          obscureText: true,
+          keyboardType: TextInputType.number,
+          forceErrorState: hasError,
+          defaultPinTheme: MulaAppTheme.defaultPinTheme(context),
+          focusedPinTheme: MulaAppTheme.defaultPinTheme(context).copyWith(
+            decoration: MulaAppTheme.defaultPinTheme(context).decoration!
+                .copyWith(border: Border.all(color: kPrimaryColor, width: 2.0)),
+          ),
+          errorPinTheme: MulaAppTheme.defaultPinTheme(context).copyWith(
+            decoration: MulaAppTheme.defaultPinTheme(context).decoration!
+                .copyWith(border: Border.all(color: kDangerColor, width: 2.0)),
+          ),
+          validator: (value) {
+            return FormValidation.validatePIN(value, pinController.text.trim());
+          },
+          onCompleted: (_) => FocusScope.of(context).nextFocus(),
+        ),
+      ],
     );
   }
 }
