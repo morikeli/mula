@@ -20,6 +20,7 @@ class NotificationBloc extends Bloc<NotificationsEvent, NotificationsState> {
     on<LoadUnreadCount>(_onLoadUnreadCount);
 
     // on<NotificationError>(_onError);
+    add(LoadUnreadCount());
   }
 
   void _onLoad(LoadingNotifications event, Emitter<NotificationsState> emit) {
