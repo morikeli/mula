@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/helpers/form_validation.dart';
+import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../common/form_field.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
@@ -67,13 +69,12 @@ class RequestResetCodeBtn extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          if (_formKey.currentState!.validate()) {
-            _formKey.currentState!.save();
-            // ResetPasswordDialog.showResetCodeSentDialog(
-            //   context,
-            //   _emailController.text,
-            // );
+        onPressed: () async {
+          final form = _formKey.currentState;
+
+          if (form != null && form.validate()) {
+            final requestedEmail = _emailController.text.trim();
+            context.read<AuthBloc>().add(ForgotPasswordRequested(requestedEmail));
           }
         },
         child: const Text(
