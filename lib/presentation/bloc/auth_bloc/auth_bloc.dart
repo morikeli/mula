@@ -15,6 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepository) : super(AuthInitial()) {
     on<LoginRequested>(_authenticateUser);
     on<SignupRequested>(_createUserAccount);
+    on<ForgotPasswordRequested>(_forgotPassword);
     on<LogoutRequested>(_logoutUser);
   }
 
@@ -52,6 +53,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AccountCreated(signupModel: user));
     } catch (e) {
       emit(AccountCreationFailed(e.toString()));
+    }
+  }
+
+  Future<void> _forgotPassword(
+    ForgotPasswordRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    try {
+      await authRepository.forgotPassword(event.email);
+      emit(PasswordResetSuccess());
+    } catch (e) {
+      emit(PasswordResetFailure(e.toString()));
     }
   }
 

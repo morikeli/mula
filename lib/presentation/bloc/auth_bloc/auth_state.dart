@@ -31,6 +31,14 @@ final class AccountCreationFailed extends AuthState {
   AccountCreationFailed(this.errorMessage);
 }
 
+class PasswordResetSuccess extends AuthState {}
+
+class PasswordResetFailure extends AuthState {
+  final String error;
+
+  PasswordResetFailure(this.error);
+}
+
 final class UserLoggedOut extends AuthState {}
 
 final class UserLogoutFailed extends AuthState {

@@ -20,4 +20,12 @@ final class AuthUserChanged extends AuthEvent {
   AuthUserChanged(this.user);
 }
 
+
+class ForgotPasswordRequested extends AuthEvent {
+  final String email;
+
+  ForgotPasswordRequested(this.email);
+}
+
+
 final class LogoutRequested extends AuthEvent {}
