@@ -32,11 +32,15 @@ class RecentTransactionsListTiles extends StatelessWidget {
           // 1. User avatar
           leading: CircleAvatar(
             backgroundColor: kPrimaryColor,
-            child: Text(txn.senderName![0].toUpperCase()),
+            child: Text(
+              isSend
+                  ? txn.senderName![0].toUpperCase()
+                  : txn.counterparty[0].toUpperCase()
+            ),
           ),
 
           // 2. Sender's name
-          title: Text(txn.senderName ?? txn.counterparty),
+          title: Text(isSend ? txn.senderName! : txn.counterparty),
 
           // 3. Transaction type
           subtitle: Text(
