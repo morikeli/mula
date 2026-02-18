@@ -69,7 +69,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _logoutUser(LogoutRequested event, Emitter<AuthState> emit) async {
+  Future<void> _logoutUser(
+    LogoutRequested event,
+    Emitter<AuthState> emit,
+  ) async {
     emit(AuthLoading());
 
     try {
