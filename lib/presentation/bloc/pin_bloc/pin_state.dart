@@ -12,6 +12,8 @@ final class PinExists extends PinState {}
 
 final class PinNotSet extends PinState {}
 
+final class PinVerified extends PinState {}
+
 final class PinError extends PinState {
   final String errorMessage;
   PinError(this.errorMessage);
