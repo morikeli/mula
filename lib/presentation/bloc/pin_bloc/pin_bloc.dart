@@ -45,7 +45,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
       final isValid = await pinRepository.verifyPin(event.pin);
 
       if (isValid) {
-        emit(PinSet());
+        emit(PinVerified());
       } else {
         emit(PinError("Invalid PIN! Please try again."));
       }
