@@ -43,11 +43,10 @@ class LocalDB {
   // Mark onboarding as seen
   static Future<void> setOnboardingSeen() async {
     final dbClient = await db;
-    await dbClient.insert(
-      'app_meta',
-      {'key': 'onboarding_seen', 'value': '1'},
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await dbClient.insert('app_meta', {
+      'key': 'onboarding_seen',
+      'value': '1',
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   // Returns true if the onboarding has been seen
