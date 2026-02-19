@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is IsAuthenticated) {
-            Navigator.pushNamed(context, '/home');
+            Navigator.pushNamed(context, '/pin-prompt-screen');
           } else if (state is AuthFailed) {
             AppToast.showError(context, title: 'Authentication error!', message: state.errorMessage.toString());
           }
