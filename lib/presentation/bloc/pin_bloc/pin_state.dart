@@ -8,7 +8,7 @@ final class PinInitial extends PinState {}
 
 final class PinLoading extends PinState {}
 
-final class PinSet extends PinState {}
+final class PinExists extends PinState {}
 
 final class PinNotSet extends PinState {}
 

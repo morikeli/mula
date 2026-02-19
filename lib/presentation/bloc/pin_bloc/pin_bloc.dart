@@ -26,7 +26,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
       final isSet = await pinRepository.isPinSet(event.userId);
 
       if (isSet) {
-        emit(PinSet());
+        emit(PinExists());
       } else {
         emit(PinNotSet());
       }
@@ -63,7 +63,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     try {
       await pinRepository.createPin(event.pin, event.userId);
 
-      emit(PinSet());
+      emit(PinExists());
     } catch (e) {
       emit(PinError(e.toString()));
     }
