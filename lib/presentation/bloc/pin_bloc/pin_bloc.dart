@@ -13,6 +13,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     on<CheckPinStatusRequested>(_onCheck);
     on<VerifyPinRequested>(_onVerify);
     on<CreatePinRequested>(_onCreate);
+    on<ResetPinRequested>(_resetUserPIN);
   }
 
   Future<void> _onCheck(
@@ -66,5 +67,12 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     } catch (e) {
       emit(PinError(e.toString()));
     }
+  }
+
+  Future<void> _resetUserPIN(
+    ResetPinRequested event,
+    Emitter<PinState> emit,
+  ) async {
+    emit(PinInitial());
   }
 }

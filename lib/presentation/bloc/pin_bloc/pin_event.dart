@@ -20,3 +20,6 @@ final class CreatePinRequested extends PinEvent {
 
   CreatePinRequested(this.pin, this.userId);
 }
+
+// Reset PIN when a user logs out
+final class ResetPinRequested extends PinEvent {}
