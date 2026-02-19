@@ -33,7 +33,7 @@ class TransactionService {
         .get();
 
     if (phoneQuery.docs.isEmpty) {
-      throw Exception("Recipient account not found");
+      throw "Account not found! Please check the email or phone number and try again.";
     }
 
     return phoneQuery.docs.first.id;
@@ -80,7 +80,7 @@ class TransactionService {
       final senderBalance = await getWalletBalance(senderUid, transaction: tx);
 
       if (senderBalance < amount) {
-        throw Exception("Insufficient balance");
+        throw "Insufficient balance!";
       }
 
       final receiverBalance = await getWalletBalance(

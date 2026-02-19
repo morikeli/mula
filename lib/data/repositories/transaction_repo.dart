@@ -68,7 +68,7 @@ class TransactionRepository {
 
     // Prevent accidental self-transfer.
     if (receiverUid == senderUid) {
-      throw Exception("You cannot send money to yourself");
+      throw "You cannot send money to yourself!";
     }
 
     // Execute the money transfer on the remote service. The repository maps
