@@ -27,7 +27,7 @@ class _PINScreenState extends State<PINScreen> {
       appBar: CustomAppBar(appBarTitle: 'Enter your PIN'),
       body: BlocConsumer<PinBloc, PinState>(
         listener: (context, state) {
-          if (state is PinSet) {
+          if (state is PinVerified) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (context.mounted) Navigator.pushReplacementNamed(context, '/home');
             });

@@ -27,7 +27,7 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
       appBar: CustomAppBar(appBarTitle: "Setup your PIN"),
       body: BlocConsumer<PinBloc, PinState>(
         listener: (context, state) {
-          if (state is PinSet) {
+          if (state is PinExists) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (context.mounted) {
                 AppToast.showSuccess(
