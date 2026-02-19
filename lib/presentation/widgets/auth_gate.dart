@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/loading_indicators.dart';
 import '../bloc/auth_bloc/auth_bloc.dart';
+import '../bloc/pin_bloc/pin_bloc.dart';
 import '../views/auth/login_screen.dart';
 import '../views/auth/pin/pin_prompt_screen.dart';
 
@@ -16,7 +17,13 @@ class AuthGate extends StatelessWidget {
       // `PINScreen`) show toasts for errors. Keeping the gate free of toasts
       // prevents duplicate notifications when both ancestor and descendant
       // listen to the same `AuthBloc` or `PinBloc`.
-      listener: (context, authState) {},
+      listener: (context, authState) {
+        if (authState is IsAuthenticated) {
+          final userId = authState.user.uid;
+
+          context.read<PinBloc>().add(CheckPinStatusRequested(userId: userId));
+        }
+      },
       builder: (context, authState) {
         if (authState is AuthLoading) {
           return AppLoadingIndicators.loadingIndicatorLarge();
