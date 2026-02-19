@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
           if (state is IsAuthenticated) {
             Navigator.pushNamed(context, '/home');
           } else if (state is AuthFailed) {
-            AppToast.showError(context, title: state.errorMessage.toString());
+            AppToast.showError(context, title: 'Authentication error!', message: state.errorMessage.toString());
           }
         },
         builder: (context, state) {

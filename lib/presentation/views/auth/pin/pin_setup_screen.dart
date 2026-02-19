@@ -30,7 +30,10 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
           if (state is PinSet) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (context.mounted) {
-                AppToast.showSuccess(context, title: 'PIN created successfully');
+                AppToast.showSuccess(
+                  context,
+                  title: 'PIN created successfully',
+                );
                 Navigator.pushNamed(context, '/pin-prompt-screen');
               }
             });
@@ -38,7 +41,13 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
             setState(() => _hasError = true);
             AppVibrations.vibrateOnError();
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (context.mounted) AppToast.showError(context, title: state.errorMessage.toString());
+              if (context.mounted) {
+                AppToast.showError(
+                  context,
+                  title: 'PIN creation error!',
+                  message: state.errorMessage.toString(),
+                );
+              }
             });
           }
         },

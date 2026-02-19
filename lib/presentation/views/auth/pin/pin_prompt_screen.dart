@@ -37,7 +37,7 @@ class _PINScreenState extends State<PINScreen> {
             });
             AppVibrations.vibrateOnError();
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              AppToast.showError(context, title: state.errorMessage.toString());
+              AppToast.showError(context, title: 'PIN error!', message: state.errorMessage.toString());
             });
           }
         },

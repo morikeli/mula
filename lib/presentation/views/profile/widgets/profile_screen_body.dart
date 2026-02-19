@@ -18,7 +18,7 @@ class ProfileScreenBody extends StatelessWidget {
         }
 
         if (state is ProfileFailure) {
-          AppToast.showError(context, title: "Failed to update profile");
+          AppToast.showError(context, title: 'Profile update failed!', message: state.errorMessage);
         }
       },
       builder: (context, state) {

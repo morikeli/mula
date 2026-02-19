@@ -23,7 +23,7 @@ class SignupScreen extends StatelessWidget {
           if (state is AccountCreated) {
             Navigator.pushNamed(context, '/login');
           } else if (state is AccountCreationFailed) {
-            AppToast.showError(context, title: state.errorMessage.toString());
+            AppToast.showError(context, title: 'Account creation failed!', message: state.errorMessage.toString());
           }
         },
 
