@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mula/core/theme/colors.dart';
 import 'package:toastification/toastification.dart';
 
 class AppToast {
@@ -32,8 +33,21 @@ class AppToast {
       context: context,
       type: ToastificationType.error,
       style: ToastificationStyle.fillColored,
-      title: Text(title),
-      description: message != null ? Text(message) : null,
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: kTextLightColor,
+          fontSize: 14.0,
+        ),
+      ),
+      description: message != null
+          ? Text(
+              message,
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: kTextLightColor),
+            )
+          : null,
       autoCloseDuration: autoCloseDuration,
       alignment: Alignment.bottomCenter,
       borderRadius: BorderRadius.circular(12),
