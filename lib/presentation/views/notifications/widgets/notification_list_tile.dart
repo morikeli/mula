@@ -7,10 +7,7 @@ import '../../../../data/models/notification_model.dart';
 import '../../../bloc/notifications_bloc/notifications_bloc.dart';
 
 class NotificationListTiles extends StatelessWidget {
-  const NotificationListTiles({
-    super.key,
-    required this.notification,
-  });
+  const NotificationListTiles({super.key, required this.notification});
 
   final Notification notification;
 
@@ -22,18 +19,14 @@ class NotificationListTiles extends StatelessWidget {
           MarkNotificationRead(notification.id),
         );
       },
-    
+
       leading: CircleAvatar(
-        backgroundColor: kPrimaryColor,
         radius: 24.0,
         child: notification.type == NotificationType.moneyReceived
-            ? Icon(
-                CupertinoIcons.arrow_down_circle,
-                // color: kIconDarkColor,
-              )
+            ? Icon(CupertinoIcons.arrow_down_circle)
             : Icon(CupertinoIcons.person_crop_circle_badge_checkmark),
       ),
-    
+
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -47,7 +40,7 @@ class NotificationListTiles extends StatelessWidget {
           ),
         ],
       ),
-    
+
       subtitle: SizedBox(
         width: MediaQuery.of(context).size.width * .5,
         child: Text(
