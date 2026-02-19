@@ -3,7 +3,6 @@ import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../core/theme/colors.dart';
 import '../../../../data/models/notification_model.dart';
 import '../../../bloc/notifications_bloc/notifications_bloc.dart';
 
