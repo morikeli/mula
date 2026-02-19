@@ -39,7 +39,7 @@ class MulaApp extends StatelessWidget {
         child: AdaptiveTheme(
           dark: MulaAppTheme.darkTheme,
           light: MulaAppTheme.lightTheme,
-          initial: AdaptiveThemeMode.system,
+          initial: AdaptiveThemeMode.dark,
           builder: (theme, darkTheme) => MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Mula',
