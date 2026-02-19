@@ -38,7 +38,7 @@ class PinService {
   Future<bool> verifyPin(String pin, String uid) async {
     final db = await DBService.database;
 
-    final result = await db.query(_table, limit: 1);
+    final result = await db.query(_table, where: 'uid = ?', whereArgs: [uid]);
     if (result.isEmpty) return false;
 
     final storedHash = result.first['hash'] as String;
@@ -50,7 +50,7 @@ class PinService {
 
   Future<bool> isPinSet(String uid) async {
     final db = await DBService.database;
-    final result = await db.query(_table, limit: 1);
+    final result = await db.query(_table, where: 'uid = ?', whereArgs: [uid]);
     return result.isNotEmpty;
   }
 
