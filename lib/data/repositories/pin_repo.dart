@@ -14,12 +14,12 @@ class PinRepository {
     return PinModel(pin: userId.pin, userId: userId.userId);
   }
 
-  Future<bool> verifyPin(String pin) {
-    return _pinService.verifyPin(pin);
+  Future<bool> verifyPin(String pin, String uid) {
+    return _pinService.verifyPin(pin, uid);
   }
 
-  Future<bool> isPinSet() {
-    return _pinService.isPinSet();
+  Future<bool> isPinSet(String uid) {
+    return _pinService.isPinSet(uid);
   }
 
   Future<void> resetPin() {

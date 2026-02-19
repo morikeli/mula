@@ -22,7 +22,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     emit(PinLoading());
 
     try {
-      final isSet = await pinRepository.isPinSet();
+      final isSet = await pinRepository.isPinSet(event.userId);
 
       if (isSet) {
         emit(PinSet());

@@ -35,7 +35,7 @@ class PinService {
     return PinModel(pin: pin, userId: uid);
   }
 
-  Future<bool> verifyPin(String pin) async {
+  Future<bool> verifyPin(String pin, String uid) async {
     final db = await DBService.database;
 
     final result = await db.query(_table, limit: 1);
@@ -48,7 +48,7 @@ class PinService {
     return inputHash == storedHash;
   }
 
-  Future<bool> isPinSet() async {
+  Future<bool> isPinSet(String uid) async {
     final db = await DBService.database;
     final result = await db.query(_table, limit: 1);
     return result.isNotEmpty;
