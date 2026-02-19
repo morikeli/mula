@@ -19,9 +19,7 @@ class LocalDB {
       path,
       version: 1,
       onCreate: (db, _) async {
-        await db.execute(
-          'CREATE TABLE pin(uid TEXT PRIMARY KEY, value TEXT)',
-        );
+        await db.execute('CREATE TABLE pin(uid TEXT PRIMARY KEY, hash TEXT, salt TEXT)');
         await db.execute(
           'CREATE TABLE user_info(uid TEXT PRIMARY KEY, firstName TEXT, lastName TEXT, email TEXT, mobileNumber TEXT)',
         );
