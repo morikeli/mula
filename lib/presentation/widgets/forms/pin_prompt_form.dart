@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
@@ -63,7 +64,8 @@ class _PINPromptFormState extends State<PINPromptForm> {
             submittedPinTheme: MulaAppTheme.defaultPinTheme(context),
             showCursor: true,
             onCompleted: (pin) {
-              context.read<PinBloc>().add(VerifyPinRequested(pin));
+              final userId = FirebaseAuth.instance.currentUser!.uid;
+              context.read<PinBloc>().add(VerifyPinRequested(pin, userId));
             },
           ),
 
