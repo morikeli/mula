@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:crypto/crypto.dart';
-
+import 'package:sqflite/sqflite.dart';
 
 import '../../data/models/pin_model.dart';
 import 'db_service.dart';
@@ -28,10 +28,11 @@ class PinService {
     final salt = _generateSalt();
     final hash = _hashPin(pin, salt);
 
-    // ensure single PIN only
-    await db.delete(_table);
-
-    await db.insert(_table, {'uid': uid, 'hash': hash, 'salt': salt});
+    await db.insert(_table, {
+      'uid': uid,
+      'hash': hash,
+      'salt': salt,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
     return PinModel(pin: pin, userId: uid);
   }
 
