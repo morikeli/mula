@@ -9,6 +9,8 @@ import '../../../bloc/pin_bloc/pin_bloc.dart';
 import '../../../widgets/common/appbar.dart';
 import '../../../widgets/common/footer.dart';
 import '../../../widgets/forms/pin_prompt_form.dart';
+import '../../../widgets/homescreen.dart';
+import 'pin_setup_screen.dart';
 
 class PINScreen extends StatefulWidget {
   static String routeName = '/pin-prompt-screen';
@@ -29,7 +31,7 @@ class _PINScreenState extends State<PINScreen> {
         listener: (context, state) {
           if (state is PinVerified) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (context.mounted) Navigator.pushReplacementNamed(context, '/home');
+              if (context.mounted) Navigator.pushReplacementNamed(context, HomeScreen.routeName);
             });
           } else if (state is PinError) {
             setState(() {
@@ -54,7 +56,7 @@ class _PINScreenState extends State<PINScreen> {
           primaryText: "Don't have a PIN? ",
           redirectText: "Create your PIN",
           redirectTo: TapGestureRecognizer()
-            ..onTap = () => Navigator.pushNamed(context, '/create-pin'),
+            ..onTap = () => Navigator.pushNamed(context, PinSetupScreen.routeName),
         ),
       ],
     );

@@ -51,7 +51,7 @@ class SignupScreen extends StatelessWidget {
           primaryText: "Already have an account? ",
           redirectText: "Login",
           redirectTo: TapGestureRecognizer()
-            ..onTap = () => Navigator.pushNamed(context, '/login'),
+            ..onTap = () => Navigator.pushNamed(context, LoginScreen.routeName),
         ),
       ],
     );

@@ -9,6 +9,7 @@ import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../../widgets/common/footer.dart';
 import '../../widgets/forms/login_form.dart';
 import 'pin/pin_prompt_screen.dart';
+import 'signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static String routeName = '/login';
@@ -44,7 +45,7 @@ class LoginScreen extends StatelessWidget {
           primaryText: "Don't have an account? ",
           redirectText: "Sign up",
           redirectTo: TapGestureRecognizer()
-            ..onTap = () => Navigator.pushNamed(context, '/signup'),
+            ..onTap = () => Navigator.pushNamed(context, SignupScreen.routeName),
         ),
       ],
     );
