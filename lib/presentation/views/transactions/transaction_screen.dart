@@ -22,12 +22,56 @@ class TransactionScreen extends StatelessWidget {
             return Center(child: AppLoadingIndicators.loadingIndicatorLarge());
           }
 
-          return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12.0,
-              vertical: 12.0,
+          return BottomBar(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search by name or email',
+                  prefixIcon: Icon(CupertinoIcons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                onChanged: (value) {
+                  context.read<ProfileBloc>().add(SearchUsers(value));
+                },
+              ),
             ),
-            child: TransactionForm(),
+            body: (context, controller) {
+              if (state is UserSearchLoaded) {
+                if (state.users.isEmpty) {
+                  return TransactionScreenErrorWidget();
+                }
+
+                return ListView.builder(
+                  itemCount: state.users.length,
+                  itemBuilder: (context, index) {
+                    final user = state.users[index];
+
+                    return ListTile(
+                      leading: CircleAvatar(
+                        child: Text('${user.firstName?[0]}'),
+                      ),
+                      title: Text('${user.firstName} ${user.lastName}'),
+                      subtitle: Text(user.email),
+                      onTap: () {
+                        searchController.clear();
+                        Navigator.pushNamed(
+                          context,
+                          '/send-money',
+                          arguments: user.email,
+                        );
+                      },
+                    );
+                  },
+                );
+              }
+
+              return TransactionScreenErrorWidget();
+            },
           );
         },
       ),
