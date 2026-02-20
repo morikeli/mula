@@ -10,6 +10,7 @@ import 'core/helpers/prefs.dart';
 import 'core/theme/theme.dart';
 import 'core/providers/repository_providers.dart';
 import 'core/providers/bloc_providers.dart';
+import 'debug/migrations.dart';
 import 'presentation/views/onboarding_screen.dart';
 import 'presentation/widgets/auth_gate.dart';
 import 'presentation/widgets/connectivity_listener.dart';
@@ -21,6 +22,11 @@ void main() async {
   await dotenv.load();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   final seen = await Prefs.hasSeenOnboarding();
+
+  if (kDebugMode) {
+    await rebuildSearchIndexes();
+  }
+
   runApp(MulaApp(skipOnboarding: seen));
 
   // whenever app initialization is completed, remove the splash screen:
