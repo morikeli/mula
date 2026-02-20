@@ -16,3 +16,8 @@ class UpdateProfileRequested extends ProfileEvent {
     this.profileImage,
   });
 }
+
+final class SearchUsers extends ProfileEvent {
+  final String query;
+  SearchUsers(this.query);
+}

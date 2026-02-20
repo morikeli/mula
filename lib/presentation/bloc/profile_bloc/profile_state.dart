@@ -14,3 +14,15 @@ class ProfileFailure extends ProfileState {
 
   ProfileFailure(this.errorMessage);
 }
+
+class UserSearchLoading extends ProfileState {}
+
+class UserSearchLoaded extends ProfileState {
+  final List<UserModel> users;
+  UserSearchLoaded(this.users);
+}
+
+class UserSearchError extends ProfileState {
+  final String message;
+  UserSearchError(this.message);
+}
