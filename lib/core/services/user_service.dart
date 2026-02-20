@@ -21,6 +21,21 @@ class UserService {
     return null;
   }
 
+  // search users by username or email
+  Future<List<UserModel>> searchUsers(String query) async {
+    if (query.isEmpty) return [];
+
+    final snapshot = await _db
+        .collection('users')
+        .where('searchIndex', arrayContains: query.toLowerCase())
+        .limit(15)
+        .get();
+
+    return snapshot.docs
+        .map((e) => UserModel.fromMap(e.data()))
+        .toList();
+  }
+
   Future<String?> uploadProfilePic(File file) async {
     final uid = _auth.currentUser!.uid;
 

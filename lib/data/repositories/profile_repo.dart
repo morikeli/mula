@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import '../../core/services/user_service.dart';
+import '../models/user_model.dart';
 
 class ProfileRepository {
   final UserService _service;
@@ -25,5 +26,9 @@ class ProfileRepository {
       lastName: lastName,
       photoUrl: photoUrl,
     );
+  }
+
+  Future<List<UserModel>> searchUsers(String query) async {
+    return await _service.searchUsers(query);
   }
 }
