@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -103,8 +102,8 @@ class SendMoneyBtn extends StatelessWidget {
             final counterparty = recipientNameController.text.trim();
             final amountText = amountController.text.trim().replaceAll(',', '');
             final amount = double.tryParse(amountText);
-
             final validationError = FormValidation.validateAmount(amount);
+
             if (validationError != null) {
               AppToast.showError(context, title: validationError);
               return;
