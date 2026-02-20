@@ -96,7 +96,7 @@ Clone this repository by opening your terminal/CMD and change the current workin
 3. Make sure you have a very strong internet connection so that the necessary gradle files can be downloaded. These files are necessary to build the project `apk` file.
 
 ---
-> [!INFO]
+> [!NOTE]
 >
 > When building the application for the first time, it may take 10 - 15 minutes to finish the installation and build process.
 > When running the application using the `flutter run` command, it may take atleast a minute to install the build files on a physical device.
