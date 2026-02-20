@@ -107,9 +107,6 @@ class SendMoneyBtn extends StatelessWidget {
             final validationError = FormValidation.validateAmount(amount);
             if (validationError != null) {
               AppToast.showError(context, title: validationError);
-              // ScaffoldMessenger.of(context).showSnackBar(
-              //   SnackBar(content: Text(validationError)),
-              // );
               return;
             }
 
