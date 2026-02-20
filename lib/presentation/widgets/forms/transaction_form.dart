@@ -36,8 +36,6 @@ class _TransactionFormState extends State<TransactionForm> {
       key: formKey,
       child: Column(
         children: [
-          RecipientInputField(recipientNameController: recipientNameController),
-          const SizedBox(height: 20),
           AmountInputField(amountController: amountController),
           const SizedBox(height: 12.0),
           const SizedBox(height: 20.0),
@@ -48,28 +46,6 @@ class _TransactionFormState extends State<TransactionForm> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class RecipientInputField extends StatelessWidget {
-  const RecipientInputField({
-    super.key,
-    required this.recipientNameController,
-  });
-
-  final TextEditingController recipientNameController;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomTextFormField(
-      controller: recipientNameController,
-      label: "Email or phone",
-      icon: CupertinoIcons.mail_solid,
-      keyboardType: TextInputType.emailAddress,
-      validator: (value) {
-        return FormValidation.validateEmailAndPhoneNumber(value);
-      },
     );
   }
 }
