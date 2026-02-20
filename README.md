@@ -64,7 +64,7 @@ This wasn’t just a coding challenge — it was an exercise in product thinking
 
 ## Developer instructions
 ---
-[!Note]
+> [!WARNING]
 > To run this project, you **MUST** install Flutter SDK on your machine. Refer to [Flutter's documentation](https://docs.flutter.dev/get-started/install) and follow a step-by-step guide on how you can install Flutter SDK on your OS.
 >
 > Make sure you have installed Android Studio or a text editor of your choice - VS Code or XCode.
@@ -96,7 +96,8 @@ Clone this repository by opening your terminal/CMD and change the current workin
 3. Make sure you have a very strong internet connection so that the necessary gradle files can be downloaded. These files are necessary to build the project `apk` file.
 
 ---
-[!Important]
+> [!INFO]
+>
 > When building the application for the first time, it may take 10 - 15 minutes to finish the installation and build process.
 > When running the application using the `flutter run` command, it may take atleast a minute to install the build files on a physical device.
 ---
