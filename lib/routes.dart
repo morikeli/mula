@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'presentation/views/notifications/notifications_screen.dart';
+import 'presentation/views/transactions/send_money_screen.dart';
 import 'presentation/views/transactions/transaction_screen.dart';
 import 'presentation/widgets/homescreen.dart';
 
@@ -19,6 +20,7 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => const HomeScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   TransactionScreen.routeName: (context) => TransactionScreen(),
+  SendMoneyScreen.routeName: (context) => SendMoneyScreen(),
   PinSetupScreen.routeName: (context) => PinSetupScreen(),
   PINScreen.routeName: (context) => PINScreen(),
   NotificationsScreen.routeName: (context) => NotificationsScreen(),
