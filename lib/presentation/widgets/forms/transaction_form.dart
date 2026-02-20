@@ -12,20 +12,20 @@ import '../../bloc/transaction_bloc/transactions_bloc.dart';
 import '../common/form_field.dart';
 
 class TransactionForm extends StatefulWidget {
-  const TransactionForm({super.key});
+  const TransactionForm({super.key, required this.recipientNameController});
+  final TextEditingController recipientNameController;
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
 }
 
 class _TransactionFormState extends State<TransactionForm> {
-  final TextEditingController recipientNameController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    recipientNameController.dispose();
+    widget.recipientNameController.dispose();
     amountController.dispose();
     super.dispose();
   }
@@ -41,7 +41,7 @@ class _TransactionFormState extends State<TransactionForm> {
           const SizedBox(height: 20.0),
           SendMoneyBtn(
             formKey: formKey,
-            recipientNameController: recipientNameController,
+            recipientNameController: widget.recipientNameController,
             amountController: amountController,
           ),
         ],
