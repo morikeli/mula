@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../auth/pin/pin_setup_screen.dart';
+
 class ResetPINButton extends StatelessWidget {
   const ResetPINButton({super.key});
 
@@ -11,8 +13,10 @@ class ResetPINButton extends StatelessWidget {
         // Reset PIN btn
         Expanded(
           child: ElevatedButton(
-            onPressed: () =>
-                Navigator.pushReplacementNamed(context, '/create-pin'),
+            onPressed: () => Navigator.pushReplacementNamed(
+              context,
+              PinSetupScreen.routeName,
+            ),
             child: Text('Reset PIN'),
           ),
         ),

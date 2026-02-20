@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../bloc/auth_bloc/auth_bloc.dart';
 import '../../../bloc/pin_bloc/pin_bloc.dart';
+import '../../auth/login_screen.dart';
 import 'custom_list_tile.dart';
 import 'profile_screen_avatar.dart';
 import 'profile_screen_location_widget.dart';
@@ -119,7 +120,7 @@ class ProfileScreenListView extends StatelessWidget {
             context.read<PinBloc>().add(ResetPinRequested());
             Navigator.pushNamedAndRemoveUntil(
               context,
-              '/login',
+              LoginScreen.routeName,
               (route) => false,
             );
           },

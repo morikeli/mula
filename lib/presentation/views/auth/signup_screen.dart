@@ -8,6 +8,7 @@ import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../../widgets/common/appbar.dart';
 import '../../widgets/common/footer.dart';
 import '../../widgets/forms/signup_form.dart';
+import 'login_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   static String routeName = '/signup';
@@ -21,7 +22,7 @@ class SignupScreen extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AccountCreated) {
-            Navigator.pushNamed(context, '/login');
+            Navigator.pushNamed(context, LoginScreen.routeName);
           } else if (state is AccountCreationFailed) {
             AppToast.showError(context, title: 'Account creation failed!', message: state.errorMessage.toString());
           }

@@ -8,6 +8,7 @@ import '../../../core/utils/loading_indicators.dart';
 import '../../bloc/auth_bloc/auth_bloc.dart';
 import '../../widgets/common/footer.dart';
 import '../../widgets/forms/login_form.dart';
+import 'pin/pin_prompt_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static String routeName = '/login';
@@ -19,7 +20,7 @@ class LoginScreen extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is IsAuthenticated) {
-            Navigator.pushNamed(context, '/pin-prompt-screen');
+            Navigator.pushNamed(context, PINScreen.routeName);
           } else if (state is AuthFailed) {
             AppToast.showError(context, title: 'Authentication error!', message: state.errorMessage.toString());
           }

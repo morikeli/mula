@@ -7,6 +7,7 @@ import '../../../core/theme/colors.dart';
 import '../../../core/utils/loading_indicators.dart';
 import '../../bloc/profile_bloc/profile_bloc.dart';
 import '../../widgets/common/appbar.dart';
+import 'send_money_screen.dart';
 
 class TransactionScreen extends StatelessWidget {
   static String routeName = '/transaction-screen';
@@ -63,7 +64,7 @@ class TransactionScreen extends StatelessWidget {
                         searchController.clear();
                         Navigator.pushNamed(
                           context,
-                          '/send-money',
+                          SendMoneyScreen.routeName,
                           arguments: user.email,
                         );
                       },

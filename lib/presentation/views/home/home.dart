@@ -7,6 +7,7 @@ import '../../bloc/notifications_bloc/notifications_bloc.dart';
 import '../../bloc/transaction_bloc/transactions_bloc.dart';
 import '../../cubits/wallet/wallet_balance_cubit.dart';
 import '../../widgets/common/recent_transactions.dart';
+import '../transactions/transaction_screen.dart';
 import 'widgets/avatar.dart';
 import 'widgets/recent_transactions_title.dart';
 import 'widgets/wallet_card.dart';
@@ -71,7 +72,7 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/send-money');
+          Navigator.pushNamed(context, TransactionScreen.routeName);
         },
         child: Icon(CupertinoIcons.arrowshape_turn_up_right_fill),
       ),
