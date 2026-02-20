@@ -8,8 +8,9 @@ import '../../widgets/common/appbar.dart';
 import '../../widgets/forms/transaction_form.dart';
 
 class TransactionScreen extends StatelessWidget {
-  static String routeName = '/send-money';
-  const TransactionScreen({super.key});
+  static String routeName = '/transaction-screen';
+  TransactionScreen({super.key});
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
