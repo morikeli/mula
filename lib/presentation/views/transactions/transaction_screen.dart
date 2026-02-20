@@ -80,3 +80,23 @@ class TransactionScreen extends StatelessWidget {
     );
   }
 }
+
+class TransactionScreenErrorWidget extends StatelessWidget {
+  const TransactionScreenErrorWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        SizedBox(height: MediaQuery.of(context).size.height * 0.32),
+        Icon(
+          CupertinoIcons.person_crop_circle_fill_badge_xmark,
+          size: 48.0,
+          color: kIconLightColor,
+        ),
+        SizedBox(height: 12.0),
+        Center(child: Text('No user found')),
+      ],
+    );
+  }
+}
