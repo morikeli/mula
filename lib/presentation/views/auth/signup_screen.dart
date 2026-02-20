@@ -24,7 +24,11 @@ class SignupScreen extends StatelessWidget {
           if (state is AccountCreated) {
             Navigator.pushNamed(context, LoginScreen.routeName);
           } else if (state is AccountCreationFailed) {
-            AppToast.showError(context, title: 'Account creation failed!', message: state.errorMessage.toString());
+            AppToast.showError(
+              context,
+              title: 'Account creation failed!',
+              message: state.errorMessage.toString(),
+            );
           }
         },
 
@@ -55,9 +59,7 @@ class SignupScreen extends StatelessWidget {
 }
 
 class SignupScreenBody extends StatelessWidget {
-  const SignupScreenBody({
-    super.key,
-  });
+  const SignupScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,9 +81,7 @@ class SignupScreenBody extends StatelessWidget {
 }
 
 class SignupScreenSubTitle extends StatelessWidget {
-  const SignupScreenSubTitle({
-    super.key,
-  });
+  const SignupScreenSubTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
