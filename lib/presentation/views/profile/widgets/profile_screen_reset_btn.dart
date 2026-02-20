@@ -10,7 +10,11 @@ class ResetPINButton extends StatelessWidget {
       children: [
         // Reset PIN btn
         Expanded(
-          child: ElevatedButton(onPressed: () {}, child: Text('Reset PIN')),
+          child: ElevatedButton(
+            onPressed: () =>
+                Navigator.pushReplacementNamed(context, '/create-pin'),
+            child: Text('Reset PIN'),
+          ),
         ),
       ],
     );
